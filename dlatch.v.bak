@@ -1,0 +1,9 @@
+module dlatch(output reg q, input d, enable);
+
+always @(enable, d) begin
+    if (enable) begin
+        q <= d;
+    end
+end
+
+endmodule

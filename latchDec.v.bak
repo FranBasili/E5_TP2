@@ -1,0 +1,31 @@
+module latchDec(
+input wire clk, 
+input wire en, 
+input wire [9:0] aluCtrl,  
+unput wire [31:0] imm,
+input wire [5:0] selA,     
+input wire [4:0] selB,
+input wire [5:0] selOut,
+input wire imm_en,
+output wire [9:0] aluCtrl_,   
+output wire [31:0] imm_,
+output wire [5:0] selA_,      
+output wire [4:0] selB_,
+output wire [5:0] selOut_,
+output wire imm_en_
+);
+
+
+
+always @(posedge clk) begin
+	if (en) begin
+		aluCtrl_ <= aluCtrl;
+		imm_ <= imm;
+		selA_ <= selA;
+		selB_ <= selB;
+		selOut_ <= selOut;
+		imm_en_ <= imm_en; 	  
+    end
+end
+
+endmodule

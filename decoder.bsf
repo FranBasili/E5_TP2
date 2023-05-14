@@ -66,6 +66,13 @@ https://fpgasoftware.intel.com/eula.
 		(text "selOut[5..0]" (rect 143 91 187 103)(font "Arial" ))
 		(line (pt 208 96)(pt 192 96)(line_width 3))
 	)
+	(port
+		(pt 208 112)
+		(output)
+		(text "imm_en" (rect 0 0 33 12)(font "Arial" ))
+		(text "imm_en" (rect 154 107 187 119)(font "Arial" ))
+		(line (pt 208 112)(pt 192 112)(line_width 1))
+	)
 	(drawing
 		(rectangle (rect 16 16 192 128)(line_width 1))
 	)
