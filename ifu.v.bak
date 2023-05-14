@@ -1,0 +1,27 @@
+module ifu
+(
+ input 	clk,
+ input 	reset,
+ input 	mem [31:0],
+ input 	new_pc [31:0],
+ input 	set_pc,
+ output 	pc [31:0],
+ output	instr[31:0] 
+ );
+
+	reg [31:0] currPC;
+
+	//reg[31:0] q;
+	 
+	
+	
+	always @(posedge clk, negedge reset) begin
+		if (not reset)	{
+			pc <= 0;
+		}
+		else q <= currPC + 1;
+	end
+
+	assign nextPC = q;
+ 
+endmodule
