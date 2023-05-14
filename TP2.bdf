@@ -21,7 +21,7 @@ https://fpgasoftware.intel.com/eula.
 */
 (header "graphic" (version "1.4"))
 (symbol
-	(rect 288 152 504 280)
+	(rect 64 152 280 280)
 	(text "Prog_mem" (rect 69 0 162 19)(font "Arial" (font_size 10)))
 	(text "ROM" (rect 8 109 39 124)(font "Arial" ))
 	(port
@@ -84,7 +84,7 @@ https://fpgasoftware.intel.com/eula.
 	)
 )
 (symbol
-	(rect 640 144 832 288)
+	(rect 416 144 608 288)
 	(text "ifu" (rect 5 0 20 15)(font "Arial" ))
 	(text "IFU" (rect 8 128 30 143)(font "Arial" ))
 	(port
@@ -138,5 +138,119 @@ https://fpgasoftware.intel.com/eula.
 	)
 	(drawing
 		(rectangle (rect 16 16 176 128))
+	)
+)
+(symbol
+	(rect 912 144 1120 288)
+	(text "decoder" (rect 5 0 58 15)(font "Arial" ))
+	(text "DECODER" (rect 8 128 79 143)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "instruction[31..0]" (rect 0 0 106 15)(font "Arial" ))
+		(text "instruction[31..0]" (rect 21 27 127 42)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32)(line_width 3))
+	)
+	(port
+		(pt 208 32)
+		(output)
+		(text "aluCtrl[9..0]" (rect 0 0 73 15)(font "Arial" ))
+		(text "aluCtrl[9..0]" (rect 126 27 199 42)(font "Arial" ))
+		(line (pt 208 32)(pt 192 32)(line_width 3))
+	)
+	(port
+		(pt 208 48)
+		(output)
+		(text "imm[31..0]" (rect 0 0 68 15)(font "Arial" ))
+		(text "imm[31..0]" (rect 130 43 198 58)(font "Arial" ))
+		(line (pt 208 48)(pt 192 48)(line_width 3))
+	)
+	(port
+		(pt 208 64)
+		(output)
+		(text "selA[5..0]" (rect 0 0 59 15)(font "Arial" ))
+		(text "selA[5..0]" (rect 138 59 197 74)(font "Arial" ))
+		(line (pt 208 64)(pt 192 64)(line_width 3))
+	)
+	(port
+		(pt 208 80)
+		(output)
+		(text "selB[4..0]" (rect 0 0 60 15)(font "Arial" ))
+		(text "selB[4..0]" (rect 137 75 197 90)(font "Arial" ))
+		(line (pt 208 80)(pt 192 80)(line_width 3))
+	)
+	(port
+		(pt 208 96)
+		(output)
+		(text "selOut[5..0]" (rect 0 0 73 15)(font "Arial" ))
+		(text "selOut[5..0]" (rect 126 91 199 106)(font "Arial" ))
+		(line (pt 208 96)(pt 192 96)(line_width 3))
+	)
+	(drawing
+		(rectangle (rect 16 16 192 128))
+	)
+)
+(symbol
+	(rect 920 448 1104 592)
+	(text "alu" (rect 5 0 25 15)(font "Arial" ))
+	(text "inst" (rect 8 128 31 143)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "busA[31..0]" (rect 0 0 71 15)(font "Arial" ))
+		(text "busA[31..0]" (rect 21 27 92 42)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32)(line_width 3))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "busB[31..0]" (rect 0 0 73 15)(font "Arial" ))
+		(text "busB[31..0]" (rect 21 43 94 58)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48)(line_width 3))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "imm[31..0]" (rect 0 0 68 15)(font "Arial" ))
+		(text "imm[31..0]" (rect 21 59 89 74)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64)(line_width 3))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "imm_en" (rect 0 0 54 15)(font "Arial" ))
+		(text "imm_en" (rect 21 75 75 90)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80))
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "ctrl[9..0]" (rect 0 0 49 15)(font "Arial" ))
+		(text "ctrl[9..0]" (rect 21 91 70 106)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96)(line_width 3))
+	)
+	(port
+		(pt 184 32)
+		(output)
+		(text "out[31..0]" (rect 0 0 59 15)(font "Arial" ))
+		(text "out[31..0]" (rect 114 27 173 42)(font "Arial" ))
+		(line (pt 184 32)(pt 168 32)(line_width 3))
+	)
+	(port
+		(pt 184 48)
+		(output)
+		(text "N" (rect 0 0 10 15)(font "Arial" ))
+		(text "N" (rect 155 43 165 58)(font "Arial" ))
+		(line (pt 184 48)(pt 168 48))
+	)
+	(port
+		(pt 184 64)
+		(output)
+		(text "Z" (rect 0 0 8 15)(font "Arial" ))
+		(text "Z" (rect 157 59 165 74)(font "Arial" ))
+		(line (pt 184 64)(pt 168 64))
+	)
+	(drawing
+		(rectangle (rect 16 16 168 128))
 	)
 )

@@ -11,89 +11,96 @@
 
 `define LUI_U_Type      7'b0110111   
 `define AUIPC_U_Type    7'b0010111   
-`define I_Type          7'b1100111  
 `define J_Type          7'b1101111
-`define R_Type          7'b0110011  
+`define I_Type          7'b1100111  // JALR
+`define B_Type          7'b1100011
+`define L_Type          7'b0000011
 `define S_Type          7'b0100011  
 `define SH_R_Type       7'b0010011  
-`define B_Type          7'b1100011
+`define R_Type          7'b0110011
 
 
-module decode(
-    input[31:0] instruction,
-    
-    output reg [9:0] aluCtrl,   // funct7 + funct3
-	output reg [31:0] imm,
-    output reg [5:0] selA,      // Este tiene 5 porque incluye al PC
-    output reg [4:0] selB,
-    output reg [5:0] selOut,
-	//output reg [?:0]jmp_ctrl,
+
+module decoder(
+	input[31:0] instruction,
+
+	output wire [9:0] aluCtrl,   // funct7 + funct3
+	output wire [31:0] imm,
+	output wire [5:0] selA,      // Este tiene 5 porque incluye al PC
+	output wire [4:0] selB,
+	output wire [5:0] selOut,
+    output wire imm_en
+	//output reg [?:0]jmp_ctrl, TODO:
 );
 
-	
-	// wire [7:0]Imm = code[7:0];
-	// wire [3:0]Save = code[3:0];
-	// wire [1:0]B = code[5:4];
-	// wire [1:0]A = code[7:6];
-	// wire [1:0]Op = code[9:8];
-	 
-	always @(instruction)
-	begin
+	reg [9:0] curr_aluCtrl;   
+	reg [31:0] curr_imm;
+	reg [5:0] curr_selA;      
+	reg [4:0] curr_selB;
+	reg [5:0] curr_selOut;
+   reg curr_imm_en;
+
+	always @(instruction) begin
+        curr_selOut = 0;
+        curr_selA = 0;
+        curr_imm = 0;
+        curr_aluCtrl = 0;
+        curr_imm_en = 0;
+        curr_selB = 0;
+		  
         case (instruction[6:0])
             `R_Type: begin
-                selA = instruction[19:15]; selB = instruction[24:20]; selOut = instruction[11:7]; 
-                aluCtrl = [ instruction[31:25], instruction [11:7] ]; 
+                curr_selA = instruction[19:15]; curr_selB = instruction[24:20]; curr_selOut = instruction[11:7]; 
+                curr_aluCtrl = { instruction[31:25], instruction[14:12] }; 
+                curr_imm_en = 0;
             end
             
-			`SH_Type: begin
-                selA = instruction[19:15]; imm = instruction[24:20]; selOut = instruction[11:7]; 
-                aluCtrl = [ instruction[31:25], instruction [11:7] ]; 
+            `SH_R_Type: begin
+                curr_selA = instruction[19:15]; curr_imm = instruction[24:20]; curr_selOut = instruction[11:7];
+                curr_aluCtrl = { instruction[31:25], instruction[14:12] };
+                curr_imm_en = 1; 
             end
 
             `I_Type: begin  //Ver, es media turbia
-                selA = instruction[19:15]; inm = instruction[31:20]; selOut = instruction[11:7]; 
-                aluCtrl = instruction [11:7];   // JALR (Jump And Link Register) salto a subrutina
+                curr_selA = instruction[19:15]; curr_imm = instruction[31:20]; curr_selOut = instruction[11:7]; 
+                curr_aluCtrl = instruction [14:12];   // JALR (Jump And Link Register) salto a subrutina
+                curr_imm_en = 1;
             end  
 
             `S_Type: begin
-                selA = instruction[19:15]; selB = instruction[24:20]; // ESTO VA A MEMORIA, HAY QUE AVISAR DE ALGUNA FORMA 
-                imm = [ instruction[31:25], instruction [11:7] ]; //aluCtrl = OPCODE_ALU_SUMA_IMM 
+                curr_selA = instruction[19:15]; curr_selB = instruction[24:20]; // ESTO VA A MEMORIA, HAY QUE AVISAR DE ALGUNA FORMA 
+                curr_imm = { instruction[31:25], instruction[14:12] }; //curr_aluCtrl = OPCODE_ALU_SUMA_IMM 
+                curr_imm_en = 1;
             end
 
             `B_Type: begin
-                selA = instruction[19:15]; selB = instruction[24:20];
-                imm = [ instruction[31], instruction[7], instruction[30:25], instruction [11:8] ]; //aluCtrl = OPCODE_ALU_RESTA;
-				//jmp_ctrl = []; 
+                curr_selA = instruction[19:15]; curr_selB = instruction[24:20];
+                curr_imm[31:12] = instruction[31];
+                curr_imm[11:0] = { instruction[7], instruction[30:25], instruction [11:8], 1'b0}; //curr_aluCtrl = OPCODE_ALU_RESTA;
+					//curr_jmp_ctrl = [];
+                curr_imm_en = 1; 
             end
           
             `LUI_U_Type: begin
-                inm = instruction[31:12]; selOut = instruction[11:7];
+                curr_imm = instruction[31:12]; curr_selOut = instruction[11:7];
+                curr_imm_en = 1;
             end
 
             `AUIPC_U_Type: begin
-                inm = instruction[31:12]; selOut = instruction[11:7];
+                curr_imm = instruction[31:12]; curr_selOut = instruction[11:7];
+                curr_imm_en = 1;
             end
-        endcase
-
-		casex (instruction)
-
-			/*
-			8'h01:  begin selA=0; selB=1; alu=ALU_ADD; save0=0; save1=0; save2=1; end //REG1 = REG0 
-			8'h02:  begin selA=0; selB=1; alu=ALU_SUB; save0=0; save1=0; save2=1; end //REG2 = REG0
-			8'h03:  begin selA=0; selB=0; alu=ALU_INC; save0=1; save1=0; save2=0; end //REG0 = REG0 + REG1
-			8'h04:  begin selA=1; selB=0; alu=ALU_INC; save0=0; save1=1; save2=0; end //REG0 = REG1 + REG2
-			*/
 				
-			
-			12'b0100xxxxxxxx: begin selA=0; selB=0; alu=`ALU_A; save=4'b0001; loadI_A=1; end
-			12'b0101xxxxxxxx: begin selA=0; selB=0; alu=`ALU_A; save=4'b0010; loadI_A=1; end
-			12'b0110xxxxxxxx: begin selA=0; selB=0; alu=`ALU_A; save=4'b0100; loadI_A=1; end
-			12'b0111xxxxxxxx: begin selA=0; selB=0; alu=`ALU_A; save=4'b1000; loadI_A=1; end
-			
-			12'b00xxxxxxxxxx: begin selA=A; selB=B; alu=`ALU_ADD + Op; save=Save; loadI_A=0; end
-		endcase
+				default:
+					curr_selOut= 0;
+        endcase
 	end
 
-	assign nextPC = q;
- 
+    assign  aluCtrl= curr_aluCtrl;
+    assign  imm= curr_imm;
+    assign  selA= curr_selA;
+    assign  selB= curr_selB;
+    assign  selOut= curr_selOut;
+    assign  imm_en= curr_imm_en;
+
 endmodule
