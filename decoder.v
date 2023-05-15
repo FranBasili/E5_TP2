@@ -16,7 +16,8 @@
 `define B_Type          7'b1100011
 `define L_Type          7'b0000011
 `define S_Type          7'b0100011  
-`define SH_R_Type       7'b0010011  
+//`define SH_R_Type       7'b0010011
+`define IMM_Type       	7'b0010011    
 `define R_Type          7'b0110011
 
 
@@ -55,8 +56,8 @@ module decoder(
                 curr_imm_en = 0;
             end
             
-            `SH_R_Type: begin
-                curr_selA = instruction[19:15]; curr_imm = instruction[24:20]; curr_selOut = instruction[11:7];
+            `IMM_Type: begin
+                curr_selA = instruction[19:15]; curr_imm = instruction[31:20]; curr_selOut = instruction[11:7];
                 curr_aluCtrl = { instruction[31:25], instruction[14:12] };
                 curr_imm_en = 1; 
             end

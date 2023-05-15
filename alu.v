@@ -1,5 +1,5 @@
-`define ALU_ADD		10'b0000000000
-`define ALU_SUB		10'b0100000000
+`define ALU_ADD		10'bx0xxxxx000
+`define ALU_SUB		10'bx1xxxxx000
 `define ALU_SLL		10'b0000000001      // Logic Shift Left
 `define ALU_SRL		10'b0000000101      // Logic Shift Right
 `define ALU_SRA		10'b0100000101      // Arithmetic shift right
@@ -27,7 +27,7 @@ module alu
 always @(busA, busB, imm, imm_en, ctrl)
 begin
 	if (!imm_en) begin
-		case (ctrl)
+		casex (ctrl)
 			`ALU_ADD:	out = busA + busB;
 			`ALU_SUB:	out = busA - busB;
 			`ALU_SLL:	out = busA << (busB[4:0]);
@@ -38,12 +38,13 @@ begin
 			`ALU_AND:	out = busA & busB;
 			`ALU_SLT:	out = (busA < busB) ? 1 : 0;
 			`ALU_SLTU:	out = (busA < busB) ? 1 : 0;
+			default: out=32'hABCD;
 		endcase
 	end
 	else begin
-		case (ctrl)
+		casex (ctrl)
 			`ALU_ADD:	out = busA + imm;
-			//`ALU_SUB:	out = busA - busB;
+			`ALU_SUB:	out = busA + imm;		// Considero la resta como suma tambien
 			`ALU_SLL:	out = busA << (imm[4:0]); 
 			`ALU_SRL:	out = busA >> (imm[4:0]);
 			`ALU_SRA:	out = $signed(busA) >>> (imm[4:0]);
@@ -52,6 +53,7 @@ begin
 			`ALU_AND:	out = busA & imm;
 			`ALU_SLT:	out = (busA < imm) ? 1 : 0;
 			`ALU_SLTU:	out = (busA < imm) ? 1 : 0;
+			default: out=32'hABCD;
 		endcase 
 	end
 end

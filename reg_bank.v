@@ -20,7 +20,7 @@ module reg_bank(
 		end
 	end
 
-	always @(posedge clk, negedge reset) begin
+	always @(negedge clk, negedge reset) begin
 		if(!reset) begin
 			integer i;
 			for(i=0; i<32; i=i+1) begin

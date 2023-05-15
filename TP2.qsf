@@ -67,4 +67,48 @@ set_global_assignment -name VERILOG_FILE alu.v
 set_global_assignment -name VERILOG_FILE latch32.v
 set_global_assignment -name VERILOG_FILE reg_bank.v
 set_global_assignment -name VERILOG_FILE latchDec.v
+set_global_assignment -name VERILOG_FILE latchAluIn.v
+set_global_assignment -name VERILOG_FILE latch5.v
+set_instance_assignment -name VIRTUAL_PIN ON -to PC12
+set_instance_assignment -name VIRTUAL_PIN ON -to PC13
+set_instance_assignment -name VIRTUAL_PIN ON -to PC14
+set_instance_assignment -name VIRTUAL_PIN ON -to PC15
+set_instance_assignment -name VIRTUAL_PIN ON -to PC16
+set_instance_assignment -name VIRTUAL_PIN ON -to PC17
+set_instance_assignment -name VIRTUAL_PIN ON -to PC18
+set_instance_assignment -name VIRTUAL_PIN ON -to PC19
+set_instance_assignment -name VIRTUAL_PIN ON -to PC20
+set_instance_assignment -name VIRTUAL_PIN ON -to PC21
+set_instance_assignment -name VIRTUAL_PIN ON -to PC22
+set_instance_assignment -name VIRTUAL_PIN ON -to PC23
+set_instance_assignment -name VIRTUAL_PIN ON -to PC24
+set_instance_assignment -name VIRTUAL_PIN ON -to PC25
+set_instance_assignment -name VIRTUAL_PIN ON -to PC26
+set_instance_assignment -name VIRTUAL_PIN ON -to PC27
+set_instance_assignment -name VIRTUAL_PIN ON -to PC28
+set_instance_assignment -name VIRTUAL_PIN ON -to PC29
+set_instance_assignment -name VIRTUAL_PIN ON -to PC30
+set_instance_assignment -name VIRTUAL_PIN ON -to PC31
+set_instance_assignment -name VIRTUAL_PIN ON -to Alu_BusA
+set_instance_assignment -name VIRTUAL_PIN ON -to Alu_BusB
+set_instance_assignment -name VIRTUAL_PIN ON -to Alu_BusC
+set_instance_assignment -name VIRTUAL_PIN ON -to instruction
+set_instance_assignment -name VIRTUAL_PIN ON -to PC
+set_instance_assignment -name VIRTUAL_PIN ON -to selA
+set_instance_assignment -name VIRTUAL_PIN ON -to selB
+set_instance_assignment -name VIRTUAL_PIN ON -to selOut
+set_instance_assignment -name VIRTUAL_PIN ON -to "alu:ALU"
+set_instance_assignment -name VIRTUAL_PIN ON -to "decoder:DECODER"
+set_instance_assignment -name VIRTUAL_PIN ON -to "ifu:IFU"
+set_instance_assignment -name VIRTUAL_PIN ON -to "latchAluIn:LATCH_aluIn"
+set_instance_assignment -name VIRTUAL_PIN ON -to "latch32:LATCH_busA"
+set_instance_assignment -name VIRTUAL_PIN ON -to "latch32:LATCH_busB"
+set_instance_assignment -name VIRTUAL_PIN ON -to "latch32:LATCH_busC"
+set_instance_assignment -name VIRTUAL_PIN ON -to "latchDec:LATCH_DEC"
+set_instance_assignment -name VIRTUAL_PIN ON -to "latch32:LATCH_IFU"
+set_instance_assignment -name VIRTUAL_PIN ON -to "latch5:LATCH_rd1"
+set_instance_assignment -name VIRTUAL_PIN ON -to "latch5:LATCH_rd22"
+set_instance_assignment -name VIRTUAL_PIN ON -to "reg_bank:REG_BANK"
+set_instance_assignment -name VIRTUAL_PIN ON -to "Prog_mem:ROM"
+set_global_assignment -name VECTOR_WAVEFORM_FILE Test1.vwf
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
