@@ -1,42 +1,77 @@
 # do TP2.do
 # ** Warning: (vlib-34) Library already exists at "work".
-# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 22:10:21 on May 14,2023
+# Errors: 0, Warnings: 1
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 18:03:19 on Jun 05,2023
 # vlog -work work TP2.vo 
 # -- Compiling module TP2
 # -- Compiling module hard_block
 # 
 # Top level modules:
 # 	TP2
-# End time: 22:10:21 on May 14,2023, Elapsed time: 0:00:00
+# End time: 18:03:19 on Jun 05,2023, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 22:10:22 on May 14,2023
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 18:03:19 on Jun 05,2023
 # vlog -work work Test1.vwf.vt 
 # -- Compiling module TP2_vlg_vec_tst
 # 
 # Top level modules:
 # 	TP2_vlg_vec_tst
-# End time: 22:10:22 on May 14,2023, Elapsed time: 0:00:00
+# End time: 18:03:19 on Jun 05,2023, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vsim -c -t 1ps -L cycloneive_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.TP2_vlg_vec_tst 
-# Start time: 22:10:22 on May 14,2023
-# Loading work.TP2_vlg_vec_tst
-# Loading work.TP2
-# Loading work.hard_block
-# Loading cycloneive_ver.cycloneive_io_obuf
-# Loading cycloneive_ver.cycloneive_io_ibuf
-# Loading cycloneive_ver.cycloneive_clkctrl
-# Loading cycloneive_ver.cycloneive_mux41
-# Loading cycloneive_ver.cycloneive_ena_reg
-# Loading cycloneive_ver.cycloneive_lcell_comb
-# Loading altera_ver.dffeas
-# Loading cycloneive_ver.cycloneive_ram_block
-# Loading cycloneive_ver.cycloneive_ram_register
-# Loading cycloneive_ver.cycloneive_ram_pulse_generator
-# Loading altera_ver.PRIM_GDFF_LOW
-# after#26
-# ** Note: $finish    : Test1.vwf.vt(61)
+# vsim -voptargs=""+acc"" -c -t 1ps -L cycloneive_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.TP2_vlg_vec_tst 
+# Start time: 18:03:19 on Jun 05,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# //  Questa Intel Starter FPGA Edition-64
+# //  Version 2021.2 win64 Apr 14 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading work.TP2_vlg_vec_tst(fast)
+# Loading work.TP2(fast)
+# Loading work.hard_block(fast)
+# Loading cycloneive_ver.cycloneive_io_obuf(fast)
+# Loading cycloneive_ver.cycloneive_io_ibuf(fast)
+# Loading cycloneive_ver.cycloneive_clkctrl(fast)
+# Loading cycloneive_ver.cycloneive_mux41(fast)
+# Loading cycloneive_ver.cycloneive_ena_reg(fast)
+# Loading cycloneive_ver.cycloneive_lcell_comb(fast)
+# Loading altera_ver.dffeas(fast)
+# Loading cycloneive_ver.cycloneive_lcell_comb(fast__1)
+# Loading cycloneive_ver.cycloneive_ram_block(fast)
+# Loading cycloneive_ver.cycloneive_ram_register(fast)
+# Loading cycloneive_ver.cycloneive_ram_register(fast__1)
+# Loading cycloneive_ver.cycloneive_ram_register(fast__2)
+# Loading cycloneive_ver.cycloneive_ram_register(fast__3)
+# Loading cycloneive_ver.cycloneive_ram_pulse_generator(fast)
+# Loading cycloneive_ver.cycloneive_ram_pulse_generator(fast__1)
+# Loading cycloneive_ver.cycloneive_ram_block(fast__1)
+# Loading cycloneive_ver.cycloneive_ram_block(fast__2)
+# Loading cycloneive_ver.cycloneive_ram_block(fast__3)
+# Loading cycloneive_ver.cycloneive_ram_block(fast__4)
+# Loading cycloneive_ver.cycloneive_ram_block(fast__5)
+# Loading cycloneive_ver.cycloneive_ram_block(fast__6)
+# Loading cycloneive_ver.cycloneive_ram_block(fast__7)
+# Loading cycloneive_ver.cycloneive_ram_block(fast__8)
+# Loading cycloneive_ver.cycloneive_ram_block(fast__9)
+# Loading cycloneive_ver.cycloneive_ram_block(fast__10)
+# Loading cycloneive_ver.cycloneive_ram_block(fast__11)
+# Loading cycloneive_ver.cycloneive_ram_block(fast__12)
+# Loading cycloneive_ver.cycloneive_ram_block(fast__13)
+# Loading cycloneive_ver.cycloneive_ram_block(fast__14)
+# Loading cycloneive_ver.cycloneive_ram_block(fast__15)
+# after#27
+# ** Note: $finish    : Test1.vwf.vt(71)
 #    Time: 1 us  Iteration: 0  Instance: /TP2_vlg_vec_tst
-# End time: 22:10:22 on May 14,2023, Elapsed time: 0:00:00
+# End time: 18:03:22 on Jun 05,2023, Elapsed time: 0:00:03
 # Errors: 0, Warnings: 0

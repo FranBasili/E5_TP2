@@ -1,82 +1,105 @@
 m255
 K4
 z2
-!s11f vlog 2020.1 2020.02, Feb 28 2020
+Z0 !s99 nomlopt
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+!s11f MIXED_VERSIONS
 13
 !s112 1.1
 !i10d 8192
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dE:/Windows/ITBA/Electronica V/Projects/TP2/simulation/qsim
+dE:/Windows/ITBA/Electronica V/Projects/TP2/simulation/qsim
+T_opt
+!s110 1685999001
+V2ZRf^YNID1Ni;KJHC459j1
+04 15 4 work TP2_vlg_vec_tst fast 0
+=1-2cf05db36f37-647e4d98-5a-1df0
+!s124 OEM10U3 
+o-quiet -auto_acc_if_foreign -work work -L cycloneive_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver +acc
+Z1 tCvgOpt 0
+n@_opt
+OL;O;2021.2;73
 vhard_block
-Z1 !s110 1684113021
+Z2 !s110 1685998999
 !i10b 1
-!s100 `FNczDCzFlClDeo3F9bOi0
-Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
-I<=`26`Mz7S1niFD;6o6@C2
-Z3 VDg1SIo80bB@j0V0VzS_@n1
-R0
-Z4 w1684113020
+!s100 J;l@kM=mI;2VgeICkYKRC0
+I^`1L`7PYB[IQ9?RKKQ?[k0
+Z3 dC:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/simulation/qsim
+Z4 w1685998998
 Z5 8TP2.vo
 Z6 FTP2.vo
-!i122 14
-L0 33250 34
-Z7 OV;L;2020.1;71
+!i122 48
+L0 83127 34
+Z7 VDg1SIo80bB@j0V0VzS_@n1
+Z8 OL;L;2021.2;73
 r1
 !s85 0
 31
-Z8 !s108 1684113021.000000
-Z9 !s107 TP2.vo|
-Z10 !s90 -work|work|TP2.vo|
-!i113 1
-Z11 o-work work
-Z12 tCvgOpt 0
-vTP2
+Z9 !s108 1685998999.000000
+Z10 !s107 TP2.vo|
+Z11 !s90 -work|work|TP2.vo|
+!i113 0
+Z12 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R1
-!i10b 1
-!s100 j5:bn6fAUjkA[G];Y0XiD0
+vTP2
 R2
-IUUL:JFJL;3QC1M<0T4>_02
+!i10b 1
+!s100 G5IRonPQQz7W:H8bf4gN30
+Ig4MLGAbIU`R=AnPg73n=X1
 R3
-R0
 R4
 R5
 R6
-!i122 14
-L0 32 33217
+!i122 48
+L0 32 83094
 R7
+R8
 r1
 !s85 0
 31
-R8
 R9
 R10
-!i113 1
 R11
+!i113 0
 R12
+R1
 n@t@p2
 vTP2_vlg_vec_tst
-!s110 1684113022
-!i10b 1
-!s100 6M]Rfo_^_ScDT^XjLJ1^f3
 R2
-I2PKL1onFAXPOfFhZbh4@N0
+!i10b 1
+!s100 1@a9hd`22DVAV@;AigUPJ0
+Im?AhmQE4ezRjDh97jW<WN1
 R3
-R0
-R4
+w1685998997
 8Test1.vwf.vt
 FTest1.vwf.vt
-!i122 15
-L0 30 42
+!i122 49
+L0 30 52
 R7
+R8
 r1
 !s85 0
 31
-!s108 1684113022.000000
+R9
 !s107 Test1.vwf.vt|
 !s90 -work|work|Test1.vwf.vt|
-!i113 1
-R11
+!i113 0
 R12
+R1
 n@t@p2_vlg_vec_tst

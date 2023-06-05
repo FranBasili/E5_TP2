@@ -19,7 +19,7 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "05/14/2023 22:10:19"
+// Generated on "06/05/2023 18:03:17"
                                                                                 
 // Verilog Test Bench (with test vectors) for design :                          TP2
 // 
@@ -36,10 +36,15 @@ wire [31:0] Alu_BusA;
 wire [31:0] Alu_BusB;
 wire [31:0] Alu_BusC;
 wire [9:0] Alu_ctrl;
+wire [31:0] busA;
+wire [31:0] busB;
 wire [31:0] imm;
 wire [31:0] instruction;
 wire [11:0] PC;
+wire [4:0] rd;
 wire [5:0] sel_Out;
+wire [5:0] selA;
+wire [4:0] selB;
 wire [4:0] selB_dec;
 
 // assign statements (if any)                          
@@ -49,11 +54,16 @@ TP2 i1 (
 	.Alu_BusB(Alu_BusB),
 	.Alu_BusC(Alu_BusC),
 	.Alu_ctrl(Alu_ctrl),
+	.busA(busA),
+	.busB(busB),
 	.clk(clk),
 	.imm(imm),
 	.instruction(instruction),
 	.PC(PC),
+	.rd(rd),
 	.sel_Out(sel_Out),
+	.selA(selA),
+	.selB(selB),
 	.selB_dec(selB_dec)
 );
 initial 
@@ -65,8 +75,8 @@ end
 always
 begin
 	clk = 1'b0;
-	clk = #50000 1'b1;
-	#50000;
+	clk = #25000 1'b1;
+	#25000;
 end 
 endmodule
 
