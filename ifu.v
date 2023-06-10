@@ -5,6 +5,8 @@ module ifu
  input 	wire [31:0] mem,
  input 	wire [31:0] newPC,
  input 	wire setPC,
+ input 	wire stop,
+ 
  output wire [31:0] pc,
  output	wire [31:0] instr
  );
@@ -18,11 +20,11 @@ module ifu
 			currInstr <= 0;
 			currPC <= 0;
 		end
-		else begin
+		else if (!stop) begin		// Solo fetchea si no esta halteado
 			if (setPC)
 				currPC <= newPC;
 			else
-				currPC <= currPC + 1;
+				currPC <= currPC + 4;
 			currInstr <= mem;
 		end
 	end

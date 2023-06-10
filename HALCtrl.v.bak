@@ -1,0 +1,5 @@
+module HALT_ctrl(
+	wire curr_rs1,
+	wire curr_rs2,
+	wire curr_rd,
+);

@@ -1,0 +1,9 @@
+modeule LAM(
+	input wire clk,
+	input wire address,
+	
+	output reg [31:0] busR,
+);
+
+
+endmodule

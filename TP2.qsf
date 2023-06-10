@@ -55,20 +55,9 @@ set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_boundary_scan
-set_global_assignment -name MIF_FILE prog_mem.mif
-set_global_assignment -name QIP_FILE Prog_mem.qip
-set_global_assignment -name BDF_FILE TP2.bdf
-set_global_assignment -name VERILOG_FILE ifu.v
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name VERILOG_FILE decoder.v
-set_global_assignment -name VERILOG_FILE alu.v
-set_global_assignment -name VERILOG_FILE latch32.v
-set_global_assignment -name VERILOG_FILE reg_bank.v
-set_global_assignment -name VERILOG_FILE latchDec.v
-set_global_assignment -name VERILOG_FILE latchAluIn.v
-set_global_assignment -name VERILOG_FILE latch5.v
 set_instance_assignment -name VIRTUAL_PIN ON -to Alu_BusA
 set_instance_assignment -name VIRTUAL_PIN ON -to Alu_BusB
 set_instance_assignment -name VIRTUAL_PIN ON -to Alu_BusC
@@ -76,15 +65,37 @@ set_instance_assignment -name VIRTUAL_PIN ON -to instruction
 set_instance_assignment -name VIRTUAL_PIN ON -to PC
 set_instance_assignment -name VIRTUAL_PIN ON -to selA
 set_instance_assignment -name VIRTUAL_PIN ON -to selB
-set_global_assignment -name VECTOR_WAVEFORM_FILE Test1.vwf
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_instance_assignment -name AUTO_RAM_RECOGNITION OFF -to "reg_bank:REG_BANK"
 set_instance_assignment -name VIRTUAL_PIN ON -to Alu_ctrl
 set_instance_assignment -name VIRTUAL_PIN ON -to imm
-set_instance_assignment -name VIRTUAL_PIN ON -to sel_Out
-set_instance_assignment -name VIRTUAL_PIN ON -to selB_dec
 set_instance_assignment -name VIRTUAL_PIN ON -to busB
 set_instance_assignment -name VIRTUAL_PIN ON -to busA
 set_instance_assignment -name VIRTUAL_PIN ON -to rd
+set_instance_assignment -name VIRTUAL_PIN ON -to address
+set_instance_assignment -name VIRTUAL_PIN ON -to outRam
+set_instance_assignment -name VIRTUAL_PIN ON -to data
+set_global_assignment -name VERILOG_FILE HALTCtrl.v
+set_global_assignment -name MIF_FILE prog_mem.mif
+set_global_assignment -name QIP_FILE Prog_mem.qip
+set_global_assignment -name BDF_FILE TP2.bdf
+set_global_assignment -name VERILOG_FILE ifu.v
+set_global_assignment -name VERILOG_FILE decoder.v
+set_global_assignment -name VERILOG_FILE alu.v
+set_global_assignment -name VERILOG_FILE latch32.v
+set_global_assignment -name VERILOG_FILE reg_bank.v
+set_global_assignment -name VERILOG_FILE latchDec.v
+set_global_assignment -name VERILOG_FILE latchAluIn.v
+set_global_assignment -name VERILOG_FILE latch5.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Test1.vwf
+set_global_assignment -name QIP_FILE ram.qip
+set_global_assignment -name VECTOR_WAVEFORM_FILE ramTest.vwf
+set_global_assignment -name VERILOG_FILE LAM.v
+set_global_assignment -name VERILOG_FILE JMP.v
+set_instance_assignment -name VIRTUAL_PIN ON -to busC
+set_instance_assignment -name VIRTUAL_PIN ON -to selBDec
+set_instance_assignment -name VIRTUAL_PIN ON -to seloutDec
+set_instance_assignment -name VIRTUAL_PIN ON -to selADec
+set_instance_assignment -name VIRTUAL_PIN ON -to selOut
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

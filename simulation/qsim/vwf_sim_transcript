@@ -26,21 +26,25 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details, at
     Info: https://fpgasoftware.intel.com/eula.
-    Info: Processing started: Mon Jun  5 18:03:17 2023
+    Info: Processing started: Fri Jun  9 23:02:15 2023
 Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off TP2 -c TP2 --vector_source="C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/Test1.vwf" --testbench_file="C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/simulation/qsim/Test1.vwf.vt"
+Info (119006): Selected device EP4CE22F17C6 for design "TP2"
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 
-busA[9]" in vector source file when writing test bench files
+ng output pin "PC[9]" in vector source file when writing test bench files
 
-sB[28]" in vector source file when writing test bench files
+nch files
 
-or source file when writing test bench files
 
-output pin "instruction[16]" in vector source file when writing test bench files
+): Ignoring output pin "Alu_BusB[11]" in vector source file when writing test bench files
 
- bench files
+pin "Alu_BusC[5]" in vector source file when writing test bench files
 
-writing test bench files
+r source file when writing test bench files
+
+oring output pin "imm[3]" in vector source file when writing test bench files
+
+ source file when writing test bench files
 
 Completed successfully. 
 
@@ -67,13 +71,14 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details, at
     Info: https://fpgasoftware.intel.com/eula.
-    Info: Processing started: Mon Jun  5 18:03:17 2023
+    Info: Processing started: Fri Jun  9 23:02:16 2023
 Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory="C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/simulation/qsim/" TP2 -c TP2
+Info (119006): Selected device EP4CE22F17C6 for design "TP2"
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (204019): Generated file TP2.vo in folder "C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/simulation/qsim//" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4667 megabytes
-    Info: Processing ended: Mon Jun  5 18:03:18 2023
+    Info: Peak virtual memory: 4669 megabytes
+    Info: Processing ended: Fri Jun  9 23:02:17 2023
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
@@ -102,25 +107,23 @@ Reading pref.tcl
 
 # Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
 
-# Start time: 18:03:19 on Jun 05,2023
+# Start time: 23:02:17 on Jun 09,2023
 # vlog -work work TP2.vo 
 
 # -- Compiling module TP2
 
-# -- Compiling module hard_block
-
 # 
-# Top level modules:
 
+# Top level modules:
 # 	TP2
 
-# End time: 18:03:19 on Jun 05,2023, Elapsed time: 0:00:00
+# End time: 23:02:18 on Jun 09,2023, Elapsed time: 0:00:01
 
 # Errors: 0, Warnings: 0
 
 # Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
 
-# Start time: 18:03:19 on Jun 05,2023
+# Start time: 23:02:18 on Jun 09,2023
 # vlog -work work Test1.vwf.vt 
 
 # -- Compiling module TP2_vlg_vec_tst
@@ -130,12 +133,12 @@ Reading pref.tcl
 # Top level modules:
 # 	TP2_vlg_vec_tst
 
-# End time: 18:03:19 on Jun 05,2023, Elapsed time: 0:00:00
+# End time: 23:02:18 on Jun 09,2023, Elapsed time: 0:00:00
 
 # Errors: 0, Warnings: 0
 
 # vsim -voptargs=""+acc"" -c -t 1ps -L cycloneive_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.TP2_vlg_vec_tst 
-# Start time: 18:03:19 on Jun 05,2023
+# Start time: 23:02:18 on Jun 09,2023
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # //  Questa Intel Starter FPGA Edition-64
 # //  Version 2021.2 win64 Apr 14 2021
@@ -154,12 +157,8 @@ Reading pref.tcl
 
 # Loading work.TP2_vlg_vec_tst(fast)
 # Loading work.TP2(fast)
-# Loading work.hard_block(fast)
 # Loading cycloneive_ver.cycloneive_io_obuf(fast)
 # Loading cycloneive_ver.cycloneive_io_ibuf(fast)
-# Loading cycloneive_ver.cycloneive_clkctrl(fast)
-# Loading cycloneive_ver.cycloneive_mux41(fast)
-# Loading cycloneive_ver.cycloneive_ena_reg(fast)
 # Loading cycloneive_ver.cycloneive_lcell_comb(fast)
 # Loading altera_ver.dffeas(fast)
 # Loading cycloneive_ver.cycloneive_lcell_comb(fast__1)
@@ -167,7 +166,6 @@ Reading pref.tcl
 # Loading cycloneive_ver.cycloneive_ram_register(fast)
 # Loading cycloneive_ver.cycloneive_ram_register(fast__1)
 # Loading cycloneive_ver.cycloneive_ram_register(fast__2)
-# Loading cycloneive_ver.cycloneive_ram_register(fast__3)
 # Loading cycloneive_ver.cycloneive_ram_pulse_generator(fast)
 # Loading cycloneive_ver.cycloneive_ram_pulse_generator(fast__1)
 # Loading cycloneive_ver.cycloneive_ram_block(fast__1)
@@ -184,14 +182,14 @@ Reading pref.tcl
 # Loading cycloneive_ver.cycloneive_ram_block(fast__12)
 # Loading cycloneive_ver.cycloneive_ram_block(fast__13)
 # Loading cycloneive_ver.cycloneive_ram_block(fast__14)
-# Loading cycloneive_ver.cycloneive_ram_block(fast__15)
+# Loading cycloneive_ver.cycloneive_ram_register(fast__3)
 
-# after#27
+# after#26
 
-# ** Note: $finish    : Test1.vwf.vt(71)
+# ** Note: $finish    : Test1.vwf.vt(91)
 #    Time: 1 us  Iteration: 0  Instance: /TP2_vlg_vec_tst
 
-# End time: 18:03:22 on Jun 05,2023, Elapsed time: 0:00:03
+# End time: 23:02:21 on Jun 09,2023, Elapsed time: 0:00:03
 # Errors: 0, Warnings: 0
 
 Completed successfully. 
@@ -204,7 +202,7 @@ Reading C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/simulation/qsim/
 
 Processing channel transitions... 
 
-Writing the resulting VWF to C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/simulation/qsim/TP2_20230605180322.sim.vwf
+Writing the resulting VWF to C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/simulation/qsim/TP2_20230609230221.sim.vwf
 
 Finished VCD to VWF conversion.
 

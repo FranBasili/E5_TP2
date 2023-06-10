@@ -1,5 +1,5 @@
 Analysis & Synthesis report for TP2
-Mon Jun  5 17:58:11 2023
+Fri Jun  9 23:02:10 2023
 Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
 
 
@@ -16,15 +16,17 @@ Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
   8. Analysis & Synthesis RAM Summary
   9. Analysis & Synthesis IP Cores Summary
  10. Registers Removed During Synthesis
- 11. Removed Registers Triggering Further Register Optimizations
- 12. General Register Statistics
- 13. Multiplexer Restructuring Statistics (Restructuring Performed)
- 14. Source assignments for Prog_mem:ROM|altsyncram:altsyncram_component|altsyncram_4j91:auto_generated
+ 11. General Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Source assignments for Prog_mem:ROM|altsyncram:altsyncram_component|altsyncram_1ca1:auto_generated
+ 14. Source assignments for ram:RAM|altsyncram:altsyncram_component|altsyncram_3ef1:auto_generated
  15. Parameter Settings for User Entity Instance: Prog_mem:ROM|altsyncram:altsyncram_component
- 16. altsyncram Parameter Settings by Entity Instance
- 17. Post-Synthesis Netlist Statistics for Top Partition
- 18. Elapsed Time Per Partition
- 19. Analysis & Synthesis Messages
+ 16. Parameter Settings for User Entity Instance: BUSMUX:mux_rd
+ 17. Parameter Settings for User Entity Instance: ram:RAM|altsyncram:altsyncram_component
+ 18. altsyncram Parameter Settings by Entity Instance
+ 19. Post-Synthesis Netlist Statistics for Top Partition
+ 20. Elapsed Time Per Partition
+ 21. Analysis & Synthesis Messages
 
 
 
@@ -51,18 +53,18 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Jun  5 17:58:11 2023          ;
+; Analysis & Synthesis Status        ; Successful - Fri Jun  9 23:02:10 2023          ;
 ; Quartus Prime Version              ; 22.1std.1 Build 917 02/14/2023 SC Lite Edition ;
 ; Revision Name                      ; TP2                                            ;
 ; Top-level Entity Name              ; TP2                                            ;
 ; Family                             ; Cyclone IV E                                   ;
-; Total logic elements               ; 3,751                                          ;
-;     Total combinational functions  ; 2,694                                          ;
-;     Dedicated logic registers      ; 1,203                                          ;
-; Total registers                    ; 1203                                           ;
-; Total pins                         ; 1                                              ;
-; Total virtual pins                 ; 273                                            ;
-; Total memory bits                  ; 131,072                                        ;
+; Total logic elements               ; 3,768                                          ;
+;     Total combinational functions  ; 2,716                                          ;
+;     Dedicated logic registers      ; 1,227                                          ;
+; Total registers                    ; 1227                                           ;
+; Total pins                         ; 5                                              ;
+; Total virtual pins                 ; 409                                            ;
+; Total memory bits                  ; 139,264                                        ;
 ; Embedded Multiplier 9-bit elements ; 0                                              ;
 ; Total PLLs                         ; 0                                              ;
 +------------------------------------+------------------------------------------------+
@@ -180,6 +182,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------+-----------------+------------------------------------+---------------------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                    ; Library ;
 +----------------------------------+-----------------+------------------------------------+---------------------------------------------------------------------------------+---------+
+; HALTCtrl.v                       ; yes             ; User Verilog HDL File              ; C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/HALTCtrl.v              ;         ;
 ; prog_mem.mif                     ; yes             ; User Memory Initialization File    ; C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/prog_mem.mif            ;         ;
 ; Prog_mem.v                       ; yes             ; User Wizard-Generated File         ; C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/Prog_mem.v              ;         ;
 ; TP2.bdf                          ; yes             ; User Block Diagram/Schematic File  ; C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/TP2.bdf                 ;         ;
@@ -191,6 +194,7 @@ https://fpgasoftware.intel.com/eula.
 ; latchDec.v                       ; yes             ; User Verilog HDL File              ; C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/latchDec.v              ;         ;
 ; latchAluIn.v                     ; yes             ; User Verilog HDL File              ; C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/latchAluIn.v            ;         ;
 ; latch5.v                         ; yes             ; User Verilog HDL File              ; C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/latch5.v                ;         ;
+; ram.v                            ; yes             ; User Wizard-Generated File         ; C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/ram.v                   ;         ;
 ; altsyncram.tdf                   ; yes             ; Megafunction                       ; f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
 ; stratix_ram_block.inc            ; yes             ; Megafunction                       ; f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
 ; lpm_mux.inc                      ; yes             ; Megafunction                       ; f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
@@ -200,7 +204,14 @@ https://fpgasoftware.intel.com/eula.
 ; altrom.inc                       ; yes             ; Megafunction                       ; f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/altrom.inc            ;         ;
 ; altram.inc                       ; yes             ; Megafunction                       ; f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/altram.inc            ;         ;
 ; altdpram.inc                     ; yes             ; Megafunction                       ; f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/altdpram.inc          ;         ;
-; db/altsyncram_4j91.tdf           ; yes             ; Auto-Generated Megafunction        ; C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/db/altsyncram_4j91.tdf  ;         ;
+; db/altsyncram_1ca1.tdf           ; yes             ; Auto-Generated Megafunction        ; C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/db/altsyncram_1ca1.tdf  ;         ;
+; busmux.tdf                       ; yes             ; Megafunction                       ; f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/busmux.tdf            ;         ;
+; lpm_mux.tdf                      ; yes             ; Megafunction                       ; f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/lpm_mux.tdf           ;         ;
+; muxlut.inc                       ; yes             ; Megafunction                       ; f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/muxlut.inc            ;         ;
+; bypassff.inc                     ; yes             ; Megafunction                       ; f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/bypassff.inc          ;         ;
+; altshift.inc                     ; yes             ; Megafunction                       ; f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/altshift.inc          ;         ;
+; db/mux_brc.tdf                   ; yes             ; Auto-Generated Megafunction        ; C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/db/mux_brc.tdf          ;         ;
+; db/altsyncram_3ef1.tdf           ; yes             ; Auto-Generated Megafunction        ; C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/db/altsyncram_3ef1.tdf  ;         ;
 +----------------------------------+-----------------+------------------------------------+---------------------------------------------------------------------------------+---------+
 
 
@@ -209,32 +220,32 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 3,751     ;
+; Estimated Total logic elements              ; 3,768     ;
 ;                                             ;           ;
-; Total combinational functions               ; 2694      ;
+; Total combinational functions               ; 2716      ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 2074      ;
-;     -- 3 input functions                    ; 524       ;
-;     -- <=2 input functions                  ; 96        ;
+;     -- 4 input functions                    ; 2060      ;
+;     -- 3 input functions                    ; 547       ;
+;     -- <=2 input functions                  ; 109       ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 2560      ;
-;     -- arithmetic mode                      ; 134       ;
+;     -- normal mode                          ; 2564      ;
+;     -- arithmetic mode                      ; 152       ;
 ;                                             ;           ;
-; Total registers                             ; 1203      ;
-;     -- Dedicated logic registers            ; 1203      ;
+; Total registers                             ; 1227      ;
+;     -- Dedicated logic registers            ; 1227      ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
-; Virtual pins                                ; 273       ;
-; I/O pins                                    ; 1         ;
-; Total memory bits                           ; 131072    ;
+; Virtual pins                                ; 409       ;
+; I/O pins                                    ; 5         ;
+; Total memory bits                           ; 139264    ;
 ;                                             ;           ;
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 1235      ;
-; Total fan-out                               ; 14144     ;
-; Average fan-out                             ; 3.36      ;
+; Maximum fan-out                             ; 1259      ;
+; Total fan-out                               ; 14813     ;
+; Average fan-out                             ; 3.35      ;
 +---------------------------------------------+-----------+
 
 
@@ -243,32 +254,40 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                              ; Entity Name     ; Library Name ;
 +-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------+-----------------+--------------+
-; |TP2                                      ; 2694 (0)            ; 1203 (0)                  ; 131072      ; 0            ; 0       ; 0         ; 1    ; 273          ; |TP2                                                                             ; TP2             ; work         ;
+; |TP2                                      ; 2716 (0)            ; 1227 (0)                  ; 139264      ; 0            ; 0       ; 0         ; 5    ; 409          ; |TP2                                                                             ; TP2             ; work         ;
+;    |HALTCtrl:inst1|                       ; 13 (13)             ; 6 (6)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|HALTCtrl:inst1                                                              ; HALTCtrl        ; work         ;
 ;    |Prog_mem:ROM|                         ; 0 (0)               ; 0 (0)                     ; 131072      ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|Prog_mem:ROM                                                                ; Prog_mem        ; work         ;
 ;       |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 131072      ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|Prog_mem:ROM|altsyncram:altsyncram_component                                ; altsyncram      ; work         ;
-;          |altsyncram_4j91:auto_generated| ; 0 (0)               ; 0 (0)                     ; 131072      ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|Prog_mem:ROM|altsyncram:altsyncram_component|altsyncram_4j91:auto_generated ; altsyncram_4j91 ; work         ;
-;    |alu:ALU|                              ; 1225 (1225)         ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|alu:ALU                                                                     ; alu             ; work         ;
-;    |decoder:DECODER|                      ; 40 (40)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|decoder:DECODER                                                             ; decoder         ; work         ;
-;    |ifu:IFU|                              ; 12 (12)             ; 44 (44)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|ifu:IFU                                                                     ; ifu             ; work         ;
+;          |altsyncram_1ca1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 131072      ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|Prog_mem:ROM|altsyncram:altsyncram_component|altsyncram_1ca1:auto_generated ; altsyncram_1ca1 ; work         ;
+;    |alu:ALU|                              ; 1236 (1236)         ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|alu:ALU                                                                     ; alu             ; work         ;
+;    |busmux:mux_rd|                        ; 5 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|busmux:mux_rd                                                               ; busmux          ; work         ;
+;       |lpm_mux:$00000|                    ; 5 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|busmux:mux_rd|lpm_mux:$00000                                                ; lpm_mux         ; work         ;
+;          |mux_brc:auto_generated|         ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|busmux:mux_rd|lpm_mux:$00000|mux_brc:auto_generated                         ; mux_brc         ; work         ;
+;    |decoder:DECODER|                      ; 41 (41)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|decoder:DECODER                                                             ; decoder         ; work         ;
+;    |ifu:IFU|                              ; 30 (30)             ; 62 (62)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|ifu:IFU                                                                     ; ifu             ; work         ;
 ;    |latch32:LATCH_busA|                   ; 0 (0)               ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|latch32:LATCH_busA                                                          ; latch32         ; work         ;
 ;    |latch32:LATCH_busB|                   ; 0 (0)               ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|latch32:LATCH_busB                                                          ; latch32         ; work         ;
-;    |latch32:LATCH_busC|                   ; 26 (26)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|latch32:LATCH_busC                                                          ; latch32         ; work         ;
+;    |latch32:LATCH_busC|                   ; 0 (0)               ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|latch32:LATCH_busC                                                          ; latch32         ; work         ;
 ;    |latch5:LATCH_rd1|                     ; 0 (0)               ; 5 (5)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|latch5:LATCH_rd1                                                            ; latch5          ; work         ;
 ;    |latch5:LATCH_rd22|                    ; 0 (0)               ; 5 (5)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|latch5:LATCH_rd22                                                           ; latch5          ; work         ;
 ;    |latchAluIn:LATCH_aluIn|               ; 0 (0)               ; 23 (23)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|latchAluIn:LATCH_aluIn                                                      ; latchAluIn      ; work         ;
 ;    |latchDec:LATCH_DEC|                   ; 0 (0)               ; 38 (38)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|latchDec:LATCH_DEC                                                          ; latchDec        ; work         ;
+;    |ram:RAM|                              ; 0 (0)               ; 0 (0)                     ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|ram:RAM                                                                     ; ram             ; work         ;
+;       |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|ram:RAM|altsyncram:altsyncram_component                                     ; altsyncram      ; work         ;
+;          |altsyncram_3ef1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|ram:RAM|altsyncram:altsyncram_component|altsyncram_3ef1:auto_generated      ; altsyncram_3ef1 ; work         ;
 ;    |reg_bank:REG_BANK|                    ; 1391 (1391)         ; 992 (992)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|reg_bank:REG_BANK                                                           ; reg_bank        ; work         ;
 +-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------+-----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis RAM Summary                                                                                                                                                         ;
-+----------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+--------+--------------+
-; Name                                                                                   ; Type ; Mode ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF          ;
-+----------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+--------+--------------+
-; Prog_mem:ROM|altsyncram:altsyncram_component|altsyncram_4j91:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 4096         ; 32           ; --           ; --           ; 131072 ; prog_mem.mif ;
-+----------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+--------+--------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                ;
++----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+--------+--------------+
+; Name                                                                                   ; Type ; Mode        ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF          ;
++----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+--------+--------------+
+; Prog_mem:ROM|altsyncram:altsyncram_component|altsyncram_1ca1:auto_generated|ALTSYNCRAM ; AUTO ; ROM         ; 4096         ; 32           ; --           ; --           ; 131072 ; prog_mem.mif ;
+; ram:RAM|altsyncram:altsyncram_component|altsyncram_3ef1:auto_generated|ALTSYNCRAM      ; AUTO ; Single Port ; 256          ; 32           ; --           ; --           ; 8192   ; None         ;
++----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+--------+--------------+
 
 
 +-----------------------------------------------------------------------------------------------------+
@@ -276,6 +295,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------+--------------+---------+--------------+--------------+-------------------+-----------------+
 ; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance   ; IP Include File ;
 +--------+--------------+---------+--------------+--------------+-------------------+-----------------+
+; Altera ; RAM: 1-PORT  ; 22.1    ; N/A          ; N/A          ; |TP2|ram:RAM      ; ram.v           ;
 ; Altera ; ROM: 1-PORT  ; 22.1    ; N/A          ; N/A          ; |TP2|Prog_mem:ROM ; Prog_mem.v      ;
 +--------+--------------+---------+--------------+--------------+-------------------+-----------------+
 
@@ -285,9 +305,13 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------+---------------------------------------------+
 ; Register name                          ; Reason for Removal                          ;
 +----------------------------------------+---------------------------------------------+
+; latchDec:LATCH_DEC|selOut_[5]          ; Stuck at GND due to stuck port data_in      ;
 ; latchDec:LATCH_DEC|selA_[5]            ; Stuck at GND due to stuck port data_in      ;
+; HALTCtrl:inst1|prev_rd[5]              ; Stuck at GND due to stuck port data_in      ;
+; ifu:IFU|currPC[1]                      ; Merged with ifu:IFU|currPC[0]               ;
 ; latchAluIn:LATCH_aluIn|imm_[12..31]    ; Merged with latchAluIn:LATCH_aluIn|imm_[11] ;
 ; latchDec:LATCH_DEC|imm_[12..31]        ; Merged with latchDec:LATCH_DEC|imm_[11]     ;
+; ifu:IFU|currPC[0]                      ; Stuck at GND due to stuck port data_in      ;
 ; reg_bank:REG_BANK|banco[0][31]         ; Stuck at GND due to stuck port clock_enable ;
 ; reg_bank:REG_BANK|banco[0][30]         ; Stuck at GND due to stuck port clock_enable ;
 ; reg_bank:REG_BANK|banco[0][29]         ; Stuck at GND due to stuck port clock_enable ;
@@ -320,22 +344,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; reg_bank:REG_BANK|banco[0][2]          ; Stuck at GND due to stuck port clock_enable ;
 ; reg_bank:REG_BANK|banco[0][1]          ; Stuck at GND due to stuck port clock_enable ;
 ; reg_bank:REG_BANK|banco[0][0]          ; Stuck at GND due to stuck port clock_enable ;
-; ifu:IFU|currPC[12..31]                 ; Lost fanout                                 ;
-; Total Number of Removed Registers = 93 ;                                             ;
+; Total Number of Removed Registers = 77 ;                                             ;
 +----------------------------------------+---------------------------------------------+
-
-
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                               ;
-+-----------------------------+---------------------------+---------------------------------------------------------------------------------+
-; Register name               ; Reason for Removal        ; Registers Removed due to This Register                                          ;
-+-----------------------------+---------------------------+---------------------------------------------------------------------------------+
-; latchDec:LATCH_DEC|selA_[5] ; Stuck at GND              ; ifu:IFU|currPC[12], ifu:IFU|currPC[13], ifu:IFU|currPC[14], ifu:IFU|currPC[15], ;
-;                             ; due to stuck port data_in ; ifu:IFU|currPC[16], ifu:IFU|currPC[17], ifu:IFU|currPC[18], ifu:IFU|currPC[19], ;
-;                             ;                           ; ifu:IFU|currPC[20], ifu:IFU|currPC[21], ifu:IFU|currPC[22], ifu:IFU|currPC[23], ;
-;                             ;                           ; ifu:IFU|currPC[24], ifu:IFU|currPC[25], ifu:IFU|currPC[26], ifu:IFU|currPC[27], ;
-;                             ;                           ; ifu:IFU|currPC[28], ifu:IFU|currPC[29], ifu:IFU|currPC[30], ifu:IFU|currPC[31]  ;
-+-----------------------------+---------------------------+---------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -343,39 +353,48 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 1203  ;
+; Total registers                              ; 1227  ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 992   ;
+; Number of registers using Clock Enable       ; 1092  ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output      ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
-; 26:1               ; 7 bits    ; 119 LEs       ; 105 LEs              ; 14 LEs                 ; Yes        ; |TP2|latch32:LATCH_busC|out[20] ;
-; 24:1               ; 7 bits    ; 112 LEs       ; 98 LEs               ; 14 LEs                 ; Yes        ; |TP2|latch32:LATCH_busC|out[10] ;
-; 28:1               ; 4 bits    ; 72 LEs        ; 64 LEs               ; 8 LEs                  ; Yes        ; |TP2|latch32:LATCH_busC|out[24] ;
-; 26:1               ; 4 bits    ; 68 LEs        ; 64 LEs               ; 4 LEs                  ; Yes        ; |TP2|latch32:LATCH_busC|out[6]  ;
-; 30:1               ; 2 bits    ; 40 LEs        ; 36 LEs               ; 4 LEs                  ; Yes        ; |TP2|latch32:LATCH_busC|out[29] ;
-; 28:1               ; 2 bits    ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; Yes        ; |TP2|latch32:LATCH_busC|out[2]  ;
-; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; No         ; |TP2|reg_bank:REG_BANK|Mux2     ;
-; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; No         ; |TP2|reg_bank:REG_BANK|Mux63    ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------+
+; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; No         ; |TP2|reg_bank:REG_BANK|Mux22 ;
+; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; No         ; |TP2|reg_bank:REG_BANK|Mux39 ;
+; 26:1               ; 7 bits    ; 119 LEs       ; 112 LEs              ; 7 LEs                  ; No         ; |TP2|alu:ALU|out[23]         ;
+; 24:1               ; 7 bits    ; 112 LEs       ; 105 LEs              ; 7 LEs                  ; No         ; |TP2|alu:ALU|out[14]         ;
+; 28:1               ; 4 bits    ; 72 LEs        ; 68 LEs               ; 4 LEs                  ; No         ; |TP2|alu:ALU|out[27]         ;
+; 26:1               ; 4 bits    ; 68 LEs        ; 64 LEs               ; 4 LEs                  ; No         ; |TP2|alu:ALU|out[4]          ;
+; 30:1               ; 2 bits    ; 40 LEs        ; 36 LEs               ; 4 LEs                  ; No         ; |TP2|alu:ALU|out[29]         ;
+; 28:1               ; 2 bits    ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; No         ; |TP2|alu:ALU|out[2]          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------+
-; Source assignments for Prog_mem:ROM|altsyncram:altsyncram_component|altsyncram_4j91:auto_generated ;
+; Source assignments for Prog_mem:ROM|altsyncram:altsyncram_component|altsyncram_1ca1:auto_generated ;
 +---------------------------------+--------------------+------+--------------------------------------+
 ; Assignment                      ; Value              ; From ; To                                   ;
 +---------------------------------+--------------------+------+--------------------------------------+
 ; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                    ;
 +---------------------------------+--------------------+------+--------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------+
+; Source assignments for ram:RAM|altsyncram:altsyncram_component|altsyncram_3ef1:auto_generated ;
++---------------------------------+--------------------+------+---------------------------------+
+; Assignment                      ; Value              ; From ; To                              ;
++---------------------------------+--------------------+------+---------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                               ;
++---------------------------------+--------------------+------+---------------------------------+
 
 
 +-------------------------------------------------------------------------------------------+
@@ -424,9 +443,9 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; INIT_FILE                          ; prog_mem.mif         ; Untyped                       ;
 ; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                       ;
 ; MAXIMUM_DEPTH                      ; 0                    ; Untyped                       ;
-; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                       ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                       ;
 ; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                       ;
-; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                       ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                       ;
 ; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                       ;
 ; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                       ;
 ; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                       ;
@@ -434,8 +453,79 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                       ;
 ; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                       ;
 ; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped                       ;
-; CBXI_PARAMETER                     ; altsyncram_4j91      ; Untyped                       ;
+; CBXI_PARAMETER                     ; altsyncram_1ca1      ; Untyped                       ;
 +------------------------------------+----------------------+-------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: BUSMUX:mux_rd ;
++----------------+-------+-----------------------------------+
+; Parameter Name ; Value ; Type                              ;
++----------------+-------+-----------------------------------+
+; WIDTH          ; 5     ; Signed Integer                    ;
++----------------+-------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ram:RAM|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+--------------------------+
+; Parameter Name                     ; Value                ; Type                     ;
++------------------------------------+----------------------+--------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                  ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY               ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY             ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE             ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE           ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                  ;
+; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                  ;
+; WIDTH_A                            ; 32                   ; Signed Integer           ;
+; WIDTHAD_A                          ; 8                    ; Signed Integer           ;
+; NUMWORDS_A                         ; 256                  ; Signed Integer           ;
+; OUTDATA_REG_A                      ; CLOCK1               ; Untyped                  ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                  ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                  ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                  ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                  ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                  ;
+; WIDTH_B                            ; 1                    ; Untyped                  ;
+; WIDTHAD_B                          ; 1                    ; Untyped                  ;
+; NUMWORDS_B                         ; 1                    ; Untyped                  ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                  ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                  ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                  ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                  ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                  ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                  ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                  ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                  ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                  ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                  ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                  ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                  ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer           ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                  ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                  ;
+; BYTE_SIZE                          ; 8                    ; Untyped                  ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                  ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                  ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                  ;
+; INIT_FILE                          ; UNUSED               ; Untyped                  ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                  ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                  ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                  ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                  ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                  ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                  ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                  ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                  ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                  ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                  ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                  ;
+; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped                  ;
+; CBXI_PARAMETER                     ; altsyncram_3ef1      ; Untyped                  ;
++------------------------------------+----------------------+--------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -444,12 +534,23 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------------------+----------------------------------------------+
 ; Name                                      ; Value                                        ;
 +-------------------------------------------+----------------------------------------------+
-; Number of entity instances                ; 1                                            ;
+; Number of entity instances                ; 2                                            ;
 ; Entity Instance                           ; Prog_mem:ROM|altsyncram:altsyncram_component ;
 ;     -- OPERATION_MODE                     ; ROM                                          ;
 ;     -- WIDTH_A                            ; 32                                           ;
 ;     -- NUMWORDS_A                         ; 4096                                         ;
 ;     -- OUTDATA_REG_A                      ; CLOCK0                                       ;
+;     -- WIDTH_B                            ; 1                                            ;
+;     -- NUMWORDS_B                         ; 1                                            ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                       ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                 ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                         ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                    ;
+; Entity Instance                           ; ram:RAM|altsyncram:altsyncram_component      ;
+;     -- OPERATION_MODE                     ; SINGLE_PORT                                  ;
+;     -- WIDTH_A                            ; 32                                           ;
+;     -- NUMWORDS_A                         ; 256                                          ;
+;     -- OUTDATA_REG_A                      ; CLOCK1                                       ;
 ;     -- WIDTH_B                            ; 1                                            ;
 ;     -- NUMWORDS_B                         ; 1                                            ;
 ;     -- ADDRESS_REG_B                      ; CLOCK1                                       ;
@@ -464,24 +565,24 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 274                         ;
-; cycloneiii_ff         ; 1203                        ;
-;     ENA               ; 992                         ;
-;     plain             ; 211                         ;
-; cycloneiii_lcell_comb ; 2695                        ;
-;     arith             ; 134                         ;
-;         2 data inputs ; 9                           ;
+; boundary_port         ; 414                         ;
+; cycloneiii_ff         ; 1227                        ;
+;     ENA               ; 1092                        ;
+;     plain             ; 135                         ;
+; cycloneiii_lcell_comb ; 2717                        ;
+;     arith             ; 152                         ;
+;         2 data inputs ; 27                          ;
 ;         3 data inputs ; 125                         ;
-;     normal            ; 2561                        ;
+;     normal            ; 2565                        ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 2                           ;
-;         2 data inputs ; 85                          ;
-;         3 data inputs ; 399                         ;
-;         4 data inputs ; 2074                        ;
-; cycloneiii_ram_block  ; 32                          ;
+;         2 data inputs ; 80                          ;
+;         3 data inputs ; 422                         ;
+;         4 data inputs ; 2060                        ;
+; cycloneiii_ram_block  ; 64                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 11.00                       ;
-; Average LUT depth     ; 5.25                        ;
+; Max LUT depth         ; 14.00                       ;
+; Average LUT depth     ; 5.22                        ;
 +-----------------------+-----------------------------+
 
 
@@ -500,10 +601,12 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
-    Info: Processing started: Mon Jun  5 17:57:57 2023
+    Info: Processing started: Fri Jun  9 23:01:47 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off TP2 -c TP2
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file haltctrl.v
+    Info (12023): Found entity 1: HALTCtrl File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/HALTCtrl.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file prog_mem.v
     Info (12023): Found entity 1: Prog_mem File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/Prog_mem.v Line: 40
 Info (12021): Found 1 design units, including 1 entities, in source file tp2.bdf
@@ -524,22 +627,23 @@ Info (12021): Found 1 design units, including 1 entities, in source file latchal
     Info (12023): Found entity 1: latchAluIn File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/latchAluIn.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file latch5.v
     Info (12023): Found entity 1: latch5 File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/latch5.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file ram.v
+    Info (12023): Found entity 1: ram File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/ram.v Line: 40
+Info (12021): Found 1 design units, including 1 entities, in source file lam.v
+    Info (12023): Found entity 1: LAM File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/LAM.v Line: 1
+Info (12021): Found 0 design units, including 0 entities, in source file jmp.v
 Info (12127): Elaborating entity "TP2" for the top level hierarchy
-Info (12128): Elaborating entity "latch32" for hierarchy "latch32:LATCH_busA"
-Info (12128): Elaborating entity "reg_bank" for hierarchy "reg_bank:REG_BANK"
-Info (12128): Elaborating entity "alu" for hierarchy "alu:ALU"
-Info (12128): Elaborating entity "latchAluIn" for hierarchy "latchAluIn:LATCH_aluIn"
-Info (12128): Elaborating entity "latchDec" for hierarchy "latchDec:LATCH_DEC"
+Info (12128): Elaborating entity "HALTCtrl" for hierarchy "HALTCtrl:inst1"
 Info (12128): Elaborating entity "decoder" for hierarchy "decoder:DECODER"
 Warning (10270): Verilog HDL Case Statement warning at decoder.v(40): incomplete case statement has no default case item File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/decoder.v Line: 40
 Info (12128): Elaborating entity "ifu" for hierarchy "ifu:IFU"
 Info (12128): Elaborating entity "Prog_mem" for hierarchy "Prog_mem:ROM"
-Info (12128): Elaborating entity "altsyncram" for hierarchy "Prog_mem:ROM|altsyncram:altsyncram_component" File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/Prog_mem.v Line: 82
-Info (12130): Elaborated megafunction instantiation "Prog_mem:ROM|altsyncram:altsyncram_component" File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/Prog_mem.v Line: 82
-Info (12133): Instantiated megafunction "Prog_mem:ROM|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/Prog_mem.v Line: 82
+Info (12128): Elaborating entity "altsyncram" for hierarchy "Prog_mem:ROM|altsyncram:altsyncram_component" File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/Prog_mem.v Line: 85
+Info (12130): Elaborated megafunction instantiation "Prog_mem:ROM|altsyncram:altsyncram_component" File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/Prog_mem.v Line: 85
+Info (12133): Instantiated megafunction "Prog_mem:ROM|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/Prog_mem.v Line: 85
     Info (12134): Parameter "address_aclr_a" = "NONE"
-    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
-    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_input_a" = "NORMAL"
+    Info (12134): Parameter "clock_enable_output_a" = "NORMAL"
     Info (12134): Parameter "init_file" = "prog_mem.mif"
     Info (12134): Parameter "intended_device_family" = "Cyclone IV E"
     Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
@@ -551,18 +655,104 @@ Info (12133): Instantiated megafunction "Prog_mem:ROM|altsyncram:altsyncram_comp
     Info (12134): Parameter "widthad_a" = "12"
     Info (12134): Parameter "width_a" = "32"
     Info (12134): Parameter "width_byteena_a" = "1"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_4j91.tdf
-    Info (12023): Found entity 1: altsyncram_4j91 File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/db/altsyncram_4j91.tdf Line: 28
-Info (12128): Elaborating entity "altsyncram_4j91" for hierarchy "Prog_mem:ROM|altsyncram:altsyncram_component|altsyncram_4j91:auto_generated" File: f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_1ca1.tdf
+    Info (12023): Found entity 1: altsyncram_1ca1 File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/db/altsyncram_1ca1.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_1ca1" for hierarchy "Prog_mem:ROM|altsyncram:altsyncram_component|altsyncram_1ca1:auto_generated" File: f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Info (12128): Elaborating entity "latchAluIn" for hierarchy "latchAluIn:LATCH_aluIn"
+Info (12128): Elaborating entity "latchDec" for hierarchy "latchDec:LATCH_DEC"
+Info (12128): Elaborating entity "latch32" for hierarchy "latch32:LATCH_busA"
+Info (12128): Elaborating entity "reg_bank" for hierarchy "reg_bank:REG_BANK"
+Info (12128): Elaborating entity "alu" for hierarchy "alu:ALU"
 Info (12128): Elaborating entity "latch5" for hierarchy "latch5:LATCH_rd22"
+Info (12128): Elaborating entity "BUSMUX" for hierarchy "BUSMUX:mux_rd"
+Info (12130): Elaborated megafunction instantiation "BUSMUX:mux_rd"
+Info (12133): Instantiated megafunction "BUSMUX:mux_rd" with the following parameter:
+    Info (12134): Parameter "WIDTH" = "5"
+Info (12128): Elaborating entity "lpm_mux" for hierarchy "BUSMUX:mux_rd|lpm_mux:$00000" File: f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/busmux.tdf Line: 44
+Info (12131): Elaborated megafunction instantiation "BUSMUX:mux_rd|lpm_mux:$00000", which is child of megafunction instantiation "BUSMUX:mux_rd" File: f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/busmux.tdf Line: 44
+Info (12021): Found 1 design units, including 1 entities, in source file db/mux_brc.tdf
+    Info (12023): Found entity 1: mux_brc File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/db/mux_brc.tdf Line: 23
+Info (12128): Elaborating entity "mux_brc" for hierarchy "BUSMUX:mux_rd|lpm_mux:$00000|mux_brc:auto_generated" File: f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/lpm_mux.tdf Line: 87
+Info (12128): Elaborating entity "ram" for hierarchy "ram:RAM"
+Info (12128): Elaborating entity "altsyncram" for hierarchy "ram:RAM|altsyncram:altsyncram_component" File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/ram.v Line: 94
+Info (12130): Elaborated megafunction instantiation "ram:RAM|altsyncram:altsyncram_component" File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/ram.v Line: 94
+Info (12133): Instantiated megafunction "ram:RAM|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/ram.v Line: 94
+    Info (12134): Parameter "clock_enable_input_a" = "NORMAL"
+    Info (12134): Parameter "clock_enable_output_a" = "NORMAL"
+    Info (12134): Parameter "intended_device_family" = "Cyclone IV E"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "256"
+    Info (12134): Parameter "operation_mode" = "SINGLE_PORT"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "CLOCK1"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "read_during_write_mode_port_a" = "NEW_DATA_NO_NBE_READ"
+    Info (12134): Parameter "widthad_a" = "8"
+    Info (12134): Parameter "width_a" = "32"
+    Info (12134): Parameter "width_byteena_a" = "1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_3ef1.tdf
+    Info (12023): Found entity 1: altsyncram_3ef1 File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/db/altsyncram_3ef1.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_3ef1" for hierarchy "ram:RAM|altsyncram:altsyncram_component|altsyncram_3ef1:auto_generated" File: f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
 Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "selOutDec[5]" is stuck at GND
+    Warning (13410): Pin "PC[1]" is stuck at GND
+    Warning (13410): Pin "PC[0]" is stuck at GND
+    Warning (13410): Pin "selADec[5]" is stuck at GND
+    Warning (13410): Pin "selOut[5]" is stuck at GND
     Warning (13410): Pin "selA[5]" is stuck at GND
-    Warning (13410): Pin "sel_Out[5]" is stuck at GND
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 20 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (15717): Design contains 273 virtual pins; timing numbers associated with paths containing virtual pins are estimates
+Info (15717): Design contains 409 virtual pins; timing numbers associated with paths containing virtual pins are estimates
+    Info (15719): Pin "selOutDec[5]" is virtual output pin
+    Info (15719): Pin "selOutDec[4]" is virtual output pin
+    Info (15719): Pin "selOutDec[3]" is virtual output pin
+    Info (15719): Pin "selOutDec[2]" is virtual output pin
+    Info (15719): Pin "selOutDec[1]" is virtual output pin
+    Info (15719): Pin "selOutDec[0]" is virtual output pin
+    Info (15719): Pin "PC[31]" is virtual output pin
+    Info (15719): Pin "PC[30]" is virtual output pin
+    Info (15719): Pin "PC[29]" is virtual output pin
+    Info (15719): Pin "PC[28]" is virtual output pin
+    Info (15719): Pin "PC[27]" is virtual output pin
+    Info (15719): Pin "PC[26]" is virtual output pin
+    Info (15719): Pin "PC[25]" is virtual output pin
+    Info (15719): Pin "PC[24]" is virtual output pin
+    Info (15719): Pin "PC[23]" is virtual output pin
+    Info (15719): Pin "PC[22]" is virtual output pin
+    Info (15719): Pin "PC[21]" is virtual output pin
+    Info (15719): Pin "PC[20]" is virtual output pin
+    Info (15719): Pin "PC[19]" is virtual output pin
+    Info (15719): Pin "PC[18]" is virtual output pin
+    Info (15719): Pin "PC[17]" is virtual output pin
+    Info (15719): Pin "PC[16]" is virtual output pin
+    Info (15719): Pin "PC[15]" is virtual output pin
+    Info (15719): Pin "PC[14]" is virtual output pin
+    Info (15719): Pin "PC[13]" is virtual output pin
+    Info (15719): Pin "PC[12]" is virtual output pin
+    Info (15719): Pin "PC[11]" is virtual output pin
+    Info (15719): Pin "PC[10]" is virtual output pin
+    Info (15719): Pin "PC[9]" is virtual output pin
+    Info (15719): Pin "PC[8]" is virtual output pin
+    Info (15719): Pin "PC[7]" is virtual output pin
+    Info (15719): Pin "PC[6]" is virtual output pin
+    Info (15719): Pin "PC[5]" is virtual output pin
+    Info (15719): Pin "PC[4]" is virtual output pin
+    Info (15719): Pin "PC[3]" is virtual output pin
+    Info (15719): Pin "PC[2]" is virtual output pin
+    Info (15719): Pin "PC[1]" is virtual output pin
+    Info (15719): Pin "PC[0]" is virtual output pin
+    Info (15719): Pin "selADec[5]" is virtual output pin
+    Info (15719): Pin "selADec[4]" is virtual output pin
+    Info (15719): Pin "selADec[3]" is virtual output pin
+    Info (15719): Pin "selADec[2]" is virtual output pin
+    Info (15719): Pin "selADec[1]" is virtual output pin
+    Info (15719): Pin "selADec[0]" is virtual output pin
+    Info (15719): Pin "selBDec[4]" is virtual output pin
+    Info (15719): Pin "selBDec[3]" is virtual output pin
+    Info (15719): Pin "selBDec[2]" is virtual output pin
+    Info (15719): Pin "selBDec[1]" is virtual output pin
+    Info (15719): Pin "selBDec[0]" is virtual output pin
     Info (15719): Pin "Alu_BusA[31]" is virtual output pin
     Info (15719): Pin "Alu_BusA[30]" is virtual output pin
     Info (15719): Pin "Alu_BusA[29]" is virtual output pin
@@ -595,18 +785,12 @@ Info (15717): Design contains 273 virtual pins; timing numbers associated with p
     Info (15719): Pin "Alu_BusA[2]" is virtual output pin
     Info (15719): Pin "Alu_BusA[1]" is virtual output pin
     Info (15719): Pin "Alu_BusA[0]" is virtual output pin
-    Info (15719): Pin "PC[11]" is virtual output pin
-    Info (15719): Pin "PC[10]" is virtual output pin
-    Info (15719): Pin "PC[9]" is virtual output pin
-    Info (15719): Pin "PC[8]" is virtual output pin
-    Info (15719): Pin "PC[7]" is virtual output pin
-    Info (15719): Pin "PC[6]" is virtual output pin
-    Info (15719): Pin "PC[5]" is virtual output pin
-    Info (15719): Pin "PC[4]" is virtual output pin
-    Info (15719): Pin "PC[3]" is virtual output pin
-    Info (15719): Pin "PC[2]" is virtual output pin
-    Info (15719): Pin "PC[1]" is virtual output pin
-    Info (15719): Pin "PC[0]" is virtual output pin
+    Info (15719): Pin "selOut[5]" is virtual output pin
+    Info (15719): Pin "selOut[4]" is virtual output pin
+    Info (15719): Pin "selOut[3]" is virtual output pin
+    Info (15719): Pin "selOut[2]" is virtual output pin
+    Info (15719): Pin "selOut[1]" is virtual output pin
+    Info (15719): Pin "selOut[0]" is virtual output pin
     Info (15719): Pin "selA[5]" is virtual output pin
     Info (15719): Pin "selA[4]" is virtual output pin
     Info (15719): Pin "selA[3]" is virtual output pin
@@ -756,6 +940,38 @@ Info (15717): Design contains 273 virtual pins; timing numbers associated with p
     Info (15719): Pin "busB[2]" is virtual output pin
     Info (15719): Pin "busB[1]" is virtual output pin
     Info (15719): Pin "busB[0]" is virtual output pin
+    Info (15719): Pin "busC[31]" is virtual output pin
+    Info (15719): Pin "busC[30]" is virtual output pin
+    Info (15719): Pin "busC[29]" is virtual output pin
+    Info (15719): Pin "busC[28]" is virtual output pin
+    Info (15719): Pin "busC[27]" is virtual output pin
+    Info (15719): Pin "busC[26]" is virtual output pin
+    Info (15719): Pin "busC[25]" is virtual output pin
+    Info (15719): Pin "busC[24]" is virtual output pin
+    Info (15719): Pin "busC[23]" is virtual output pin
+    Info (15719): Pin "busC[22]" is virtual output pin
+    Info (15719): Pin "busC[21]" is virtual output pin
+    Info (15719): Pin "busC[20]" is virtual output pin
+    Info (15719): Pin "busC[19]" is virtual output pin
+    Info (15719): Pin "busC[18]" is virtual output pin
+    Info (15719): Pin "busC[17]" is virtual output pin
+    Info (15719): Pin "busC[16]" is virtual output pin
+    Info (15719): Pin "busC[15]" is virtual output pin
+    Info (15719): Pin "busC[14]" is virtual output pin
+    Info (15719): Pin "busC[13]" is virtual output pin
+    Info (15719): Pin "busC[12]" is virtual output pin
+    Info (15719): Pin "busC[11]" is virtual output pin
+    Info (15719): Pin "busC[10]" is virtual output pin
+    Info (15719): Pin "busC[9]" is virtual output pin
+    Info (15719): Pin "busC[8]" is virtual output pin
+    Info (15719): Pin "busC[7]" is virtual output pin
+    Info (15719): Pin "busC[6]" is virtual output pin
+    Info (15719): Pin "busC[5]" is virtual output pin
+    Info (15719): Pin "busC[4]" is virtual output pin
+    Info (15719): Pin "busC[3]" is virtual output pin
+    Info (15719): Pin "busC[2]" is virtual output pin
+    Info (15719): Pin "busC[1]" is virtual output pin
+    Info (15719): Pin "busC[0]" is virtual output pin
     Info (15719): Pin "imm[31]" is virtual output pin
     Info (15719): Pin "imm[30]" is virtual output pin
     Info (15719): Pin "imm[29]" is virtual output pin
@@ -820,31 +1036,92 @@ Info (15717): Design contains 273 virtual pins; timing numbers associated with p
     Info (15719): Pin "instruction[2]" is virtual output pin
     Info (15719): Pin "instruction[1]" is virtual output pin
     Info (15719): Pin "instruction[0]" is virtual output pin
+    Info (15719): Pin "outRam[31]" is virtual output pin
+    Info (15719): Pin "outRam[30]" is virtual output pin
+    Info (15719): Pin "outRam[29]" is virtual output pin
+    Info (15719): Pin "outRam[28]" is virtual output pin
+    Info (15719): Pin "outRam[27]" is virtual output pin
+    Info (15719): Pin "outRam[26]" is virtual output pin
+    Info (15719): Pin "outRam[25]" is virtual output pin
+    Info (15719): Pin "outRam[24]" is virtual output pin
+    Info (15719): Pin "outRam[23]" is virtual output pin
+    Info (15719): Pin "outRam[22]" is virtual output pin
+    Info (15719): Pin "outRam[21]" is virtual output pin
+    Info (15719): Pin "outRam[20]" is virtual output pin
+    Info (15719): Pin "outRam[19]" is virtual output pin
+    Info (15719): Pin "outRam[18]" is virtual output pin
+    Info (15719): Pin "outRam[17]" is virtual output pin
+    Info (15719): Pin "outRam[16]" is virtual output pin
+    Info (15719): Pin "outRam[15]" is virtual output pin
+    Info (15719): Pin "outRam[14]" is virtual output pin
+    Info (15719): Pin "outRam[13]" is virtual output pin
+    Info (15719): Pin "outRam[12]" is virtual output pin
+    Info (15719): Pin "outRam[11]" is virtual output pin
+    Info (15719): Pin "outRam[10]" is virtual output pin
+    Info (15719): Pin "outRam[9]" is virtual output pin
+    Info (15719): Pin "outRam[8]" is virtual output pin
+    Info (15719): Pin "outRam[7]" is virtual output pin
+    Info (15719): Pin "outRam[6]" is virtual output pin
+    Info (15719): Pin "outRam[5]" is virtual output pin
+    Info (15719): Pin "outRam[4]" is virtual output pin
+    Info (15719): Pin "outRam[3]" is virtual output pin
+    Info (15719): Pin "outRam[2]" is virtual output pin
+    Info (15719): Pin "outRam[1]" is virtual output pin
+    Info (15719): Pin "outRam[0]" is virtual output pin
     Info (15719): Pin "rd[4]" is virtual output pin
     Info (15719): Pin "rd[3]" is virtual output pin
     Info (15719): Pin "rd[2]" is virtual output pin
     Info (15719): Pin "rd[1]" is virtual output pin
     Info (15719): Pin "rd[0]" is virtual output pin
-    Info (15719): Pin "sel_Out[5]" is virtual output pin
-    Info (15719): Pin "sel_Out[4]" is virtual output pin
-    Info (15719): Pin "sel_Out[3]" is virtual output pin
-    Info (15719): Pin "sel_Out[2]" is virtual output pin
-    Info (15719): Pin "sel_Out[1]" is virtual output pin
-    Info (15719): Pin "sel_Out[0]" is virtual output pin
-    Info (15719): Pin "selB_dec[4]" is virtual output pin
-    Info (15719): Pin "selB_dec[3]" is virtual output pin
-    Info (15719): Pin "selB_dec[2]" is virtual output pin
-    Info (15719): Pin "selB_dec[1]" is virtual output pin
-    Info (15719): Pin "selB_dec[0]" is virtual output pin
-Info (21057): Implemented 4132 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 1 input pins
-    Info (21059): Implemented 0 output pins
-    Info (21061): Implemented 4099 logic cells
-    Info (21064): Implemented 32 RAM segments
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 4818 megabytes
-    Info: Processing ended: Mon Jun  5 17:58:11 2023
-    Info: Elapsed time: 00:00:14
+    Info (15718): Pin "data[31]" is virtual input pin
+    Info (15718): Pin "address[0]" is virtual input pin
+    Info (15718): Pin "address[1]" is virtual input pin
+    Info (15718): Pin "address[2]" is virtual input pin
+    Info (15718): Pin "address[3]" is virtual input pin
+    Info (15718): Pin "address[4]" is virtual input pin
+    Info (15718): Pin "address[5]" is virtual input pin
+    Info (15718): Pin "address[6]" is virtual input pin
+    Info (15718): Pin "address[7]" is virtual input pin
+    Info (15718): Pin "data[30]" is virtual input pin
+    Info (15718): Pin "data[29]" is virtual input pin
+    Info (15718): Pin "data[28]" is virtual input pin
+    Info (15718): Pin "data[27]" is virtual input pin
+    Info (15718): Pin "data[26]" is virtual input pin
+    Info (15718): Pin "data[25]" is virtual input pin
+    Info (15718): Pin "data[24]" is virtual input pin
+    Info (15718): Pin "data[23]" is virtual input pin
+    Info (15718): Pin "data[22]" is virtual input pin
+    Info (15718): Pin "data[21]" is virtual input pin
+    Info (15718): Pin "data[20]" is virtual input pin
+    Info (15718): Pin "data[19]" is virtual input pin
+    Info (15718): Pin "data[18]" is virtual input pin
+    Info (15718): Pin "data[17]" is virtual input pin
+    Info (15718): Pin "data[16]" is virtual input pin
+    Info (15718): Pin "data[15]" is virtual input pin
+    Info (15718): Pin "data[14]" is virtual input pin
+    Info (15718): Pin "data[13]" is virtual input pin
+    Info (15718): Pin "data[12]" is virtual input pin
+    Info (15718): Pin "data[11]" is virtual input pin
+    Info (15718): Pin "data[10]" is virtual input pin
+    Info (15718): Pin "data[9]" is virtual input pin
+    Info (15718): Pin "data[8]" is virtual input pin
+    Info (15718): Pin "data[7]" is virtual input pin
+    Info (15718): Pin "data[6]" is virtual input pin
+    Info (15718): Pin "data[5]" is virtual input pin
+    Info (15718): Pin "data[4]" is virtual input pin
+    Info (15718): Pin "data[3]" is virtual input pin
+    Info (15718): Pin "data[2]" is virtual input pin
+    Info (15718): Pin "data[1]" is virtual input pin
+    Info (15718): Pin "data[0]" is virtual input pin
+Info (21057): Implemented 4359 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 3 input pins
+    Info (21059): Implemented 2 output pins
+    Info (21061): Implemented 4290 logic cells
+    Info (21064): Implemented 64 RAM segments
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 9 warnings
+    Info: Peak virtual memory: 4826 megabytes
+    Info: Processing ended: Fri Jun  9 23:02:10 2023
+    Info: Elapsed time: 00:00:23
     Info: Total CPU time (on all processors): 00:00:15
 
 

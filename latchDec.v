@@ -25,7 +25,6 @@ always @(posedge clk) begin
 		selA_ <= selA;
 		selB_ <= selB;
 		selOut_ <= selOut;
-			  
     end
 end
 

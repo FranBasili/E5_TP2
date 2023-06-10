@@ -19,7 +19,7 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "06/05/2023 18:03:17"
+// Generated on "06/09/2023 23:02:16"
                                                                                 
 // Verilog Test Bench (with test vectors) for design :                          TP2
 // 
@@ -30,41 +30,61 @@
 module TP2_vlg_vec_tst();
 // constants                                           
 // general purpose registers
+reg [7:0] address;
 reg clk;
+reg [31:0] data;
+reg enwr;
+reg inclock;
 // wires                                               
 wire [31:0] Alu_BusA;
 wire [31:0] Alu_BusB;
 wire [31:0] Alu_BusC;
 wire [9:0] Alu_ctrl;
+wire Alu_imm_en;
 wire [31:0] busA;
 wire [31:0] busB;
+wire [31:0] busC;
+wire halt;
 wire [31:0] imm;
 wire [31:0] instruction;
-wire [11:0] PC;
+wire [31:0] outRam;
+wire [31:0] PC;
 wire [4:0] rd;
-wire [5:0] sel_Out;
 wire [5:0] selA;
+wire [5:0] selADec;
 wire [4:0] selB;
-wire [4:0] selB_dec;
+wire [4:0] selBDec;
+wire [5:0] selOut;
+wire [5:0] selOutDec;
 
 // assign statements (if any)                          
 TP2 i1 (
 // port map - connection between master ports and signals/registers   
+	.address(address),
 	.Alu_BusA(Alu_BusA),
 	.Alu_BusB(Alu_BusB),
 	.Alu_BusC(Alu_BusC),
 	.Alu_ctrl(Alu_ctrl),
+	.Alu_imm_en(Alu_imm_en),
 	.busA(busA),
 	.busB(busB),
+	.busC(busC),
 	.clk(clk),
+	.data(data),
+	.enwr(enwr),
+	.halt(halt),
 	.imm(imm),
+	.inclock(inclock),
 	.instruction(instruction),
+	.outRam(outRam),
 	.PC(PC),
 	.rd(rd),
-	.sel_Out(sel_Out),
 	.selA(selA),
+	.selADec(selADec),
 	.selB(selB),
-	.selB_dec(selB_dec)
+	.selBDec(selBDec),
+	.selOut(selOut),
+	.selOutDec(selOutDec)
 );
 initial 
 begin 
