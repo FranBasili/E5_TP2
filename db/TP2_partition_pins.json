@@ -276,6 +276,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "selADec[5]",
+					"strict" : false
+				},
+				{
 					"name" : "selADec[4]",
 					"strict" : false
 				},
@@ -465,6 +469,10 @@
 				},
 				{
 					"name" : "selOut[0]",
+					"strict" : false
+				},
+				{
+					"name" : "selA[5]",
 					"strict" : false
 				},
 				{

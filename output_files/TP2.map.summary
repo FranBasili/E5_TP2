@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Sat Jun 10 12:06:29 2023
+Analysis & Synthesis Status : Successful - Sat Jun 10 13:02:19 2023
 Quartus Prime Version : 22.1std.1 Build 917 02/14/2023 SC Lite Edition
 Revision Name : TP2
 Top-level Entity Name : TP2
 Family : Cyclone IV E
-Total logic elements : 3,757
-    Total combinational functions : 2,705
-    Dedicated logic registers : 1,227
-Total registers : 1227
+Total logic elements : 3,899
+    Total combinational functions : 2,827
+    Dedicated logic registers : 1,268
+Total registers : 1268
 Total pins : 5
 Total virtual pins : 441
 Total memory bits : 40,960

@@ -18,22 +18,22 @@
 //     output wire [31:0] newPC,
 //     output wire ctrlFetch,
 //     output wire global_reset
-// );
+// )
 
-// 	wire zero = alu_csr[0];
-// 	wire carry = alu_csr[1];
-// 	wire overflow = alu_csr[2];
+// assign zero = alu_csr[0];
+// assign carry = alu_csr[1];
+// assign overflow = alu_csr[2];
 
-// 	reg [2:0]   jmp_type1;
-// 	reg [2:0]   jmp_type2;
-// 	reg new_jmp1;
-// 	reg new_jmp2;
-// 	reg [31:0]  pc1;
-// 	reg [31:0]  pc2;
+// reg [2:0]   jmp_type1;
+// reg [2:0]   jmp_type2;
+// reg new_jmp1;
+// reg new_jmp2;
+// reg [31:0]  pc1;
+// reg [31:0]  pc2;
 
-// 	wire [31:0] newHipAdd;
+// wire [31:0] newHipAdd;
 
-//     always @(new_jmp) begin
+//     always @(new_jmp):begin
 //         if (new_jmp == 1 && (jmp_type != JAL_BITS && jmp_type != JALR_BITS)) begin
 //             newHipAdd = imm + pc - 8;
 //         end
@@ -42,7 +42,7 @@
 //         end
 //     end
 
-//     always @(posedge clock) begin
+//     always @(posedge clock)begin
 //         jmp_type1 <= jmp_type;
 //         jmp_type2 <= jmp_type1;
 //         pc1 <= newHipAdd;
@@ -76,8 +76,7 @@
 //                  end
 //                 `BGEU:begin
 //                  end
-//                  default: begin
-// 					  end
+//                  default:
 //             endcase
 //         end
 //     end
