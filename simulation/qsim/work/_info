@@ -62,6 +62,43 @@ R0
 R0
 R0
 R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
 !s11f MIXED_VERSIONS
 13
 !s112 1.1
@@ -71,21 +108,20 @@ R0
 cModel Technology
 Z1 dE:/Windows/ITBA/Electronica V/Projects/TP2/simulation/qsim
 T_opt
-!s110 1686191560
-VoG8J6lNCn`3i;Il=?aROc2
+!s110 1686410288
+V6<jGTZKMF94O>?:ZKjR7K0
 Z2 04 15 4 work TP2_vlg_vec_tst fast 0
-=1-2cf05db36f37-64813dc5-3b4-6754
+=1-2cf05db36f37-6484942e-352-3fe8
 Z3 !s124 OEM10U3 
 Z4 o-quiet -auto_acc_if_foreign -work work -L cycloneive_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver +acc
 Z5 tCvgOpt 0
 n@_opt
 Z6 OL;O;2021.2;73
-R1
 T_opt1
-!s110 1686191705
-V<U47:]YzImEgfbPWK1SQb3
+!s110 1686410050
+V;6Qj=:ATz>[ET2=9@e8>j0
 R2
-=1-2cf05db36f37-64813e57-3a5-a18
+=1-2cf05db36f37-64849340-356-4b5c
 R3
 R4
 R5
@@ -93,80 +129,81 @@ n@_opt1
 R6
 R1
 T_opt2
-!s110 1686362540
-VLD=^TH92;VVOFl86<VaUl0
+!s110 1686410095
+V?8iMV:kCob=81^[NM0IXb1
 R2
-=1-2cf05db36f37-6483d9aa-2a9-1340
-!s124 OEM10U2 
+=1-2cf05db36f37-6484936e-148-27c0
+R3
 R4
 R5
 n@_opt2
 R6
+R1
 vhard_block
-!s110 1686358335
+Z7 !s110 1686410286
 !i10b 1
-!s100 ZRfP3QRGJCW^_iV7;3nDV1
-I8_KU8:FB^]ITz8428ESE11
-Z7 dC:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/simulation/qsim
-w1686358333
-Z8 8TP2.vo
-Z9 FTP2.vo
-!i122 144
-L0 86753 34
-Z10 VDg1SIo80bB@j0V0VzS_@n1
-Z11 OL;L;2021.2;73
+!s100 E;>@EC<UJXRRi:QX;@AX<2
+Io@>2?Rz9_1B1FoU]nOJRh3
+Z8 dC:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/simulation/qsim
+Z9 w1686410284
+Z10 8TP2.vo
+Z11 FTP2.vo
+!i122 222
+L0 85974 34
+Z12 VDg1SIo80bB@j0V0VzS_@n1
+Z13 OL;L;2021.2;73
 r1
 !s85 0
 31
-!s108 1686358334.000000
-Z12 !s107 TP2.vo|
-Z13 !s90 -work|work|TP2.vo|
+Z14 !s108 1686410286.000000
+Z15 !s107 TP2.vo|
+Z16 !s90 -work|work|TP2.vo|
 !i113 0
-Z14 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z17 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R5
 vTP2
-Z15 !s110 1686362538
-!i10b 1
-!s100 79ZAEH`B4Sf1l@d9FOBdP3
-IgI`EdB<>8MPAJX9N?Q=Zl0
 R7
-w1686362537
+!i10b 1
+!s100 Q;Ei6G3aK[Rml2OC9iM_^0
+Ig9:ZcT=3`EK?z?J@OLUT51
 R8
 R9
-!i122 148
-L0 32 79079
 R10
 R11
+!i122 222
+L0 32 85941
+R12
+R13
 r1
 !s85 0
 31
-!s108 1686362537.000000
-R12
-R13
-!i113 0
 R14
+R15
+R16
+!i113 0
+R17
 R5
 n@t@p2
 vTP2_vlg_vec_tst
-R15
-!i10b 1
-!s100 10eDAoHD7iR@;VUk_K@;j3
-If0U`zz^BiBcS2>f>0CQml2
 R7
-w1686362536
+!i10b 1
+!s100 zJhD@LOT6jJdM^h9RWF8X3
+I]Y0zLIzHU1<NUPAH^`3n_3
+R8
+w1686410282
 8Test1.vwf.vt
 FTest1.vwf.vt
-!i122 149
-L0 30 72
-R10
-R11
+!i122 223
+L0 30 74
+R12
+R13
 r1
 !s85 0
 31
-!s108 1686362538.000000
+R14
 !s107 Test1.vwf.vt|
 !s90 -work|work|Test1.vwf.vt|
 !i113 0
-R14
+R17
 R5
 n@t@p2_vlg_vec_tst

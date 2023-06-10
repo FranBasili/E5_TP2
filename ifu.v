@@ -11,8 +11,8 @@ module ifu
  output	wire [31:0] instr
  );
 
-	reg [31:0] currPC;
-	reg [31:0] currInstr;	 
+	reg [31:0] currPC = 0;
+	reg [31:0] currInstr = 0;	 
 	
 	
 	always @(posedge clk, negedge reset) begin

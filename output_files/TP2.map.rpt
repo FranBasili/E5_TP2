@@ -1,5 +1,5 @@
 Analysis & Synthesis report for TP2
-Fri Jun  9 23:02:10 2023
+Sat Jun 10 12:06:29 2023
 Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
 
 
@@ -18,7 +18,7 @@ Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
  10. Registers Removed During Synthesis
  11. General Register Statistics
  12. Multiplexer Restructuring Statistics (Restructuring Performed)
- 13. Source assignments for Prog_mem:ROM|altsyncram:altsyncram_component|altsyncram_1ca1:auto_generated
+ 13. Source assignments for Prog_mem:ROM|altsyncram:altsyncram_component|altsyncram_h2b1:auto_generated
  14. Source assignments for ram:RAM|altsyncram:altsyncram_component|altsyncram_3ef1:auto_generated
  15. Parameter Settings for User Entity Instance: Prog_mem:ROM|altsyncram:altsyncram_component
  16. Parameter Settings for User Entity Instance: BUSMUX:mux_rd
@@ -53,18 +53,18 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Jun  9 23:02:10 2023          ;
+; Analysis & Synthesis Status        ; Successful - Sat Jun 10 12:06:29 2023          ;
 ; Quartus Prime Version              ; 22.1std.1 Build 917 02/14/2023 SC Lite Edition ;
 ; Revision Name                      ; TP2                                            ;
 ; Top-level Entity Name              ; TP2                                            ;
 ; Family                             ; Cyclone IV E                                   ;
-; Total logic elements               ; 3,768                                          ;
-;     Total combinational functions  ; 2,716                                          ;
+; Total logic elements               ; 3,757                                          ;
+;     Total combinational functions  ; 2,705                                          ;
 ;     Dedicated logic registers      ; 1,227                                          ;
 ; Total registers                    ; 1227                                           ;
 ; Total pins                         ; 5                                              ;
-; Total virtual pins                 ; 409                                            ;
-; Total memory bits                  ; 139,264                                        ;
+; Total virtual pins                 ; 441                                            ;
+; Total memory bits                  ; 40,960                                         ;
 ; Embedded Multiplier 9-bit elements ; 0                                              ;
 ; Total PLLs                         ; 0                                              ;
 +------------------------------------+------------------------------------------------+
@@ -204,7 +204,7 @@ https://fpgasoftware.intel.com/eula.
 ; altrom.inc                       ; yes             ; Megafunction                       ; f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/altrom.inc            ;         ;
 ; altram.inc                       ; yes             ; Megafunction                       ; f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/altram.inc            ;         ;
 ; altdpram.inc                     ; yes             ; Megafunction                       ; f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/altdpram.inc          ;         ;
-; db/altsyncram_1ca1.tdf           ; yes             ; Auto-Generated Megafunction        ; C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/db/altsyncram_1ca1.tdf  ;         ;
+; db/altsyncram_h2b1.tdf           ; yes             ; Auto-Generated Megafunction        ; C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/db/altsyncram_h2b1.tdf  ;         ;
 ; busmux.tdf                       ; yes             ; Megafunction                       ; f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/busmux.tdf            ;         ;
 ; lpm_mux.tdf                      ; yes             ; Megafunction                       ; f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/lpm_mux.tdf           ;         ;
 ; muxlut.inc                       ; yes             ; Megafunction                       ; f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/muxlut.inc            ;         ;
@@ -220,32 +220,32 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 3,768     ;
+; Estimated Total logic elements              ; 3,757     ;
 ;                                             ;           ;
-; Total combinational functions               ; 2716      ;
+; Total combinational functions               ; 2705      ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 2060      ;
-;     -- 3 input functions                    ; 547       ;
-;     -- <=2 input functions                  ; 109       ;
+;     -- 4 input functions                    ; 2037      ;
+;     -- 3 input functions                    ; 558       ;
+;     -- <=2 input functions                  ; 110       ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 2564      ;
+;     -- normal mode                          ; 2553      ;
 ;     -- arithmetic mode                      ; 152       ;
 ;                                             ;           ;
 ; Total registers                             ; 1227      ;
 ;     -- Dedicated logic registers            ; 1227      ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
-; Virtual pins                                ; 409       ;
+; Virtual pins                                ; 441       ;
 ; I/O pins                                    ; 5         ;
-; Total memory bits                           ; 139264    ;
+; Total memory bits                           ; 40960     ;
 ;                                             ;           ;
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
 ; Maximum fan-out                             ; 1259      ;
-; Total fan-out                               ; 14813     ;
-; Average fan-out                             ; 3.35      ;
+; Total fan-out                               ; 14724     ;
+; Average fan-out                             ; 3.31      ;
 +---------------------------------------------+-----------+
 
 
@@ -254,12 +254,12 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                              ; Entity Name     ; Library Name ;
 +-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------+-----------------+--------------+
-; |TP2                                      ; 2716 (0)            ; 1227 (0)                  ; 139264      ; 0            ; 0       ; 0         ; 5    ; 409          ; |TP2                                                                             ; TP2             ; work         ;
+; |TP2                                      ; 2705 (0)            ; 1227 (0)                  ; 40960       ; 0            ; 0       ; 0         ; 5    ; 441          ; |TP2                                                                             ; TP2             ; work         ;
 ;    |HALTCtrl:inst1|                       ; 13 (13)             ; 6 (6)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|HALTCtrl:inst1                                                              ; HALTCtrl        ; work         ;
-;    |Prog_mem:ROM|                         ; 0 (0)               ; 0 (0)                     ; 131072      ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|Prog_mem:ROM                                                                ; Prog_mem        ; work         ;
-;       |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 131072      ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|Prog_mem:ROM|altsyncram:altsyncram_component                                ; altsyncram      ; work         ;
-;          |altsyncram_1ca1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 131072      ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|Prog_mem:ROM|altsyncram:altsyncram_component|altsyncram_1ca1:auto_generated ; altsyncram_1ca1 ; work         ;
-;    |alu:ALU|                              ; 1236 (1236)         ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|alu:ALU                                                                     ; alu             ; work         ;
+;    |Prog_mem:ROM|                         ; 0 (0)               ; 0 (0)                     ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|Prog_mem:ROM                                                                ; Prog_mem        ; work         ;
+;       |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|Prog_mem:ROM|altsyncram:altsyncram_component                                ; altsyncram      ; work         ;
+;          |altsyncram_h2b1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|Prog_mem:ROM|altsyncram:altsyncram_component|altsyncram_h2b1:auto_generated ; altsyncram_h2b1 ; work         ;
+;    |alu:ALU|                              ; 1225 (1225)         ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|alu:ALU                                                                     ; alu             ; work         ;
 ;    |busmux:mux_rd|                        ; 5 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|busmux:mux_rd                                                               ; busmux          ; work         ;
 ;       |lpm_mux:$00000|                    ; 5 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|busmux:mux_rd|lpm_mux:$00000                                                ; lpm_mux         ; work         ;
 ;          |mux_brc:auto_generated|         ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|busmux:mux_rd|lpm_mux:$00000|mux_brc:auto_generated                         ; mux_brc         ; work         ;
@@ -280,14 +280,14 @@ https://fpgasoftware.intel.com/eula.
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis RAM Summary                                                                                                                                                                ;
-+----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+--------+--------------+
-; Name                                                                                   ; Type ; Mode        ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF          ;
-+----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+--------+--------------+
-; Prog_mem:ROM|altsyncram:altsyncram_component|altsyncram_1ca1:auto_generated|ALTSYNCRAM ; AUTO ; ROM         ; 4096         ; 32           ; --           ; --           ; 131072 ; prog_mem.mif ;
-; ram:RAM|altsyncram:altsyncram_component|altsyncram_3ef1:auto_generated|ALTSYNCRAM      ; AUTO ; Single Port ; 256          ; 32           ; --           ; --           ; 8192   ; None         ;
-+----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+--------+--------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                               ;
++----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+-------+--------------+
+; Name                                                                                   ; Type ; Mode        ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size  ; MIF          ;
++----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+-------+--------------+
+; Prog_mem:ROM|altsyncram:altsyncram_component|altsyncram_h2b1:auto_generated|ALTSYNCRAM ; AUTO ; ROM         ; 1024         ; 32           ; --           ; --           ; 32768 ; prog_mem.mif ;
+; ram:RAM|altsyncram:altsyncram_component|altsyncram_3ef1:auto_generated|ALTSYNCRAM      ; AUTO ; Single Port ; 256          ; 32           ; --           ; --           ; 8192  ; None         ;
++----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+-------+--------------+
 
 
 +-----------------------------------------------------------------------------------------------------+
@@ -380,7 +380,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 
 +----------------------------------------------------------------------------------------------------+
-; Source assignments for Prog_mem:ROM|altsyncram:altsyncram_component|altsyncram_1ca1:auto_generated ;
+; Source assignments for Prog_mem:ROM|altsyncram:altsyncram_component|altsyncram_h2b1:auto_generated ;
 +---------------------------------+--------------------+------+--------------------------------------+
 ; Assignment                      ; Value              ; From ; To                                   ;
 +---------------------------------+--------------------+------+--------------------------------------+
@@ -410,9 +410,9 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; WIDTH_BYTEENA                      ; 1                    ; Untyped                       ;
 ; OPERATION_MODE                     ; ROM                  ; Untyped                       ;
 ; WIDTH_A                            ; 32                   ; Signed Integer                ;
-; WIDTHAD_A                          ; 12                   ; Signed Integer                ;
-; NUMWORDS_A                         ; 4096                 ; Signed Integer                ;
-; OUTDATA_REG_A                      ; CLOCK0               ; Untyped                       ;
+; WIDTHAD_A                          ; 10                   ; Signed Integer                ;
+; NUMWORDS_A                         ; 1024                 ; Signed Integer                ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                       ;
 ; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                       ;
 ; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                       ;
 ; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                       ;
@@ -445,7 +445,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; MAXIMUM_DEPTH                      ; 0                    ; Untyped                       ;
 ; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                       ;
 ; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                       ;
-; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                       ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                       ;
 ; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                       ;
 ; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                       ;
 ; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                       ;
@@ -453,7 +453,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                       ;
 ; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                       ;
 ; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped                       ;
-; CBXI_PARAMETER                     ; altsyncram_1ca1      ; Untyped                       ;
+; CBXI_PARAMETER                     ; altsyncram_h2b1      ; Untyped                       ;
 +------------------------------------+----------------------+-------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -538,8 +538,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Entity Instance                           ; Prog_mem:ROM|altsyncram:altsyncram_component ;
 ;     -- OPERATION_MODE                     ; ROM                                          ;
 ;     -- WIDTH_A                            ; 32                                           ;
-;     -- NUMWORDS_A                         ; 4096                                         ;
-;     -- OUTDATA_REG_A                      ; CLOCK0                                       ;
+;     -- NUMWORDS_A                         ; 1024                                         ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                 ;
 ;     -- WIDTH_B                            ; 1                                            ;
 ;     -- NUMWORDS_B                         ; 1                                            ;
 ;     -- ADDRESS_REG_B                      ; CLOCK1                                       ;
@@ -565,20 +565,20 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 414                         ;
+; boundary_port         ; 446                         ;
 ; cycloneiii_ff         ; 1227                        ;
 ;     ENA               ; 1092                        ;
 ;     plain             ; 135                         ;
-; cycloneiii_lcell_comb ; 2717                        ;
+; cycloneiii_lcell_comb ; 2706                        ;
 ;     arith             ; 152                         ;
 ;         2 data inputs ; 27                          ;
 ;         3 data inputs ; 125                         ;
-;     normal            ; 2565                        ;
+;     normal            ; 2554                        ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 2                           ;
-;         2 data inputs ; 80                          ;
-;         3 data inputs ; 422                         ;
-;         4 data inputs ; 2060                        ;
+;         2 data inputs ; 81                          ;
+;         3 data inputs ; 433                         ;
+;         4 data inputs ; 2037                        ;
 ; cycloneiii_ram_block  ; 64                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 14.00                       ;
@@ -601,7 +601,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
-    Info: Processing started: Fri Jun  9 23:01:47 2023
+    Info: Processing started: Sat Jun 10 12:06:14 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off TP2 -c TP2
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
@@ -643,21 +643,21 @@ Info (12130): Elaborated megafunction instantiation "Prog_mem:ROM|altsyncram:alt
 Info (12133): Instantiated megafunction "Prog_mem:ROM|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/Prog_mem.v Line: 85
     Info (12134): Parameter "address_aclr_a" = "NONE"
     Info (12134): Parameter "clock_enable_input_a" = "NORMAL"
-    Info (12134): Parameter "clock_enable_output_a" = "NORMAL"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
     Info (12134): Parameter "init_file" = "prog_mem.mif"
     Info (12134): Parameter "intended_device_family" = "Cyclone IV E"
     Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
     Info (12134): Parameter "lpm_type" = "altsyncram"
-    Info (12134): Parameter "numwords_a" = "4096"
+    Info (12134): Parameter "numwords_a" = "1024"
     Info (12134): Parameter "operation_mode" = "ROM"
     Info (12134): Parameter "outdata_aclr_a" = "NONE"
-    Info (12134): Parameter "outdata_reg_a" = "CLOCK0"
-    Info (12134): Parameter "widthad_a" = "12"
+    Info (12134): Parameter "outdata_reg_a" = "UNREGISTERED"
+    Info (12134): Parameter "widthad_a" = "10"
     Info (12134): Parameter "width_a" = "32"
     Info (12134): Parameter "width_byteena_a" = "1"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_1ca1.tdf
-    Info (12023): Found entity 1: altsyncram_1ca1 File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/db/altsyncram_1ca1.tdf Line: 28
-Info (12128): Elaborating entity "altsyncram_1ca1" for hierarchy "Prog_mem:ROM|altsyncram:altsyncram_component|altsyncram_1ca1:auto_generated" File: f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_h2b1.tdf
+    Info (12023): Found entity 1: altsyncram_h2b1 File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/db/altsyncram_h2b1.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_h2b1" for hierarchy "Prog_mem:ROM|altsyncram:altsyncram_component|altsyncram_h2b1:auto_generated" File: f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
 Info (12128): Elaborating entity "latchAluIn" for hierarchy "latchAluIn:LATCH_aluIn"
 Info (12128): Elaborating entity "latchDec" for hierarchy "latchDec:LATCH_DEC"
 Info (12128): Elaborating entity "latch32" for hierarchy "latch32:LATCH_busA"
@@ -703,13 +703,45 @@ Warning (13024): Output pins are stuck at VCC or GND
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (15717): Design contains 409 virtual pins; timing numbers associated with paths containing virtual pins are estimates
+Info (15717): Design contains 441 virtual pins; timing numbers associated with paths containing virtual pins are estimates
     Info (15719): Pin "selOutDec[5]" is virtual output pin
     Info (15719): Pin "selOutDec[4]" is virtual output pin
     Info (15719): Pin "selOutDec[3]" is virtual output pin
     Info (15719): Pin "selOutDec[2]" is virtual output pin
     Info (15719): Pin "selOutDec[1]" is virtual output pin
     Info (15719): Pin "selOutDec[0]" is virtual output pin
+    Info (15719): Pin "rom_q[31]" is virtual output pin
+    Info (15719): Pin "rom_q[30]" is virtual output pin
+    Info (15719): Pin "rom_q[29]" is virtual output pin
+    Info (15719): Pin "rom_q[28]" is virtual output pin
+    Info (15719): Pin "rom_q[27]" is virtual output pin
+    Info (15719): Pin "rom_q[26]" is virtual output pin
+    Info (15719): Pin "rom_q[25]" is virtual output pin
+    Info (15719): Pin "rom_q[24]" is virtual output pin
+    Info (15719): Pin "rom_q[23]" is virtual output pin
+    Info (15719): Pin "rom_q[22]" is virtual output pin
+    Info (15719): Pin "rom_q[21]" is virtual output pin
+    Info (15719): Pin "rom_q[20]" is virtual output pin
+    Info (15719): Pin "rom_q[19]" is virtual output pin
+    Info (15719): Pin "rom_q[18]" is virtual output pin
+    Info (15719): Pin "rom_q[17]" is virtual output pin
+    Info (15719): Pin "rom_q[16]" is virtual output pin
+    Info (15719): Pin "rom_q[15]" is virtual output pin
+    Info (15719): Pin "rom_q[14]" is virtual output pin
+    Info (15719): Pin "rom_q[13]" is virtual output pin
+    Info (15719): Pin "rom_q[12]" is virtual output pin
+    Info (15719): Pin "rom_q[11]" is virtual output pin
+    Info (15719): Pin "rom_q[10]" is virtual output pin
+    Info (15719): Pin "rom_q[9]" is virtual output pin
+    Info (15719): Pin "rom_q[8]" is virtual output pin
+    Info (15719): Pin "rom_q[7]" is virtual output pin
+    Info (15719): Pin "rom_q[6]" is virtual output pin
+    Info (15719): Pin "rom_q[5]" is virtual output pin
+    Info (15719): Pin "rom_q[4]" is virtual output pin
+    Info (15719): Pin "rom_q[3]" is virtual output pin
+    Info (15719): Pin "rom_q[2]" is virtual output pin
+    Info (15719): Pin "rom_q[1]" is virtual output pin
+    Info (15719): Pin "rom_q[0]" is virtual output pin
     Info (15719): Pin "PC[31]" is virtual output pin
     Info (15719): Pin "PC[30]" is virtual output pin
     Info (15719): Pin "PC[29]" is virtual output pin
@@ -1113,15 +1145,15 @@ Info (15717): Design contains 409 virtual pins; timing numbers associated with p
     Info (15718): Pin "data[2]" is virtual input pin
     Info (15718): Pin "data[1]" is virtual input pin
     Info (15718): Pin "data[0]" is virtual input pin
-Info (21057): Implemented 4359 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 4380 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 2 output pins
-    Info (21061): Implemented 4290 logic cells
+    Info (21061): Implemented 4311 logic cells
     Info (21064): Implemented 64 RAM segments
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 9 warnings
     Info: Peak virtual memory: 4826 megabytes
-    Info: Processing ended: Fri Jun  9 23:02:10 2023
-    Info: Elapsed time: 00:00:23
-    Info: Total CPU time (on all processors): 00:00:15
+    Info: Processing ended: Sat Jun 10 12:06:29 2023
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:16
 
 
