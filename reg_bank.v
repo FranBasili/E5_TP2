@@ -5,7 +5,7 @@ module reg_bank(
     input wire [31:0]inPC,
     input wire [4:0]rd,
     input wire [31:0]busC,
-    input wire reset,
+    input wire reset,		// Tiene sentido el reset aca??
 
     output wire [31:0]outA,
     output wire [31:0]outB
@@ -20,8 +20,8 @@ module reg_bank(
 		end
 	end
 
-	always @(negedge clk, negedge reset) begin
-		if(!reset) begin
+	always @(negedge clk, posedge reset) begin
+		if(reset) begin
 			integer i;
 			for(i=0; i<32; i=i+1) begin
 				 banco[i] <= 0;

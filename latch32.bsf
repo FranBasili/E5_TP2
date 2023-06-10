@@ -41,9 +41,16 @@ https://fpgasoftware.intel.com/eula.
 	(port
 		(pt 0 64)
 		(input)
+		(text "reset" (rect 0 0 20 12)(font "Arial" ))
+		(text "reset" (rect 21 59 41 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64)(line_width 1))
+	)
+	(port
+		(pt 0 80)
+		(input)
 		(text "in[31..0]" (rect 0 0 29 12)(font "Arial" ))
-		(text "in[31..0]" (rect 21 59 50 71)(font "Arial" ))
-		(line (pt 0 64)(pt 16 64)(line_width 3))
+		(text "in[31..0]" (rect 21 75 50 87)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80)(line_width 3))
 	)
 	(port
 		(pt 168 32)

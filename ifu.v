@@ -1,35 +1,20 @@
 module ifu
 (
  input 	wire clk,
- input 	wire reset,
- input 	wire [31:0] mem,
  input 	wire [31:0] newPC,
  input 	wire setPC,
  input 	wire stop,
  
- output wire [31:0] pc,
- output	wire [31:0] instr
- );
-
-	reg [31:0] currPC = 0;
-	reg [31:0] currInstr = 0;	 
+ output reg [31:0] pc = 0
+ );	
 	
-	
-	always @(posedge clk, negedge reset) begin
-		if (!reset)	begin
-			currInstr <= 0;
-			currPC <= 0;
+	always @(posedge clk) begin
+		if (setPC) begin			// Seteo de nuevo PC en flanco negativo
+				pc <= newPC + 4;
 		end
-		else if (!stop) begin		// Solo fetchea si no esta halteado
-			if (setPC)
-				currPC <= newPC;
-			else
-				currPC <= currPC + 4;
-			currInstr <= mem;
+		else if (!stop) begin		// Solo incrementa PC en flanco positivo y si no esta halteado
+			pc <= pc + 4;
 		end
 	end
-
-	assign pc = currPC;
-	assign instr = currInstr;
  
 endmodule

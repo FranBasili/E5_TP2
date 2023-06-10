@@ -17,6 +17,16 @@
 
 `define OPCODE_ALU_RESTA    	10'b0100000000
 `define OPCODE_ALU_SUMA_IMM	    10'b0000000000
+`define OPCODE_ALU_SLT          10'b0000000010
+`define OPCODE_ALU_SLTU         10'b0000000011
+
+`define BEQ  3'b000
+`define BNE  3'b001
+`define BLT  3'b100
+`define BGE  3'b101
+`define BLTU 3'b110
+`define BGEU 3'b111
+
 
 module decoder(
 	input[31:0] instruction,
@@ -72,13 +82,20 @@ module decoder(
             
             `B_Type: begin
                 curr_selA = instruction[19:15]; curr_selB = instruction[24:20];
+                curr_selOut = 0; // escribo en rd0
                 curr_imm[31:12] = {20{instruction[31]}};
                 curr_imm[11:0] = { instruction[7], instruction[30:25], instruction [11:8], 1'b0};
                 // TODO: Ver como hacerlo
                     // Una forma: Hacer siempre la resta y pasarle el fun3 al JMP Control y que se fije
-                curr_aluCtrl = `OPCODE_ALU_RESTA;  // 10 bits de SUB funct (?)
+                if (instruction[14:12] == `BEQ || instruction[14:12] == `BNE)
+                    curr_aluCtrl = `OPCODE_ALU_RESTA;  // 10 bits de SUB funct (?)
+                else if (instruction[14:12] == `BLT || instruction[14:12] == `BGE)
+                    curr_aluCtrl = `OPCODE_ALU_SLT;
+                else if (instruction[14:12] == `BLTU || instruction[14:12] == `BGEU)
+                    curr_aluCtrl = `OPCODE_ALU_SLTU;
                 curr_jmp_type = instruction[14:12];
                 curr_new_jmp = 1;
+                curr_demux_alu = 0;
             end
 
             `S_Type: begin

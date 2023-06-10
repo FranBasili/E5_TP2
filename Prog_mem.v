@@ -40,18 +40,20 @@
 module Prog_mem (
 	address,
 	inclock,
-	inclocken,
+	outclock,
+	outclocken,
 	q);
 
 	input	[9:0]  address;
 	input	  inclock;
-	input	  inclocken;
+	input	  outclock;
+	input	  outclocken;
 	output	[31:0]  q;
 `ifndef ALTERA_RESERVED_QIS
 // synopsys translate_off
 `endif
 	tri1	  inclock;
-	tri1	  inclocken;
+	tri1	  outclocken;
 `ifndef ALTERA_RESERVED_QIS
 // synopsys translate_on
 `endif
@@ -62,7 +64,8 @@ module Prog_mem (
 	altsyncram	altsyncram_component (
 				.address_a (address),
 				.clock0 (inclock),
-				.clocken0 (inclocken),
+				.clock1 (outclock),
+				.clocken1 (outclocken),
 				.q_a (sub_wire0),
 				.aclr0 (1'b0),
 				.aclr1 (1'b0),
@@ -71,8 +74,7 @@ module Prog_mem (
 				.addressstall_b (1'b0),
 				.byteena_a (1'b1),
 				.byteena_b (1'b1),
-				.clock1 (1'b1),
-				.clocken1 (1'b1),
+				.clocken0 (1'b1),
 				.clocken2 (1'b1),
 				.clocken3 (1'b1),
 				.data_a ({32{1'b1}}),
@@ -85,16 +87,15 @@ module Prog_mem (
 				.wren_b (1'b0));
 	defparam
 		altsyncram_component.address_aclr_a = "NONE",
-		altsyncram_component.clock_enable_input_a = "NORMAL",
-		altsyncram_component.clock_enable_output_a = "BYPASS",
+		altsyncram_component.clock_enable_input_a = "BYPASS",
+		altsyncram_component.clock_enable_output_a = "NORMAL",
 		altsyncram_component.init_file = "prog_mem.mif",
 		altsyncram_component.intended_device_family = "Cyclone IV E",
-		altsyncram_component.lpm_hint = "ENABLE_RUNTIME_MOD=NO",
 		altsyncram_component.lpm_type = "altsyncram",
 		altsyncram_component.numwords_a = 1024,
 		altsyncram_component.operation_mode = "ROM",
 		altsyncram_component.outdata_aclr_a = "NONE",
-		altsyncram_component.outdata_reg_a = "UNREGISTERED",
+		altsyncram_component.outdata_reg_a = "CLOCK1",
 		altsyncram_component.widthad_a = 10,
 		altsyncram_component.width_a = 32,
 		altsyncram_component.width_byteena_a = 1;
@@ -112,7 +113,7 @@ endmodule
 // Retrieval info: PRIVATE: BYTE_ENABLE NUMERIC "0"
 // Retrieval info: PRIVATE: BYTE_SIZE NUMERIC "8"
 // Retrieval info: PRIVATE: BlankMemory NUMERIC "0"
-// Retrieval info: PRIVATE: CLOCK_ENABLE_INPUT_A NUMERIC "1"
+// Retrieval info: PRIVATE: CLOCK_ENABLE_INPUT_A NUMERIC "0"
 // Retrieval info: PRIVATE: CLOCK_ENABLE_OUTPUT_A NUMERIC "1"
 // Retrieval info: PRIVATE: Clken NUMERIC "1"
 // Retrieval info: PRIVATE: IMPLEMENT_IN_LES NUMERIC "0"
@@ -126,7 +127,7 @@ endmodule
 // Retrieval info: PRIVATE: NUMWORDS_A NUMERIC "1024"
 // Retrieval info: PRIVATE: RAM_BLOCK_TYPE NUMERIC "0"
 // Retrieval info: PRIVATE: RegAddr NUMERIC "1"
-// Retrieval info: PRIVATE: RegOutput NUMERIC "0"
+// Retrieval info: PRIVATE: RegOutput NUMERIC "1"
 // Retrieval info: PRIVATE: SYNTH_WRAPPER_GEN_POSTFIX STRING "1"
 // Retrieval info: PRIVATE: SingleClock NUMERIC "0"
 // Retrieval info: PRIVATE: UseDQRAM NUMERIC "0"
@@ -135,26 +136,27 @@ endmodule
 // Retrieval info: PRIVATE: rden NUMERIC "0"
 // Retrieval info: LIBRARY: altera_mf altera_mf.altera_mf_components.all
 // Retrieval info: CONSTANT: ADDRESS_ACLR_A STRING "NONE"
-// Retrieval info: CONSTANT: CLOCK_ENABLE_INPUT_A STRING "NORMAL"
-// Retrieval info: CONSTANT: CLOCK_ENABLE_OUTPUT_A STRING "BYPASS"
+// Retrieval info: CONSTANT: CLOCK_ENABLE_INPUT_A STRING "BYPASS"
+// Retrieval info: CONSTANT: CLOCK_ENABLE_OUTPUT_A STRING "NORMAL"
 // Retrieval info: CONSTANT: INIT_FILE STRING "prog_mem.mif"
 // Retrieval info: CONSTANT: INTENDED_DEVICE_FAMILY STRING "Cyclone IV E"
-// Retrieval info: CONSTANT: LPM_HINT STRING "ENABLE_RUNTIME_MOD=NO"
 // Retrieval info: CONSTANT: LPM_TYPE STRING "altsyncram"
 // Retrieval info: CONSTANT: NUMWORDS_A NUMERIC "1024"
 // Retrieval info: CONSTANT: OPERATION_MODE STRING "ROM"
 // Retrieval info: CONSTANT: OUTDATA_ACLR_A STRING "NONE"
-// Retrieval info: CONSTANT: OUTDATA_REG_A STRING "UNREGISTERED"
+// Retrieval info: CONSTANT: OUTDATA_REG_A STRING "CLOCK1"
 // Retrieval info: CONSTANT: WIDTHAD_A NUMERIC "10"
 // Retrieval info: CONSTANT: WIDTH_A NUMERIC "32"
 // Retrieval info: CONSTANT: WIDTH_BYTEENA_A NUMERIC "1"
 // Retrieval info: USED_PORT: address 0 0 10 0 INPUT NODEFVAL "address[9..0]"
 // Retrieval info: USED_PORT: inclock 0 0 0 0 INPUT VCC "inclock"
-// Retrieval info: USED_PORT: inclocken 0 0 0 0 INPUT VCC "inclocken"
+// Retrieval info: USED_PORT: outclock 0 0 0 0 INPUT NODEFVAL "outclock"
+// Retrieval info: USED_PORT: outclocken 0 0 0 0 INPUT VCC "outclocken"
 // Retrieval info: USED_PORT: q 0 0 32 0 OUTPUT NODEFVAL "q[31..0]"
 // Retrieval info: CONNECT: @address_a 0 0 10 0 address 0 0 10 0
 // Retrieval info: CONNECT: @clock0 0 0 0 0 inclock 0 0 0 0
-// Retrieval info: CONNECT: @clocken0 0 0 0 0 inclocken 0 0 0 0
+// Retrieval info: CONNECT: @clock1 0 0 0 0 outclock 0 0 0 0
+// Retrieval info: CONNECT: @clocken1 0 0 0 0 outclocken 0 0 0 0
 // Retrieval info: CONNECT: q 0 0 32 0 @q_a 0 0 32 0
 // Retrieval info: GEN_FILE: TYPE_NORMAL Prog_mem.v TRUE
 // Retrieval info: GEN_FILE: TYPE_NORMAL Prog_mem.inc FALSE
