@@ -12,6 +12,7 @@ clk => ifu:IFU.clk
 clk => latch5:LATCH_rd22.clk
 clk => latch5:LATCH_rd1.clk
 clk => latch32:LATCH_busB.clk
+clk => inst1.CLK
 clk => JMP:JMP.clock
 selOutDec[0] <= decoder:DECODER.selOut[0]
 selOutDec[1] <= decoder:DECODER.selOut[1]
@@ -20,6 +21,7 @@ selOutDec[3] <= decoder:DECODER.selOut[3]
 selOutDec[4] <= decoder:DECODER.selOut[4]
 selOutDec[5] <= decoder:DECODER.selOut[5]
 ctrl_fetch <= JMP:JMP.ctrlFetch
+global_reset <= JMP:JMP.global_reset
 selADec[0] <= decoder:DECODER.selA[0]
 selADec[1] <= decoder:DECODER.selA[1]
 selADec[2] <= decoder:DECODER.selA[2]
@@ -689,7 +691,6 @@ lam_control[6] <= curr_lam_control.DB_MAX_OUTPUT_PORT_TYPE
 lam_control[7] <= curr_lam_control.DB_MAX_OUTPUT_PORT_TYPE
 lam_control[8] <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
 lam_new <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
-demux_alu <= curr_lam_control.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |TP2|Prog_mem:ROM
@@ -1678,7 +1679,6 @@ global_reset <= global_reset~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |TP2|latchDec:LATCH_DEC
-clk => demux_alu_~reg0.CLK
 clk => lam_new_~reg0.CLK
 clk => lam_control_[0]~reg0.CLK
 clk => lam_control_[1]~reg0.CLK
@@ -1827,8 +1827,6 @@ en => lam_control_[2]~reg0.ENA
 en => lam_control_[1]~reg0.ENA
 en => lam_control_[0]~reg0.ENA
 en => lam_new_~reg0.ENA
-en => demux_alu_~reg0.ENA
-reset => demux_alu_~reg0.ACLR
 reset => lam_new_~reg0.ACLR
 reset => lam_control_[0]~reg0.ACLR
 reset => lam_control_[1]~reg0.ACLR
@@ -1977,7 +1975,6 @@ lam_control[6] => lam_control_[6]~reg0.DATAIN
 lam_control[7] => lam_control_[7]~reg0.DATAIN
 lam_control[8] => lam_control_[8]~reg0.DATAIN
 lam_new => lam_new_~reg0.DATAIN
-demux_alu => demux_alu_~reg0.DATAIN
 imm_[0] <= imm_[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 imm_[1] <= imm_[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 imm_[2] <= imm_[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
@@ -2052,7 +2049,6 @@ lam_control_[6] <= lam_control_[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 lam_control_[7] <= lam_control_[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 lam_control_[8] <= lam_control_[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 lam_new_ <= lam_new_~reg0.DB_MAX_OUTPUT_PORT_TYPE
-demux_alu_ <= demux_alu_~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |TP2|latch32:LATCH_busC

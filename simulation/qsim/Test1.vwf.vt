@@ -19,7 +19,7 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "06/10/2023 20:03:32"
+// Generated on "06/11/2023 15:03:02"
                                                                                 
 // Verilog Test Bench (with test vectors) for design :                          TP2
 // 
@@ -47,6 +47,7 @@ wire [31:0] busA;
 wire [31:0] busB;
 wire [31:0] busC;
 wire ctrl_fetch;
+wire global_reset;
 wire halt;
 wire [31:0] imm;
 wire [31:0] instruction;
@@ -78,6 +79,7 @@ TP2 i1 (
 	.ctrl_fetch(ctrl_fetch),
 	.data(data),
 	.enwr(enwr),
+	.global_reset(global_reset),
 	.halt(halt),
 	.imm(imm),
 	.inclock(inclock),
@@ -94,7 +96,7 @@ TP2 i1 (
 );
 initial 
 begin 
-#1000000 $finish;
+#2000000 $finish;
 end 
 
 // clk

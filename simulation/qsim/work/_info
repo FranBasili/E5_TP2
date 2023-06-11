@@ -117,6 +117,21 @@ R0
 R0
 R0
 R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
 !s11f MIXED_VERSIONS
 13
 !s112 1.1
@@ -126,20 +141,20 @@ R0
 cModel Technology
 Z1 dE:/Windows/ITBA/Electronica V/Projects/TP2/simulation/qsim
 T_opt
-!s110 1686438217
-VUzNI`a9RIE7EDD3;h2RS<0
+!s110 1686506587
+VJXg@k0>6Ti[;Q=HTd]23Z3
 Z2 04 15 4 work TP2_vlg_vec_tst fast 0
-=1-2cf05db36f37-64850147-12c-4ad8
+=1-2cf05db36f37-64860c59-204-38d8
 !s124 OEM10U2 
 Z3 o-quiet -auto_acc_if_foreign -work work -L cycloneive_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver +acc
 Z4 tCvgOpt 0
 n@_opt
 Z5 OL;O;2021.2;73
 T_opt1
-!s110 1686410050
-V;6Qj=:ATz>[ET2=9@e8>j0
+!s110 1686499769
+V=M^5]`DP?NR35TU6GoB?:3
 R2
-=1-2cf05db36f37-64849340-356-4b5c
+=1-2cf05db36f37-6485f1b7-34c-2214
 Z6 !s124 OEM10U3 
 R3
 R4
@@ -147,10 +162,10 @@ n@_opt1
 R5
 R1
 T_opt2
-!s110 1686410095
-V?8iMV:kCob=81^[NM0IXb1
+!s110 1686499938
+VIbB71Xe;ZfhCGCMU3;6181
 R2
-=1-2cf05db36f37-6484936e-148-27c0
+=1-2cf05db36f37-6485f260-1cb-4b00
 R6
 R3
 R4
@@ -158,44 +173,44 @@ n@_opt2
 R5
 R1
 vhard_block
-!s110 1686434654
+!s110 1686500103
 !i10b 1
-!s100 U3OF1o5J]<3W=4?5O4]oc2
-IHhT6GPG:MB9kK[^2fX89>2
+!s100 eUXj2IWlmLTc3hMF6h9mE0
+INIOi6HbJ;R`VkaiXA`]kf1
 Z7 dC:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/simulation/qsim
-w1686434652
+w1686500101
 Z8 8TP2.vo
 Z9 FTP2.vo
-!i122 246
-L0 93873 34
+!i122 286
+L0 94452 34
 Z10 VDg1SIo80bB@j0V0VzS_@n1
 Z11 OL;L;2021.2;73
 r1
 !s85 0
 31
-!s108 1686434654.000000
+!s108 1686500102.000000
 Z12 !s107 TP2.vo|
 Z13 !s90 -work|work|TP2.vo|
 !i113 0
 Z14 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R4
 vTP2
-Z15 !s110 1686438214
+!s110 1686506584
 !i10b 1
-!s100 0KGZgU5YR4lmUO4kIR;@?2
-IbVGIKlY_@J>dn?Mj8fz^71
+!s100 odEOaWndleQTYaA=KhM][1
+I29Q<oW^L;]PEV^9WKI4^J0
 R7
-w1686438213
+w1686506583
 R8
 R9
-!i122 258
-L0 32 87629
+!i122 290
+L0 32 87438
 R10
 R11
 r1
 !s85 0
 31
-Z16 !s108 1686438214.000000
+!s108 1686506584.000000
 R12
 R13
 !i113 0
@@ -203,22 +218,22 @@ R14
 R4
 n@t@p2
 vTP2_vlg_vec_tst
-R15
+!s110 1686506585
 !i10b 1
-!s100 Eh>K5odaAH1jAG?nE6O7j0
-IAiGC07G[_>cmH3TiKFE5f1
+!s100 ?>n5CH^g1Qa0][GYb_c6I0
+I4RJO0lM7gfFj3h3HGK^fY3
 R7
-w1686438212
+w1686506582
 8Test1.vwf.vt
 FTest1.vwf.vt
-!i122 259
-L0 30 78
+!i122 291
+L0 30 80
 R10
 R11
 r1
 !s85 0
 31
-R16
+!s108 1686506585.000000
 !s107 Test1.vwf.vt|
 !s90 -work|work|Test1.vwf.vt|
 !i113 0

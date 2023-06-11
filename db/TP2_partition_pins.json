@@ -32,6 +32,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "global_reset",
+					"strict" : false
+				},
+				{
 					"name" : "selADec[5]",
 					"strict" : false
 				},

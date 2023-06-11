@@ -29,32 +29,31 @@
 
 
 module decoder(
-	input[31:0] instruction,
+	input wire [31:0] instruction,
 
 	output wire [9:0] aluCtrl,   // {funct7, funct3}
 	output wire [31:0] imm,
 	output wire [5:0] selA,      // Este tiene 6 porque incluye al PC
 	output wire [4:0] selB,
-	output wire [5:0] selOut,
-    output wire imm_en,           // para la ALU (?)
-    output wire [2:0] jmp_type,   // On new jump detected (JMP control unit)
-    output wire new_jmp,
-    output wire [8:0] lam_control, // LAM unit signals control
-    output wire lam_new,
-    output wire demux_alu        // for routing alu output signals  
+	output wire [5:0] selOut,	
+	output wire imm_en,           // Para la ALU
+	output wire [2:0] jmp_type,   // On new jump detected (JMP control unit)
+	output wire new_jmp,
+	output reg jalr_rs,
+	output wire [8:0] lam_control, // LAM unit signals control
+	output wire lam_new
 );
 
 	reg [9:0] curr_aluCtrl;   
 	reg [5:0] curr_selA;      
 	reg [4:0] curr_selB;
 	reg [5:0] curr_selOut;
-    reg curr_imm_en;
+	reg curr_imm_en;
 	reg [31:0] curr_imm;
-    reg [2:0] curr_jmp_type;
-    reg curr_new_jmp;
-    reg [8:0] curr_lam_control;
-    reg curr_lam_new;
-    reg curr_demux_alu;
+	reg [2:0] curr_jmp_type;
+	reg curr_new_jmp;
+	reg [8:0] curr_lam_control;
+	reg curr_lam_new;
 
 
 	always @(instruction) begin
@@ -68,7 +67,6 @@ module decoder(
         curr_new_jmp = 0;
         curr_lam_control = 0;
         curr_lam_new = 0;
-        curr_demux_alu = 0;    // en 0 escribo sobre el banco de reg
 
 		  
         case (instruction[6:0])
@@ -85,17 +83,16 @@ module decoder(
                 curr_selOut = 0; // escribo en rd0
                 curr_imm[31:12] = {20{instruction[31]}};
                 curr_imm[11:0] = { instruction[7], instruction[30:25], instruction [11:8], 1'b0};
-                // TODO: Ver como hacerlo
-                    // Una forma: Hacer siempre la resta y pasarle el fun3 al JMP Control y que se fije
-                if (instruction[14:12] == `BEQ || instruction[14:12] == `BNE)
-                    curr_aluCtrl = `OPCODE_ALU_RESTA;  // 10 bits de SUB funct (?)
+                // Para BEQ y BNE restamos y vemos flag Z
+					 if (instruction[14:12] == `BEQ || instruction[14:12] == `BNE)
+                    curr_aluCtrl = `OPCODE_ALU_RESTA;
+					// Para BLT(U) y BGE(U), aprovechamos las operaciones SLT(U). Luego el JMPCtrl se fija el resultado
                 else if (instruction[14:12] == `BLT || instruction[14:12] == `BGE)
                     curr_aluCtrl = `OPCODE_ALU_SLT;
                 else if (instruction[14:12] == `BLTU || instruction[14:12] == `BGEU)
                     curr_aluCtrl = `OPCODE_ALU_SLTU;
                 curr_jmp_type = instruction[14:12];
                 curr_new_jmp = 1;
-                curr_demux_alu = 0;
             end
 
             `S_Type: begin
@@ -104,7 +101,6 @@ module decoder(
                 curr_aluCtrl = `OPCODE_ALU_SUMA_IMM;
                 curr_imm_en = 1;
                 curr_lam_control = {`STORE_INST, instruction[14:12], instruction[24:20]};
-                curr_demux_alu = 1;
             end
           
             `U_LUI_Type: begin
@@ -134,6 +130,7 @@ module decoder(
                 curr_imm = { {21{instruction[31]}}, instruction[30:20]};
                 curr_selOut = instruction[11:7];
                 curr_new_jmp = 1;
+                jalr_rs = instruction[19:15];
                 curr_jmp_type = `JALR_BITS;
             end
 
@@ -143,7 +140,6 @@ module decoder(
                 curr_lam_control = {`LOAD_INST, instruction[14:12], instruction[11:7]};
                 curr_imm_en = 1;
                 curr_aluCtrl = `OPCODE_ALU_SUMA_IMM;
-                curr_demux_alu = 1;
             end
 
             `IMM_Type: begin
@@ -157,7 +153,7 @@ module decoder(
             end
 
              default:
-                 curr_selOut = 0;
+					curr_selOut = 0;	// Ante la duda, que no escriba en registros
         endcase
 	end
 
@@ -171,6 +167,5 @@ module decoder(
     assign  new_jmp = curr_new_jmp;
     assign  lam_control = curr_lam_control;
     assign  lam_new = curr_lam_new;
-    assign  demux_alu = curr_demux_alu;
 
 endmodule

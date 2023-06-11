@@ -12,7 +12,6 @@ input wire [2:0] jmp_type,
 input wire new_jmp,
 input wire [8:0] lam_control,
 input wire lam_new,
-input wire demux_alu,
 
 output reg [31:0] imm_,
 output reg imm_en_,
@@ -23,8 +22,7 @@ output reg [5:0] selOut_,
 output reg [2:0] jmp_type_,
 output reg new_jmp_,
 output reg [8:0] lam_control_,
-output reg lam_new_,
-output reg demux_alu_
+output reg lam_new_
 );
 
 
@@ -41,7 +39,6 @@ always @(posedge clk, posedge reset) begin
 		new_jmp_ <= 0;
 		lam_control_ <= 0;
 		lam_new_ <= 0;
-		demux_alu_ <= 0;
 	end
 	else if (en) begin
 		imm_ <= imm;
@@ -54,7 +51,6 @@ always @(posedge clk, posedge reset) begin
 		new_jmp_ <= new_jmp;
 		lam_control_ <= lam_control;
 		lam_new_ <= lam_new;
-		demux_alu_ <= demux_alu;
     end
 end
 

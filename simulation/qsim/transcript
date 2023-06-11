@@ -2,25 +2,25 @@
 # ** Warning: (vlib-34) Library already exists at "work".
 # Errors: 0, Warnings: 1
 # Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 20:03:34 on Jun 10,2023
+# Start time: 15:03:04 on Jun 11,2023
 # vlog -work work TP2.vo 
 # -- Compiling module TP2
 # 
 # Top level modules:
 # 	TP2
-# End time: 20:03:34 on Jun 10,2023, Elapsed time: 0:00:00
+# End time: 15:03:05 on Jun 11,2023, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 20:03:34 on Jun 10,2023
+# Start time: 15:03:05 on Jun 11,2023
 # vlog -work work Test1.vwf.vt 
 # -- Compiling module TP2_vlg_vec_tst
 # 
 # Top level modules:
 # 	TP2_vlg_vec_tst
-# End time: 20:03:34 on Jun 10,2023, Elapsed time: 0:00:00
+# End time: 15:03:05 on Jun 11,2023, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vsim -voptargs=""+acc"" -c -t 1ps -L cycloneive_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.TP2_vlg_vec_tst 
-# Start time: 20:03:34 on Jun 10,2023
+# Start time: 15:03:05 on Jun 11,2023
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # //  Questa Intel Starter FPGA Edition-64
 # //  Version 2021.2 win64 Apr 14 2021
@@ -69,7 +69,7 @@
 # Loading cycloneive_ver.cycloneive_ram_block(fast__18)
 # Loading cycloneive_ver.cycloneive_ram_register(fast__3)
 # after#26
-# ** Note: $finish    : Test1.vwf.vt(97)
-#    Time: 1 us  Iteration: 0  Instance: /TP2_vlg_vec_tst
-# End time: 20:03:40 on Jun 10,2023, Elapsed time: 0:00:06
+# ** Note: $finish    : Test1.vwf.vt(99)
+#    Time: 2 us  Iteration: 0  Instance: /TP2_vlg_vec_tst
+# End time: 15:03:09 on Jun 11,2023, Elapsed time: 0:00:04
 # Errors: 0, Warnings: 0
