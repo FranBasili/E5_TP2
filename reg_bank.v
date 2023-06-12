@@ -1,17 +1,20 @@
 module reg_bank(
     input wire clk,
-    input wire [5:0]selA,
-    input wire [4:0]selB,
-    input wire [31:0]inPC,
-    input wire [4:0]rd,
-    input wire [31:0]busC,
-    input wire reset,		// Tiene sentido el reset aca??
+    input wire [5:0] selA,
+    input wire [4:0] selB,
+    input wire [31:0] inPC,
+    input wire [4:0] rd,
+    input wire [31:0] busC,
+	 input wire [5:0] selJ,		// Selector de registro para unidad de JMP
+    input wire reset,			// Tiene sentido el reset aca??
 
-    output wire [31:0]outA,
-    output wire [31:0]outB
+    output wire [31:0] outA,
+    output wire [31:0] outB,
+	 output wire [31:0] outJ	// Bus con la unidad de JMP
+    
 );
 
-	reg [31:0]banco[31:0]; 
+	reg [31:0]banco[31:0];
 	
 	initial begin
 		integer i;
@@ -33,8 +36,9 @@ module reg_bank(
 		end
 	end
 
-//assign banco[0] = 0;
 assign outA = selA < 32 ? banco[selA] : inPC;      // Muxes de buses
 assign outB = banco[selB];
+
+assign outJ = selJ < 32 ? banco[selJ] : inPC;		// Bus de JMP
 
 endmodule

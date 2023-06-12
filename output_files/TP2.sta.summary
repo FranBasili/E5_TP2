@@ -3,47 +3,67 @@ Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'clk'
-Slack : -8.313
-TNS   : -4146.033
+Slack : -9.051
+TNS   : -5144.897
+
+Type  : Slow 1200mV 85C Model Setup 'latchDec:LATCH_DEC|jmp_type_[1]'
+Slack : -7.666
+TNS   : -210.285
 
 Type  : Slow 1200mV 85C Model Setup 'inclock'
-Slack : -2.483
-TNS   : -79.456
+Slack : -2.484
+TNS   : -79.488
 
 Type  : Slow 1200mV 85C Model Hold 'clk'
-Slack : 0.372
+Slack : 0.373
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'latchDec:LATCH_DEC|jmp_type_[1]'
+Slack : 0.914
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'inclock'
-Slack : 3.003
+Slack : 3.004
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Recovery 'clk'
-Slack : -2.515
-TNS   : -472.709
+Slack : -2.839
+TNS   : -455.426
 
 Type  : Slow 1200mV 85C Model Removal 'clk'
-Slack : 2.626
+Slack : 1.905
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk'
 Slack : -3.000
-TNS   : -1397.264
+TNS   : -1414.264
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'inclock'
 Slack : -3.000
 TNS   : -85.612
 
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'latchDec:LATCH_DEC|jmp_type_[1]'
+Slack : 0.335
+TNS   : 0.000
+
 Type  : Slow 1200mV 0C Model Setup 'clk'
-Slack : -7.382
-TNS   : -3690.807
+Slack : -8.006
+TNS   : -4571.966
+
+Type  : Slow 1200mV 0C Model Setup 'latchDec:LATCH_DEC|jmp_type_[1]'
+Slack : -6.899
+TNS   : -188.649
 
 Type  : Slow 1200mV 0C Model Setup 'inclock'
 Slack : -2.178
 TNS   : -69.696
 
 Type  : Slow 1200mV 0C Model Hold 'clk'
-Slack : 0.338
+Slack : 0.339
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'latchDec:LATCH_DEC|jmp_type_[1]'
+Slack : 0.959
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'inclock'
@@ -51,51 +71,67 @@ Slack : 2.754
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Recovery 'clk'
-Slack : -2.183
-TNS   : -408.515
+Slack : -2.472
+TNS   : -394.435
 
 Type  : Slow 1200mV 0C Model Removal 'clk'
-Slack : 2.383
+Slack : 1.769
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk'
 Slack : -3.000
-TNS   : -1397.264
+TNS   : -1414.264
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'inclock'
 Slack : -3.000
 TNS   : -85.612
 
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'latchDec:LATCH_DEC|jmp_type_[1]'
+Slack : 0.397
+TNS   : 0.000
+
 Type  : Fast 1200mV 0C Model Setup 'clk'
-Slack : -4.278
-TNS   : -1843.859
+Slack : -4.961
+TNS   : -2417.533
+
+Type  : Fast 1200mV 0C Model Setup 'latchDec:LATCH_DEC|jmp_type_[1]'
+Slack : -4.192
+TNS   : -112.897
 
 Type  : Fast 1200mV 0C Model Setup 'inclock'
 Slack : -1.240
 TNS   : -39.680
 
 Type  : Fast 1200mV 0C Model Hold 'clk'
-Slack : 0.193
+Slack : 0.194
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'latchDec:LATCH_DEC|jmp_type_[1]'
+Slack : 0.549
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'inclock'
-Slack : 1.929
+Slack : 1.928
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Recovery 'clk'
-Slack : -1.583
-TNS   : -302.499
+Slack : -1.763
+TNS   : -288.545
 
 Type  : Fast 1200mV 0C Model Removal 'clk'
-Slack : 2.045
+Slack : 1.529
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk'
 Slack : -3.000
-TNS   : -1495.018
+TNS   : -1497.743
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'inclock'
 Slack : -3.000
-TNS   : -45.448
+TNS   : -45.442
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'latchDec:LATCH_DEC|jmp_type_[1]'
+Slack : 0.324
+TNS   : 0.000
 
 ------------------------------------------------------------

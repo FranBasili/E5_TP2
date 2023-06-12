@@ -39,7 +39,7 @@ module decoder(
 	output wire imm_en,           // Para la ALU
 	output wire [2:0] jmp_type,   // On new jump detected (JMP control unit)
 	output wire new_jmp,
-	output reg jalr_rs,
+	output reg [5:0] jal_rs,
 	output wire [8:0] lam_control, // LAM unit signals control
 	output wire lam_new
 );
@@ -65,6 +65,7 @@ module decoder(
         curr_aluCtrl = 0;
         curr_jmp_type = 0;
         curr_new_jmp = 0;
+		  jal_rs = 0;
         curr_lam_control = 0;
         curr_lam_new = 0;
 
@@ -123,6 +124,7 @@ module decoder(
                 curr_imm = { {12{instruction[31]}}, instruction[19:12], instruction[20], instruction[30:21], 1'b0};
                 curr_selOut = instruction[11:7];
                 curr_new_jmp = 1;
+					 jal_rs = 32;		// Seleccionamos el PC
                 curr_jmp_type = `JAL_BITS;
             end
 
@@ -130,7 +132,7 @@ module decoder(
                 curr_imm = { {21{instruction[31]}}, instruction[30:20]};
                 curr_selOut = instruction[11:7];
                 curr_new_jmp = 1;
-                jalr_rs = instruction[19:15];
+                jal_rs = instruction[19:15];
                 curr_jmp_type = `JALR_BITS;
             end
 

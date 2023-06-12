@@ -10,6 +10,7 @@ input wire [5:0] selOut,
 input wire imm_en,
 input wire [2:0] jmp_type,
 input wire new_jmp,
+input wire [5:0] jal_rs,
 input wire [8:0] lam_control,
 input wire lam_new,
 
@@ -21,6 +22,7 @@ output reg [4:0] selB_,
 output reg [5:0] selOut_,
 output reg [2:0] jmp_type_,
 output reg new_jmp_,
+output reg [5:0] jal_rs_,
 output reg [8:0] lam_control_,
 output reg lam_new_
 );
@@ -37,6 +39,7 @@ always @(posedge clk, posedge reset) begin
 		selOut_ <= 0;
 		jmp_type_ <= 0;
 		new_jmp_ <= 0;
+		jal_rs_ <= 0;
 		lam_control_ <= 0;
 		lam_new_ <= 0;
 	end
@@ -49,6 +52,7 @@ always @(posedge clk, posedge reset) begin
 		selOut_ <= selOut;
 		jmp_type_ <= jmp_type;
 		new_jmp_ <= new_jmp;
+		jal_rs_ <= jal_rs;
 		lam_control_ <= lam_control;
 		lam_new_ <= lam_new;
     end

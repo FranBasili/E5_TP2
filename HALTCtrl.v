@@ -8,7 +8,6 @@ module HALTCtrl(
 );
 
 	reg [5:0] prev_rd = 0;
-	
 
 	always @(posedge clk) begin
 		if (prev_rd != 0 && (curr_rs1 == prev_rd || curr_rs2 == prev_rd)) begin

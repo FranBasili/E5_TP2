@@ -1,5 +1,5 @@
 Analysis & Synthesis report for TP2
-Sun Jun 11 15:02:57 2023
+Sun Jun 11 23:59:13 2023
 Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
 
 
@@ -15,19 +15,21 @@ Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Analysis & Synthesis RAM Summary
   9. Analysis & Synthesis IP Cores Summary
- 10. Registers Removed During Synthesis
- 11. General Register Statistics
- 12. Multiplexer Restructuring Statistics (Restructuring Performed)
- 13. Source assignments for Prog_mem:ROM|altsyncram:altsyncram_component|altsyncram_kn81:auto_generated
- 14. Source assignments for ram:RAM|altsyncram:altsyncram_component|altsyncram_3ef1:auto_generated
- 15. Parameter Settings for User Entity Instance: Prog_mem:ROM|altsyncram:altsyncram_component
- 16. Parameter Settings for User Entity Instance: BUSMUX:mux_addr
- 17. Parameter Settings for User Entity Instance: BUSMUX:mux_rd
- 18. Parameter Settings for User Entity Instance: ram:RAM|altsyncram:altsyncram_component
- 19. altsyncram Parameter Settings by Entity Instance
- 20. Post-Synthesis Netlist Statistics for Top Partition
- 21. Elapsed Time Per Partition
- 22. Analysis & Synthesis Messages
+ 10. User-Specified and Inferred Latches
+ 11. Registers Removed During Synthesis
+ 12. Removed Registers Triggering Further Register Optimizations
+ 13. General Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Source assignments for Prog_mem:ROM|altsyncram:altsyncram_component|altsyncram_kn81:auto_generated
+ 16. Source assignments for ram:RAM|altsyncram:altsyncram_component|altsyncram_3ef1:auto_generated
+ 17. Parameter Settings for User Entity Instance: Prog_mem:ROM|altsyncram:altsyncram_component
+ 18. Parameter Settings for User Entity Instance: BUSMUX:mux_addr
+ 19. Parameter Settings for User Entity Instance: BUSMUX:mux_rd
+ 20. Parameter Settings for User Entity Instance: ram:RAM|altsyncram:altsyncram_component
+ 21. altsyncram Parameter Settings by Entity Instance
+ 22. Post-Synthesis Netlist Statistics for Top Partition
+ 23. Elapsed Time Per Partition
+ 24. Analysis & Synthesis Messages
 
 
 
@@ -54,16 +56,16 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Jun 11 15:02:57 2023          ;
+; Analysis & Synthesis Status        ; Successful - Sun Jun 11 23:59:13 2023          ;
 ; Quartus Prime Version              ; 22.1std.1 Build 917 02/14/2023 SC Lite Edition ;
 ; Revision Name                      ; TP2                                            ;
 ; Top-level Entity Name              ; TP2                                            ;
 ; Family                             ; Cyclone IV E                                   ;
-; Total logic elements               ; 4,104                                          ;
-;     Total combinational functions  ; 3,062                                          ;
-;     Dedicated logic registers      ; 1,316                                          ;
-; Total registers                    ; 1316                                           ;
-; Total pins                         ; 8                                              ;
+; Total logic elements               ; 4,902                                          ;
+;     Total combinational functions  ; 3,862                                          ;
+;     Dedicated logic registers      ; 1,333                                          ;
+; Total registers                    ; 1333                                           ;
+; Total pins                         ; 79                                             ;
 ; Total virtual pins                 ; 441                                            ;
 ; Total memory bits                  ; 40,960                                         ;
 ; Embedded Multiplier 9-bit elements ; 0                                              ;
@@ -223,32 +225,32 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 4,104     ;
+; Estimated Total logic elements              ; 4,902     ;
 ;                                             ;           ;
-; Total combinational functions               ; 3062      ;
+; Total combinational functions               ; 3862      ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 2126      ;
-;     -- 3 input functions                    ; 748       ;
-;     -- <=2 input functions                  ; 188       ;
+;     -- 4 input functions                    ; 2845      ;
+;     -- 3 input functions                    ; 864       ;
+;     -- <=2 input functions                  ; 153       ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 2757      ;
-;     -- arithmetic mode                      ; 305       ;
+;     -- normal mode                          ; 3526      ;
+;     -- arithmetic mode                      ; 336       ;
 ;                                             ;           ;
-; Total registers                             ; 1316      ;
-;     -- Dedicated logic registers            ; 1316      ;
+; Total registers                             ; 1333      ;
+;     -- Dedicated logic registers            ; 1333      ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
 ; Virtual pins                                ; 441       ;
-; I/O pins                                    ; 8         ;
+; I/O pins                                    ; 79        ;
 ; Total memory bits                           ; 40960     ;
 ;                                             ;           ;
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 1348      ;
-; Total fan-out                               ; 16200     ;
-; Average fan-out                             ; 3.31      ;
+; Maximum fan-out                             ; 1365      ;
+; Total fan-out                               ; 19572     ;
+; Average fan-out                             ; 3.34      ;
 +---------------------------------------------+-----------+
 
 
@@ -257,20 +259,20 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                              ; Entity Name     ; Library Name ;
 +-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------+-----------------+--------------+
-; |TP2                                      ; 3062 (0)            ; 1316 (1)                  ; 40960       ; 0            ; 0       ; 0         ; 8    ; 441          ; |TP2                                                                             ; TP2             ; work         ;
+; |TP2                                      ; 3862 (2)            ; 1333 (1)                  ; 40960       ; 0            ; 0       ; 0         ; 79   ; 441          ; |TP2                                                                             ; TP2             ; work         ;
 ;    |HALTCtrl:HALTCtrl|                    ; 14 (14)             ; 6 (6)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|HALTCtrl:HALTCtrl                                                           ; HALTCtrl        ; work         ;
-;    |JMP:JMP|                              ; 107 (107)           ; 73 (73)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|JMP:JMP                                                                     ; JMP             ; work         ;
+;    |JMP:JMP|                              ; 226 (226)           ; 84 (84)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|JMP:JMP                                                                     ; JMP             ; work         ;
 ;    |Prog_mem:ROM|                         ; 0 (0)               ; 0 (0)                     ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|Prog_mem:ROM                                                                ; Prog_mem        ; work         ;
 ;       |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|Prog_mem:ROM|altsyncram:altsyncram_component                                ; altsyncram      ; work         ;
 ;          |altsyncram_kn81:auto_generated| ; 0 (0)               ; 0 (0)                     ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|Prog_mem:ROM|altsyncram:altsyncram_component|altsyncram_kn81:auto_generated ; altsyncram_kn81 ; work         ;
-;    |alu:ALU|                              ; 1310 (1310)         ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|alu:ALU                                                                     ; alu             ; work         ;
+;    |alu:ALU|                              ; 1280 (1280)         ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|alu:ALU                                                                     ; alu             ; work         ;
 ;    |busmux:mux_addr|                      ; 10 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|busmux:mux_addr                                                             ; busmux          ; work         ;
 ;       |lpm_mux:$00000|                    ; 10 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|busmux:mux_addr|lpm_mux:$00000                                              ; lpm_mux         ; work         ;
 ;          |mux_nsc:auto_generated|         ; 10 (10)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|busmux:mux_addr|lpm_mux:$00000|mux_nsc:auto_generated                       ; mux_nsc         ; work         ;
 ;    |busmux:mux_rd|                        ; 5 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|busmux:mux_rd                                                               ; busmux          ; work         ;
 ;       |lpm_mux:$00000|                    ; 5 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|busmux:mux_rd|lpm_mux:$00000                                                ; lpm_mux         ; work         ;
 ;          |mux_brc:auto_generated|         ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|busmux:mux_rd|lpm_mux:$00000|mux_brc:auto_generated                         ; mux_brc         ; work         ;
-;    |decoder:DECODER|                      ; 128 (128)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|decoder:DECODER                                                             ; decoder         ; work         ;
+;    |decoder:DECODER|                      ; 134 (134)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|decoder:DECODER                                                             ; decoder         ; work         ;
 ;    |ifu:IFU|                              ; 61 (61)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|ifu:IFU                                                                     ; ifu             ; work         ;
 ;    |latch32:LATCH_busA|                   ; 0 (0)               ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|latch32:LATCH_busA                                                          ; latch32         ; work         ;
 ;    |latch32:LATCH_busB|                   ; 0 (0)               ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|latch32:LATCH_busB                                                          ; latch32         ; work         ;
@@ -278,11 +280,11 @@ https://fpgasoftware.intel.com/eula.
 ;    |latch5:LATCH_rd1|                     ; 0 (0)               ; 5 (5)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|latch5:LATCH_rd1                                                            ; latch5          ; work         ;
 ;    |latch5:LATCH_rd22|                    ; 0 (0)               ; 5 (5)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|latch5:LATCH_rd22                                                           ; latch5          ; work         ;
 ;    |latchAluIn:LATCH_aluIn|               ; 0 (0)               ; 43 (43)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|latchAluIn:LATCH_aluIn                                                      ; latchAluIn      ; work         ;
-;    |latchDec:LATCH_DEC|                   ; 4 (4)               ; 63 (63)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|latchDec:LATCH_DEC                                                          ; latchDec        ; work         ;
+;    |latchDec:LATCH_DEC|                   ; 3 (3)               ; 69 (69)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|latchDec:LATCH_DEC                                                          ; latchDec        ; work         ;
 ;    |ram:RAM|                              ; 0 (0)               ; 0 (0)                     ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|ram:RAM                                                                     ; ram             ; work         ;
 ;       |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|ram:RAM|altsyncram:altsyncram_component                                     ; altsyncram      ; work         ;
 ;          |altsyncram_3ef1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|ram:RAM|altsyncram:altsyncram_component|altsyncram_3ef1:auto_generated      ; altsyncram_3ef1 ; work         ;
-;    |reg_bank:REG_BANK|                    ; 1423 (1423)         ; 992 (992)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|reg_bank:REG_BANK                                                           ; reg_bank        ; work         ;
+;    |reg_bank:REG_BANK|                    ; 2127 (2127)         ; 992 (992)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP2|reg_bank:REG_BANK                                                           ; reg_bank        ; work         ;
 +-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------+-----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -307,13 +309,57 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------+--------------+---------+--------------+--------------+-------------------+-----------------+
 
 
++----------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                ;
++-----------------------------------------------------+---------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal ; Free of Timing Hazards ;
++-----------------------------------------------------+---------------------+------------------------+
+; JMP:JMP|nextPCJal[31]                               ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[30]                               ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[29]                               ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[28]                               ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[27]                               ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[26]                               ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[25]                               ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[24]                               ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[23]                               ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[22]                               ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[21]                               ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[20]                               ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[19]                               ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[18]                               ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[17]                               ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[16]                               ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[15]                               ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[14]                               ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[13]                               ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[12]                               ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[11]                               ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[10]                               ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[9]                                ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[8]                                ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[7]                                ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[6]                                ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[5]                                ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[4]                                ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[3]                                ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[2]                                ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[1]                                ; JMP:JMP|always2     ; yes                    ;
+; JMP:JMP|nextPCJal[0]                                ; JMP:JMP|always2     ; yes                    ;
+; Number of user-specified and inferred latches = 32  ;                     ;                        ;
++-----------------------------------------------------+---------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
 +--------------------------------------------------------------------------------------+
 ; Registers Removed During Synthesis                                                   ;
 +----------------------------------------+---------------------------------------------+
 ; Register name                          ; Reason for Removal                          ;
 +----------------------------------------+---------------------------------------------+
 ; latchDec:LATCH_DEC|selOut_[5]          ; Stuck at GND due to stuck port data_in      ;
+; JMP:JMP|prev_rd[0][5]                  ; Stuck at GND due to stuck port data_in      ;
 ; HALTCtrl:HALTCtrl|prev_rd[5]           ; Stuck at GND due to stuck port data_in      ;
+; JMP:JMP|prev_rd[1][5]                  ; Stuck at GND due to stuck port data_in      ;
 ; reg_bank:REG_BANK|banco[0][31]         ; Stuck at GND due to stuck port clock_enable ;
 ; reg_bank:REG_BANK|banco[0][30]         ; Stuck at GND due to stuck port clock_enable ;
 ; reg_bank:REG_BANK|banco[0][29]         ; Stuck at GND due to stuck port clock_enable ;
@@ -346,8 +392,18 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; reg_bank:REG_BANK|banco[0][2]          ; Stuck at GND due to stuck port clock_enable ;
 ; reg_bank:REG_BANK|banco[0][1]          ; Stuck at GND due to stuck port clock_enable ;
 ; reg_bank:REG_BANK|banco[0][0]          ; Stuck at GND due to stuck port clock_enable ;
-; Total Number of Removed Registers = 34 ;                                             ;
+; Total Number of Removed Registers = 36 ;                                             ;
 +----------------------------------------+---------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                ;
++-----------------------+---------------------------+----------------------------------------+
+; Register name         ; Reason for Removal        ; Registers Removed due to This Register ;
++-----------------------+---------------------------+----------------------------------------+
+; JMP:JMP|prev_rd[0][5] ; Stuck at GND              ; JMP:JMP|prev_rd[1][5]                  ;
+;                       ; due to stuck port data_in ;                                        ;
++-----------------------+---------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -355,12 +411,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 1316  ;
+; Total registers                              ; 1333  ;
 ; Number of registers using Synchronous Clear  ; 29    ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 212   ;
+; Number of registers using Asynchronous Clear ; 218   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 1057  ;
+; Number of registers using Clock Enable       ; 1093  ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -370,23 +426,25 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output          ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
-; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |TP2|latchDec:LATCH_DEC|imm_[30]    ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |TP2|JMP:JMP|pc1[27]                ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; Yes        ; |TP2|latchDec:LATCH_DEC|imm_[13]    ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |TP2|JMP:JMP|prev_rd[0][2]          ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |TP2|latchDec:LATCH_DEC|imm_[22]    ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |TP2|JMP:JMP|pc1[3]                 ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; Yes        ; |TP2|latchDec:LATCH_DEC|imm_[12]    ;
 ; 7:1                ; 5 bits    ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |TP2|latchDec:LATCH_DEC|imm_[29]    ;
-; 9:1                ; 6 bits    ; 36 LEs        ; 12 LEs               ; 24 LEs                 ; Yes        ; |TP2|latchDec:LATCH_DEC|imm_[14]    ;
+; 9:1                ; 6 bits    ; 36 LEs        ; 12 LEs               ; 24 LEs                 ; Yes        ; |TP2|latchDec:LATCH_DEC|imm_[17]    ;
 ; 11:1               ; 4 bits    ; 28 LEs        ; 8 LEs                ; 20 LEs                 ; Yes        ; |TP2|latchDec:LATCH_DEC|imm_[1]     ;
-; 10:1               ; 2 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |TP2|latchDec:LATCH_DEC|aluCtrl_[1] ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |TP2|decoder:DECODER|Selector0      ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |TP2|decoder:DECODER|Selector0      ;
-; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; No         ; |TP2|reg_bank:REG_BANK|Mux39        ;
-; 33:1               ; 32 bits   ; 704 LEs       ; 704 LEs              ; 0 LEs                  ; No         ; |TP2|reg_bank:REG_BANK|outA[0]      ;
-; 26:1               ; 7 bits    ; 119 LEs       ; 112 LEs              ; 7 LEs                  ; No         ; |TP2|alu:ALU|out[23]                ;
-; 24:1               ; 7 bits    ; 112 LEs       ; 105 LEs              ; 7 LEs                  ; No         ; |TP2|alu:ALU|out[13]                ;
-; 28:1               ; 4 bits    ; 72 LEs        ; 68 LEs               ; 4 LEs                  ; No         ; |TP2|alu:ALU|out[25]                ;
-; 26:1               ; 4 bits    ; 68 LEs        ; 64 LEs               ; 4 LEs                  ; No         ; |TP2|alu:ALU|out[5]                 ;
-; 30:1               ; 2 bits    ; 40 LEs        ; 36 LEs               ; 4 LEs                  ; No         ; |TP2|alu:ALU|out[29]                ;
-; 28:1               ; 2 bits    ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; No         ; |TP2|alu:ALU|out[2]                 ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |TP2|latchDec:LATCH_DEC|aluCtrl_[0] ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |TP2|decoder:DECODER|Selector25     ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |TP2|decoder:DECODER|Selector25     ;
+; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; No         ; |TP2|reg_bank:REG_BANK|Mux46        ;
+; 33:1               ; 32 bits   ; 704 LEs       ; 704 LEs              ; 0 LEs                  ; No         ; |TP2|reg_bank:REG_BANK|outJ[16]     ;
+; 33:1               ; 32 bits   ; 704 LEs       ; 704 LEs              ; 0 LEs                  ; No         ; |TP2|reg_bank:REG_BANK|outA[6]      ;
+; 26:1               ; 7 bits    ; 119 LEs       ; 112 LEs              ; 7 LEs                  ; No         ; |TP2|alu:ALU|out[21]                ;
+; 24:1               ; 7 bits    ; 112 LEs       ; 105 LEs              ; 7 LEs                  ; No         ; |TP2|alu:ALU|out[12]                ;
+; 28:1               ; 4 bits    ; 72 LEs        ; 68 LEs               ; 4 LEs                  ; No         ; |TP2|alu:ALU|out[24]                ;
+; 26:1               ; 4 bits    ; 68 LEs        ; 64 LEs               ; 4 LEs                  ; No         ; |TP2|alu:ALU|out[7]                 ;
+; 30:1               ; 2 bits    ; 40 LEs        ; 36 LEs               ; 4 LEs                  ; No         ; |TP2|alu:ALU|out[28]                ;
+; 28:1               ; 2 bits    ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; No         ; |TP2|alu:ALU|out[3]                 ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
 
 
@@ -586,27 +644,27 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 449                         ;
-; cycloneiii_ff         ; 1316                        ;
+; boundary_port         ; 520                         ;
+; cycloneiii_ff         ; 1333                        ;
 ;     CLR               ; 149                         ;
-;     ENA               ; 994                         ;
-;     ENA CLR           ; 63                          ;
+;     ENA               ; 1024                        ;
+;     ENA CLR           ; 69                          ;
 ;     SCLR              ; 29                          ;
-;     plain             ; 81                          ;
-; cycloneiii_lcell_comb ; 3063                        ;
-;     arith             ; 305                         ;
-;         2 data inputs ; 56                          ;
-;         3 data inputs ; 249                         ;
-;     normal            ; 2758                        ;
+;     plain             ; 62                          ;
+; cycloneiii_lcell_comb ; 3863                        ;
+;     arith             ; 336                         ;
+;         2 data inputs ; 57                          ;
+;         3 data inputs ; 279                         ;
+;     normal            ; 3527                        ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 2                           ;
-;         2 data inputs ; 130                         ;
-;         3 data inputs ; 499                         ;
-;         4 data inputs ; 2126                        ;
+;         2 data inputs ; 94                          ;
+;         3 data inputs ; 585                         ;
+;         4 data inputs ; 2845                        ;
 ; cycloneiii_ram_block  ; 64                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 15.00                       ;
-; Average LUT depth     ; 6.79                        ;
+; Max LUT depth         ; 13.00                       ;
+; Average LUT depth     ; 7.46                        ;
 +-----------------------+-----------------------------+
 
 
@@ -625,7 +683,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
-    Info: Processing started: Sun Jun 11 15:02:39 2023
+    Info: Processing started: Sun Jun 11 23:58:56 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off TP2 -c TP2
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
@@ -658,7 +716,41 @@ Info (12021): Found 1 design units, including 1 entities, in source file lam.v
 Info (12021): Found 1 design units, including 1 entities, in source file jmp.v
     Info (12023): Found entity 1: JMP File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 11
 Info (12127): Elaborating entity "TP2" for the top level hierarchy
-Info (12128): Elaborating entity "HALTCtrl" for hierarchy "HALTCtrl:HALTCtrl"
+Info (12128): Elaborating entity "JMP" for hierarchy "JMP:JMP"
+Warning (10240): Verilog HDL Always Construct warning at JMP.v(75): inferring latch(es) for variable "nextPCJal", which holds its previous value in one or more paths through the always construct File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 75
+Info (10041): Inferred latch for "nextPCJal[0]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[1]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[2]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[3]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[4]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[5]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[6]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[7]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[8]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[9]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[10]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[11]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[12]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[13]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[14]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[15]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[16]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[17]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[18]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[19]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[20]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[21]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[22]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[23]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[24]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[25]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[26]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[27]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[28]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[29]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[30]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (10041): Inferred latch for "nextPCJal[31]" at JMP.v(77) File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/JMP.v Line: 77
+Info (12128): Elaborating entity "latchDec" for hierarchy "latchDec:LATCH_DEC"
 Info (12128): Elaborating entity "decoder" for hierarchy "decoder:DECODER"
 Info (12128): Elaborating entity "Prog_mem" for hierarchy "Prog_mem:ROM"
 Info (12128): Elaborating entity "altsyncram" for hierarchy "Prog_mem:ROM|altsyncram:altsyncram_component" File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/Prog_mem.v Line: 87
@@ -689,13 +781,11 @@ Info (12131): Elaborated megafunction instantiation "BUSMUX:mux_addr|lpm_mux:$00
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_nsc.tdf
     Info (12023): Found entity 1: mux_nsc File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/db/mux_nsc.tdf Line: 23
 Info (12128): Elaborating entity "mux_nsc" for hierarchy "BUSMUX:mux_addr|lpm_mux:$00000|mux_nsc:auto_generated" File: f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/lpm_mux.tdf Line: 87
-Info (12128): Elaborating entity "JMP" for hierarchy "JMP:JMP"
-Info (12128): Elaborating entity "latchDec" for hierarchy "latchDec:LATCH_DEC"
+Info (12128): Elaborating entity "ifu" for hierarchy "ifu:IFU"
 Info (12128): Elaborating entity "latch32" for hierarchy "latch32:LATCH_busC"
 Info (12128): Elaborating entity "alu" for hierarchy "alu:ALU"
 Info (12128): Elaborating entity "latchAluIn" for hierarchy "latchAluIn:LATCH_aluIn"
 Info (12128): Elaborating entity "reg_bank" for hierarchy "reg_bank:REG_BANK"
-Info (12128): Elaborating entity "ifu" for hierarchy "ifu:IFU"
 Info (12128): Elaborating entity "latch5" for hierarchy "latch5:LATCH_rd22"
 Info (12128): Elaborating entity "BUSMUX" for hierarchy "BUSMUX:mux_rd"
 Info (12130): Elaborated megafunction instantiation "BUSMUX:mux_rd"
@@ -706,6 +796,7 @@ Info (12131): Elaborated megafunction instantiation "BUSMUX:mux_rd|lpm_mux:$0000
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_brc.tdf
     Info (12023): Found entity 1: mux_brc File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/db/mux_brc.tdf Line: 23
 Info (12128): Elaborating entity "mux_brc" for hierarchy "BUSMUX:mux_rd|lpm_mux:$00000|mux_brc:auto_generated" File: f:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/lpm_mux.tdf Line: 87
+Info (12128): Elaborating entity "HALTCtrl" for hierarchy "HALTCtrl:HALTCtrl"
 Info (12128): Elaborating entity "ram" for hierarchy "ram:RAM"
 Info (12128): Elaborating entity "altsyncram" for hierarchy "ram:RAM|altsyncram:altsyncram_component" File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/ram.v Line: 94
 Info (12130): Elaborated megafunction instantiation "ram:RAM|altsyncram:altsyncram_component" File: C:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/ram.v Line: 94
@@ -733,12 +824,38 @@ Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Info (15717): Design contains 441 virtual pins; timing numbers associated with paths containing virtual pins are estimates
-    Info (15719): Pin "selOutDec[5]" is virtual output pin
-    Info (15719): Pin "selOutDec[4]" is virtual output pin
-    Info (15719): Pin "selOutDec[3]" is virtual output pin
-    Info (15719): Pin "selOutDec[2]" is virtual output pin
-    Info (15719): Pin "selOutDec[1]" is virtual output pin
-    Info (15719): Pin "selOutDec[0]" is virtual output pin
+    Info (15719): Pin "PC[31]" is virtual output pin
+    Info (15719): Pin "PC[30]" is virtual output pin
+    Info (15719): Pin "PC[29]" is virtual output pin
+    Info (15719): Pin "PC[28]" is virtual output pin
+    Info (15719): Pin "PC[27]" is virtual output pin
+    Info (15719): Pin "PC[26]" is virtual output pin
+    Info (15719): Pin "PC[25]" is virtual output pin
+    Info (15719): Pin "PC[24]" is virtual output pin
+    Info (15719): Pin "PC[23]" is virtual output pin
+    Info (15719): Pin "PC[22]" is virtual output pin
+    Info (15719): Pin "PC[21]" is virtual output pin
+    Info (15719): Pin "PC[20]" is virtual output pin
+    Info (15719): Pin "PC[19]" is virtual output pin
+    Info (15719): Pin "PC[18]" is virtual output pin
+    Info (15719): Pin "PC[17]" is virtual output pin
+    Info (15719): Pin "PC[16]" is virtual output pin
+    Info (15719): Pin "PC[15]" is virtual output pin
+    Info (15719): Pin "PC[14]" is virtual output pin
+    Info (15719): Pin "PC[13]" is virtual output pin
+    Info (15719): Pin "PC[12]" is virtual output pin
+    Info (15719): Pin "PC[11]" is virtual output pin
+    Info (15719): Pin "PC[10]" is virtual output pin
+    Info (15719): Pin "PC[9]" is virtual output pin
+    Info (15719): Pin "PC[8]" is virtual output pin
+    Info (15719): Pin "PC[7]" is virtual output pin
+    Info (15719): Pin "PC[6]" is virtual output pin
+    Info (15719): Pin "PC[5]" is virtual output pin
+    Info (15719): Pin "PC[4]" is virtual output pin
+    Info (15719): Pin "PC[3]" is virtual output pin
+    Info (15719): Pin "PC[2]" is virtual output pin
+    Info (15719): Pin "PC[1]" is virtual output pin
+    Info (15719): Pin "PC[0]" is virtual output pin
     Info (15719): Pin "selADec[5]" is virtual output pin
     Info (15719): Pin "selADec[4]" is virtual output pin
     Info (15719): Pin "selADec[3]" is virtual output pin
@@ -750,6 +867,12 @@ Info (15717): Design contains 441 virtual pins; timing numbers associated with p
     Info (15719): Pin "selBDec[2]" is virtual output pin
     Info (15719): Pin "selBDec[1]" is virtual output pin
     Info (15719): Pin "selBDec[0]" is virtual output pin
+    Info (15719): Pin "selOutDec[5]" is virtual output pin
+    Info (15719): Pin "selOutDec[4]" is virtual output pin
+    Info (15719): Pin "selOutDec[3]" is virtual output pin
+    Info (15719): Pin "selOutDec[2]" is virtual output pin
+    Info (15719): Pin "selOutDec[1]" is virtual output pin
+    Info (15719): Pin "selOutDec[0]" is virtual output pin
     Info (15719): Pin "busC[31]" is virtual output pin
     Info (15719): Pin "busC[30]" is virtual output pin
     Info (15719): Pin "busC[29]" is virtual output pin
@@ -814,38 +937,6 @@ Info (15717): Design contains 441 virtual pins; timing numbers associated with p
     Info (15719): Pin "imm[2]" is virtual output pin
     Info (15719): Pin "imm[1]" is virtual output pin
     Info (15719): Pin "imm[0]" is virtual output pin
-    Info (15719): Pin "PC[31]" is virtual output pin
-    Info (15719): Pin "PC[30]" is virtual output pin
-    Info (15719): Pin "PC[29]" is virtual output pin
-    Info (15719): Pin "PC[28]" is virtual output pin
-    Info (15719): Pin "PC[27]" is virtual output pin
-    Info (15719): Pin "PC[26]" is virtual output pin
-    Info (15719): Pin "PC[25]" is virtual output pin
-    Info (15719): Pin "PC[24]" is virtual output pin
-    Info (15719): Pin "PC[23]" is virtual output pin
-    Info (15719): Pin "PC[22]" is virtual output pin
-    Info (15719): Pin "PC[21]" is virtual output pin
-    Info (15719): Pin "PC[20]" is virtual output pin
-    Info (15719): Pin "PC[19]" is virtual output pin
-    Info (15719): Pin "PC[18]" is virtual output pin
-    Info (15719): Pin "PC[17]" is virtual output pin
-    Info (15719): Pin "PC[16]" is virtual output pin
-    Info (15719): Pin "PC[15]" is virtual output pin
-    Info (15719): Pin "PC[14]" is virtual output pin
-    Info (15719): Pin "PC[13]" is virtual output pin
-    Info (15719): Pin "PC[12]" is virtual output pin
-    Info (15719): Pin "PC[11]" is virtual output pin
-    Info (15719): Pin "PC[10]" is virtual output pin
-    Info (15719): Pin "PC[9]" is virtual output pin
-    Info (15719): Pin "PC[8]" is virtual output pin
-    Info (15719): Pin "PC[7]" is virtual output pin
-    Info (15719): Pin "PC[6]" is virtual output pin
-    Info (15719): Pin "PC[5]" is virtual output pin
-    Info (15719): Pin "PC[4]" is virtual output pin
-    Info (15719): Pin "PC[3]" is virtual output pin
-    Info (15719): Pin "PC[2]" is virtual output pin
-    Info (15719): Pin "PC[1]" is virtual output pin
-    Info (15719): Pin "PC[0]" is virtual output pin
     Info (15719): Pin "selOut[5]" is virtual output pin
     Info (15719): Pin "selOut[4]" is virtual output pin
     Info (15719): Pin "selOut[3]" is virtual output pin
@@ -1174,15 +1265,15 @@ Info (15717): Design contains 441 virtual pins; timing numbers associated with p
     Info (15718): Pin "data[2]" is virtual input pin
     Info (15718): Pin "data[1]" is virtual input pin
     Info (15718): Pin "data[0]" is virtual input pin
-Info (21057): Implemented 4732 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 5604 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
-    Info (21059): Implemented 5 output pins
-    Info (21061): Implemented 4660 logic cells
+    Info (21059): Implemented 76 output pins
+    Info (21061): Implemented 5461 logic cells
     Info (21064): Implemented 64 RAM segments
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 4839 megabytes
-    Info: Processing ended: Sun Jun 11 15:02:57 2023
-    Info: Elapsed time: 00:00:18
-    Info: Total CPU time (on all processors): 00:00:18
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 4834 megabytes
+    Info: Processing ended: Sun Jun 11 23:59:13 2023
+    Info: Elapsed time: 00:00:17
+    Info: Total CPU time (on all processors): 00:00:17
 
 

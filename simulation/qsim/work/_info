@@ -132,6 +132,22 @@ R0
 R0
 R0
 R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
 !s11f MIXED_VERSIONS
 13
 !s112 1.1
@@ -141,10 +157,10 @@ R0
 cModel Technology
 Z1 dE:/Windows/ITBA/Electronica V/Projects/TP2/simulation/qsim
 T_opt
-!s110 1686506587
-VJXg@k0>6Ti[;Q=HTd]23Z3
+!s110 1686538778
+VJXK7]?X45C68<K0S2Zo2<3
 Z2 04 15 4 work TP2_vlg_vec_tst fast 0
-=1-2cf05db36f37-64860c59-204-38d8
+=1-2cf05db36f37-64868a19-7e-1798
 !s124 OEM10U2 
 Z3 o-quiet -auto_acc_if_foreign -work work -L cycloneive_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver +acc
 Z4 tCvgOpt 0
@@ -173,44 +189,44 @@ n@_opt2
 R5
 R1
 vhard_block
-!s110 1686500103
+!s110 1686536092
 !i10b 1
-!s100 eUXj2IWlmLTc3hMF6h9mE0
-INIOi6HbJ;R`VkaiXA`]kf1
+!s100 Q>oKH=?n=8aPg30?[zmD`2
+I>ja7:ozH^<A]8fJbo>H@h2
 Z7 dC:/Users/sergi/OneDrive - ITBA/SAP-TAB/Electro V/E5_TP2/simulation/qsim
-w1686500101
+w1686536090
 Z8 8TP2.vo
 Z9 FTP2.vo
-!i122 286
-L0 94452 34
+!i122 308
+L0 112082 34
 Z10 VDg1SIo80bB@j0V0VzS_@n1
 Z11 OL;L;2021.2;73
 r1
 !s85 0
 31
-!s108 1686500102.000000
+!s108 1686536091.000000
 Z12 !s107 TP2.vo|
 Z13 !s90 -work|work|TP2.vo|
 !i113 0
 Z14 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R4
 vTP2
-!s110 1686506584
+Z15 !s110 1686538776
 !i10b 1
-!s100 odEOaWndleQTYaA=KhM][1
-I29Q<oW^L;]PEV^9WKI4^J0
+!s100 5F3eB4ZlF^9lU@j2M17UZ1
+IJzYEVDJI<aP`>4NAG=>ma1
 R7
-w1686506583
+w1686538775
 R8
 R9
-!i122 290
-L0 32 87438
+!i122 324
+L0 32 102784
 R10
 R11
 r1
 !s85 0
 31
-!s108 1686506584.000000
+Z16 !s108 1686538776.000000
 R12
 R13
 !i113 0
@@ -218,22 +234,22 @@ R14
 R4
 n@t@p2
 vTP2_vlg_vec_tst
-!s110 1686506585
+R15
 !i10b 1
-!s100 ?>n5CH^g1Qa0][GYb_c6I0
-I4RJO0lM7gfFj3h3HGK^fY3
+!s100 XAYe7:93KXNLXgjNXkP@R1
+I:^2NZ:3aFMzIfa8L@h8bV2
 R7
-w1686506582
+w1686538774
 8Test1.vwf.vt
 FTest1.vwf.vt
-!i122 291
-L0 30 80
+!i122 325
+L0 30 88
 R10
 R11
 r1
 !s85 0
 31
-!s108 1686506585.000000
+R16
 !s107 Test1.vwf.vt|
 !s90 -work|work|Test1.vwf.vt|
 !i113 0

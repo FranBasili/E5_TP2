@@ -19,7 +19,7 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "06/11/2023 15:03:02"
+// Generated on "06/11/2023 23:59:34"
                                                                                 
 // Verilog Test Bench (with test vectors) for design :                          TP2
 // 
@@ -46,14 +46,18 @@ wire AluZ;
 wire [31:0] busA;
 wire [31:0] busB;
 wire [31:0] busC;
+wire [31:0] busJ;
 wire ctrl_fetch;
-wire global_reset;
 wire halt;
 wire [31:0] imm;
 wire [31:0] instruction;
+wire [5:0] jal_rs;
+wire [31:0] newPC;
 wire [31:0] outRam;
 wire [31:0] PC;
 wire [4:0] rd;
+wire reset_branch;
+wire reset_global;
 wire [5:0] selA;
 wire [5:0] selADec;
 wire [4:0] selB;
@@ -75,18 +79,22 @@ TP2 i1 (
 	.busA(busA),
 	.busB(busB),
 	.busC(busC),
+	.busJ(busJ),
 	.clk(clk),
 	.ctrl_fetch(ctrl_fetch),
 	.data(data),
 	.enwr(enwr),
-	.global_reset(global_reset),
 	.halt(halt),
 	.imm(imm),
 	.inclock(inclock),
 	.instruction(instruction),
+	.jal_rs(jal_rs),
+	.newPC(newPC),
 	.outRam(outRam),
 	.PC(PC),
 	.rd(rd),
+	.reset_branch(reset_branch),
+	.reset_global(reset_global),
 	.selA(selA),
 	.selADec(selADec),
 	.selB(selB),
