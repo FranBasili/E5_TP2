@@ -1,7 +1,7 @@
 module latchDec(
 input wire clk, 
 input wire en,
-input wire reset,
+input wire reset,				// reset sincronico con clk
 input wire [9:0] aluCtrl,  
 input wire [31:0] imm,
 input wire [5:0] selA,     
@@ -9,6 +9,7 @@ input wire [4:0] selB,
 input wire [5:0] selOut,
 input wire imm_en,
 input wire [2:0] jmp_type,
+input wire [31:0] jmp_imm,
 input wire new_jmp,
 input wire [5:0] jal_rs,
 input wire [8:0] lam_control,
@@ -21,6 +22,7 @@ output reg [5:0] selA_,
 output reg [4:0] selB_,
 output reg [5:0] selOut_,
 output reg [2:0] jmp_type_,
+output reg [31:0] jmp_imm_,
 output reg new_jmp_,
 output reg [5:0] jal_rs_,
 output reg [8:0] lam_control_,
@@ -29,7 +31,7 @@ output reg lam_new_
 
 
 
-always @(posedge clk, posedge reset) begin
+always @(posedge clk) begin
 	if (reset) begin
 		imm_ <= 0;
 		imm_en_ <= 0; 
@@ -38,6 +40,7 @@ always @(posedge clk, posedge reset) begin
 		selB_ <= 0;
 		selOut_ <= 0;
 		jmp_type_ <= 0;
+		jmp_imm_ <= 0;
 		new_jmp_ <= 0;
 		jal_rs_ <= 0;
 		lam_control_ <= 0;
@@ -51,6 +54,7 @@ always @(posedge clk, posedge reset) begin
 		selB_ <= selB;
 		selOut_ <= selOut;
 		jmp_type_ <= jmp_type;
+		jmp_imm_ <= jmp_imm;
 		new_jmp_ <= new_jmp;
 		jal_rs_ <= jal_rs;
 		lam_control_ <= lam_control;

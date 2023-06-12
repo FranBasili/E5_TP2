@@ -1,7 +1,7 @@
 module latchAluIn(
 input wire clk, 
 input wire en,
-input wire reset,
+input wire reset,		// reset sincronico con clk
 
 input wire [9:0] aluCtrl,
 input wire imm_en,   
@@ -14,7 +14,7 @@ output reg [31:0] imm_
 
 
 
-always @(posedge clk, posedge reset) begin
+always @(posedge clk) begin
 	if(reset) begin
 		imm_ <= 0;
 		imm_en_ <= 0; 

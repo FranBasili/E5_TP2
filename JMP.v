@@ -28,38 +28,40 @@ module JMP(
     output reg halt
 );
 
-    reg reset_branch_en;        // Señal combinacional que se activa cuando hay que realizar algun salto
-    reg reset_jal_en;
+	reg reset_branch_en;        // Señal combinacional que se activa cuando hay que realizar algun salto
+	reg reset_jal_en;
+	
+	reg [2:0]   jmp_type1;      // Primer registro del shift register
+	reg [2:0]   jmp_type2;      // Segundo registro del shift register
+	reg new_jmp1;               // Idem
+	reg new_jmp2;
+	reg [31:0]  pc1;            // Primer registro de Hipothetical PC 
+	reg [31:0]  pc2;					// Me parece que es al pedo guardar la direccion en registros
 
-    reg [2:0]   jmp_type1;      // Primer registro del shift register
-    reg [2:0]   jmp_type2;      // Segundo registro del shift register
-    reg new_jmp1;               // Idem
-    reg new_jmp2;
-    reg [31:0]  pc1;            // Primer registro de Hipothetical PC 
-    reg [31:0]  pc2;
-    reg [31:0] newHipAdd;       // Hipothetical address para branch condicional, no para JAL/R      
+// Nuevas direcciones de PC. Siempre estan apuntando a algo, no siempre es valido (depende de new_jmp y jmp_type)
+	// En caso de branch
+	wire [31:0] newHipAdd = imm + pc - 8;
+	// En caso de JAL(R)
+	wire [31:0] nextPCJal = imm + busJ - 8;  // JAL rs = PC, JALR rs = rs1
+    // TODO: Se podria unificar en uno si en el branch, el decoder setea jal_rs en PC
 
-    reg [31:0] nextPCJal;       // Idem newHipAdd pero para JAL
-    reg ctrlJAL;
+	reg ctrlJAL;
 
-    
-    reg [5:0] prev_rd[2];   // 2 registros de causalidad en caso de JAL(R)
+	reg [5:0] prev_rd[2];   // 2 registros de causalidad en caso de JAL(R)
 
 
     always @(*) begin
         halt = 0;
-        
         // HALT por branches pendientes de evaluar
         if (ctrlJAL && (new_jmp1 || new_jmp2)) begin
             halt = 1;
         end
-		
         // HALT por causalidad en rs (solo JALR)
         if (jal_rs != 0 && (jal_rs == prev_rd[0] || jal_rs == prev_rd[1])) begin
 			halt = 1;
 		end
     end
-
+/*
     always @(*)begin
         // branch
         if (new_jmp == 1 && (jmp_type != `JAL_BITS && jmp_type != `JALR_BITS)) begin
@@ -69,13 +71,14 @@ module JMP(
             newHipAdd = 0;
         end
     end
-
+*/
     always @(*)begin
         // JAL/R
         ctrlJAL = 0;
         reset_jal_en = 0;
+		  // nextPC aca para que sea combinacional
+		  //nextPCJal = $signed(imm) + busJ;  // JAL rs = PC, JALR rs = rs1
         if (new_jmp == 1 && (jmp_type == `JAL_BITS || jmp_type == `JALR_BITS)) begin
-            nextPCJal = $signed(imm) + busJ;  // JAL rs = PC, JALR rs = rs1
             ctrlJAL = 1;
             reset_jal_en = 1;
         end

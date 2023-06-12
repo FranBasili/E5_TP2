@@ -15,10 +15,10 @@
 `define LOAD_INST   1'b0
 `define LAM_NEW     1'b1
 
-`define OPCODE_ALU_RESTA    	10'b0100000000
-`define OPCODE_ALU_SUMA_IMM	    10'b0000000000
-`define OPCODE_ALU_SLT          10'b0000000010
-`define OPCODE_ALU_SLTU         10'b0000000011
+`define OPCODE_ALU_RESTA		10'b0100000000
+`define OPCODE_ALU_SUMA			10'b0000000000
+`define OPCODE_ALU_SLT        10'b0000000010
+`define OPCODE_ALU_SLTU       10'b0000000011
 
 `define BEQ  3'b000
 `define BNE  3'b001
@@ -38,6 +38,7 @@ module decoder(
 	output wire [5:0] selOut,	
 	output wire imm_en,           // Para la ALU
 	output wire [2:0] jmp_type,   // On new jump detected (JMP control unit)
+	output reg [31:0] jmp_imm,
 	output wire new_jmp,
 	output reg [5:0] jal_rs,
 	output wire [8:0] lam_control, // LAM unit signals control
@@ -68,6 +69,7 @@ module decoder(
 		  jal_rs = 0;
         curr_lam_control = 0;
         curr_lam_new = 0;
+		  jmp_imm = 0;
 
 		  
         case (instruction[6:0])
@@ -99,7 +101,7 @@ module decoder(
             `S_Type: begin
                 curr_selA = instruction[19:15]; curr_selB = instruction[24:20]; // ESTO VA A MEMORIA, HAY QUE AVISAR DE ALGUNA FORMA 
                 curr_imm = { {21{instruction[31]}}, instruction[30:25], instruction[11:8], instruction[7] }; 
-                curr_aluCtrl = `OPCODE_ALU_SUMA_IMM;
+                curr_aluCtrl = `OPCODE_ALU_SUMA;
                 curr_imm_en = 1;
                 curr_lam_control = {`STORE_INST, instruction[14:12], instruction[24:20]};
             end
@@ -107,7 +109,7 @@ module decoder(
             `U_LUI_Type: begin
                 curr_imm = {instruction[31:12], {12{1'b0}}}; 
                 curr_selOut = instruction[11:7];
-                curr_aluCtrl = `OPCODE_ALU_SUMA_IMM;
+                curr_aluCtrl = `OPCODE_ALU_SUMA;
                 curr_selA = 0;
                 curr_imm_en = 1;
             end
@@ -115,25 +117,33 @@ module decoder(
             `U_AUIPC_Type: begin
                 curr_imm = {instruction[31:12], {12{1'b0}}}; 
                 curr_selOut = instruction[11:7];
-                curr_aluCtrl = `OPCODE_ALU_SUMA_IMM;
+                curr_aluCtrl = `OPCODE_ALU_SUMA;
                 curr_selA = 32; // PC index
                 curr_imm_en = 1;
             end
 
-			`J_Type: begin
-                curr_imm = { {12{instruction[31]}}, instruction[19:12], instruction[20], instruction[30:21], 1'b0};
-                curr_selOut = instruction[11:7];
-                curr_new_jmp = 1;
-					 jal_rs = 32;		// Seleccionamos el PC
-                curr_jmp_type = `JAL_BITS;
-            end
+				`J_Type: begin
+					jmp_imm = { {12{instruction[31]}}, instruction[19:12], instruction[20], instruction[30:21], 1'b0};
+					curr_selOut = instruction[11:7];
+					curr_new_jmp = 1;
+					jal_rs = 32;		// Seleccionamos el PC como source para el salto
+					curr_selA = 32;	// y tambien para guardar direccion de retorno
+					curr_imm_en = 1;	// a la que hay que restarle una posicion
+					curr_imm = -4;
+					curr_aluCtrl = `OPCODE_ALU_SUMA;
+					curr_jmp_type = `JAL_BITS;
+				end
 
             `I_JALR_Type: begin
-                curr_imm = { {21{instruction[31]}}, instruction[30:20]};
-                curr_selOut = instruction[11:7];
-                curr_new_jmp = 1;
-                jal_rs = instruction[19:15];
-                curr_jmp_type = `JALR_BITS;
+					jmp_imm = { {21{instruction[31]}}, instruction[30:20]};
+					curr_selOut = instruction[11:7];
+					curr_new_jmp = 1;
+					jal_rs = instruction[19:15];
+					curr_selA = 32;	// Seleccion de PC para guardar direccion de retorno
+					curr_imm_en = 1;	// a la que hay que restarle una posicion
+					curr_imm = -4;
+					curr_aluCtrl = `OPCODE_ALU_SUMA;
+               curr_jmp_type = `JALR_BITS;
             end
 
             `I_LOAD_Type: begin
@@ -141,7 +151,7 @@ module decoder(
                 curr_lam_new = 1;
                 curr_lam_control = {`LOAD_INST, instruction[14:12], instruction[11:7]};
                 curr_imm_en = 1;
-                curr_aluCtrl = `OPCODE_ALU_SUMA_IMM;
+                curr_aluCtrl = `OPCODE_ALU_SUMA;
             end
 
             `IMM_Type: begin
