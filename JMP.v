@@ -25,12 +25,7 @@ module JMP(
     output reg ctrlFetch,       // Decide si agarra el PC de un salto condicional o de un JAL/R o ninguno
     output reg reset_branch,
     output reg reset_jal,
-    output reg halt,
-	 
-	 
-	 
-	 output wire [5:0] prev_rd1,
-	 output wire [5:0] prev_rd2
+    output reg halt
 	 
 );
 
@@ -57,9 +52,6 @@ module JMP(
 	reg ctrlJAL;
 
 	reg [5:0] prev_rd[2];   // 2 registros de causalidad en caso de JAL(R)
-
-	assign prev_rd1 = prev_rd[0];
-	assign prev_rd2 = prev_rd[1];
 	
     always @(*) begin
         halt = 0;
@@ -129,7 +121,7 @@ module JMP(
             jmp_type2 <= jmp_type1;
             pc1 <= newHipAdd;
             pc2 <= pc1;
-            new_jmp1 <= halt ? 0 : new_jmp;		// En caso de halt, debo indicar que no hay saltos
+            new_jmp1 <= halt ? 1'b0 : new_jmp;		// En caso de halt, debo indicar que no hay saltos
             new_jmp2 <= new_jmp1;
 				
 				// jumps

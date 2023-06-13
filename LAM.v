@@ -89,7 +89,7 @@ module LAM(
 	reg running = 0;
 	always @(posedge clk)begin
 		memory_ready = 0;
-		counter = 0;
+		//counter = 0;
 		running = 0;
 		if(counter == 0)begin
 			if (negEn == 1) begin
@@ -98,7 +98,7 @@ module LAM(
 			end
 		end
 		else if(counter > 0 && counter < `NMAX-1)begin
-			counter = counter + 1;
+			counter = counter + 3'b1;
 			running = 1;
 		end
 		else if(counter == `NMAX-1)begin
@@ -106,7 +106,7 @@ module LAM(
 			running = 1;
 			memory_ready = 1;
 		end
-		else if(counter == `NMAX)begin
+		else begin
 			counter = 0;
 			running = 0;
 			memory_ready = 0;
@@ -128,28 +128,30 @@ module LAM(
 		sel_out_lam = 0;
 		data_2_BR = 0;
 		data_2_MD = 0;
-		if(shifter_lam_new[1] == 1 && shifter_read_write[1] == 1 && memory_ready == 1)begin
+		if(shifter_lam_new[1] == 1 && shifter_read_write[1] == 0 && memory_ready == 1)begin
 			sel_out_lam = shifter_sel_out[1];
 			case(shifter_lam_type[1])
 			`LB:begin
-				data_2_BR = { {24{data_from_BR[7]}}, data_from_BR[7:0]};
+				data_2_BR = { {24{data_from_MD[7]}}, data_from_MD[7:0]};
 			end
 			`LH:begin
-				data_2_BR = { {16{data_from_BR[7]}}, data_from_BR[15:0]};
+				data_2_BR = { {16{data_from_MD[7]}}, data_from_MD[15:0]};
 			end
 			`LW:begin
-				data_2_BR = data_from_BR[31:0];
+				data_2_BR = data_from_MD[31:0];
 			end
 			`LBU:begin
-				data_2_BR = data_from_BR[7:0];
+				data_2_BR = data_from_MD[7:0];
 			end
 			`LHU:begin
-				data_2_BR = data_from_BR[15:0];
+				data_2_BR = data_from_MD[15:0];
+			end
+			default: begin
 			end
 			endcase
 
 		end
-		else if(shifter_lam_new[1] == 1 && shifter_read_write[1] == 0)begin
+		else if(shifter_lam_new[1] == 1 && shifter_read_write[1] == 1)begin
 			rs2_lam = shifter_rs2[1];
 			case(shifter_lam_type[1])
 			`SB:begin
@@ -160,6 +162,8 @@ module LAM(
 			end
 			`SW:begin
 				data_2_MD = data_from_MD;
+			end
+			default: begin
 			end
 			endcase
 		end

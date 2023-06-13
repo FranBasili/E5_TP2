@@ -73,9 +73,7 @@ set_instance_assignment -name VIRTUAL_PIN ON -to imm
 set_instance_assignment -name VIRTUAL_PIN ON -to busB
 set_instance_assignment -name VIRTUAL_PIN ON -to busA
 set_instance_assignment -name VIRTUAL_PIN ON -to rd
-set_instance_assignment -name VIRTUAL_PIN ON -to address
 set_instance_assignment -name VIRTUAL_PIN ON -to outRam
-set_instance_assignment -name VIRTUAL_PIN ON -to data
 set_global_assignment -name VERILOG_FILE HALTCtrl.v
 set_global_assignment -name MIF_FILE prog_mem.mif
 set_global_assignment -name QIP_FILE Prog_mem.qip
@@ -101,4 +99,12 @@ set_instance_assignment -name VIRTUAL_PIN ON -to selOut
 set_instance_assignment -name VIRTUAL_PIN ON -to Alu_imm
 
 set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
+set_instance_assignment -name VIRTUAL_PIN ON -to busJ
+set_instance_assignment -name VIRTUAL_PIN ON -to selM_out
+set_instance_assignment -name VIRTUAL_PIN ON -to ram_q
+set_instance_assignment -name VIRTUAL_PIN ON -to newPC
+set_instance_assignment -name VIRTUAL_PIN ON -to jmp_type
+set_instance_assignment -name VIRTUAL_PIN ON -to jmp_imm
+set_instance_assignment -name VIRTUAL_PIN ON -to jal_rs
+set_instance_assignment -name VIRTUAL_PIN ON -to busM
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
