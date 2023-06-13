@@ -12,8 +12,11 @@ input wire [2:0] jmp_type,
 input wire [31:0] jmp_imm,
 input wire new_jmp,
 input wire [5:0] jal_rs,
-input wire [8:0] lam_control,
 input wire lam_new,
+input wire lam_rw,
+input wire [2:0] lam_type,
+input wire [4:0] lam_rs,
+input wire [4:0] lam_sel_out,
 
 output reg [31:0] imm_,
 output reg imm_en_,
@@ -25,8 +28,11 @@ output reg [2:0] jmp_type_,
 output reg [31:0] jmp_imm_,
 output reg new_jmp_,
 output reg [5:0] jal_rs_,
-output reg [8:0] lam_control_,
-output reg lam_new_
+output reg lam_new_,
+output reg lam_rw_,
+output reg [2:0] lam_type_,
+output reg [4:0] lam_rs_,
+output reg [4:0] lam_sel_out_
 );
 
 
@@ -43,8 +49,11 @@ always @(posedge clk) begin
 		jmp_imm_ <= 0;
 		new_jmp_ <= 0;
 		jal_rs_ <= 0;
-		lam_control_ <= 0;
 		lam_new_ <= 0;
+		lam_rw_ <= 0;
+    	lam_type_ <= 0;
+    	lam_rs_ <= 0;
+    	lam_sel_out_ <= 0;
 	end
 	else if (en) begin
 		imm_ <= imm;
@@ -57,8 +66,12 @@ always @(posedge clk) begin
 		jmp_imm_ <= jmp_imm;
 		new_jmp_ <= new_jmp;
 		jal_rs_ <= jal_rs;
-		lam_control_ <= lam_control;
 		lam_new_ <= lam_new;
+		lam_rw_ <= lam_rw;
+    	lam_type_ <= lam_type;
+    	lam_rs_ <= lam_rs;
+    	lam_sel_out_ <= lam_sel_out;
+
     end
 end
 

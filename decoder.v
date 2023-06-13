@@ -41,8 +41,11 @@ module decoder(
 	output reg [31:0] jmp_imm,
 	output wire new_jmp,
 	output reg [5:0] jal_rs,
-	output wire [8:0] lam_control, // LAM unit signals control
-	output wire lam_new
+	output reg lam_new,
+	output reg lam_rw,
+    output reg [2:0] lam_type,
+    output reg [4:0] lam_rs,
+    output reg [4:0] lam_sel_out
 );
 
 	reg [9:0] curr_aluCtrl;   
@@ -53,8 +56,6 @@ module decoder(
 	reg [31:0] curr_imm;
 	reg [2:0] curr_jmp_type;
 	reg curr_new_jmp;
-	reg [8:0] curr_lam_control;
-	reg curr_lam_new;
 
 
 	always @(instruction) begin
@@ -66,11 +67,13 @@ module decoder(
         curr_aluCtrl = 0;
         curr_jmp_type = 0;
         curr_new_jmp = 0;
-		  jal_rs = 0;
-        curr_lam_control = 0;
-        curr_lam_new = 0;
-		  jmp_imm = 0;
-
+        jal_rs = 0;
+        jmp_imm = 0;
+        lam_new = 0;
+        lam_rw = 0;
+        lam_type = 0;
+        lam_rs = 0;
+        lam_sel_out = 0;
 		  
         case (instruction[6:0])
             // busA = rs1, busB = rs2, selOut = rd, alctr = funct7 U funct3 
@@ -98,13 +101,6 @@ module decoder(
                 curr_new_jmp = 1;
             end
 
-            `S_Type: begin
-                curr_selA = instruction[19:15]; curr_selB = instruction[24:20]; // ESTO VA A MEMORIA, HAY QUE AVISAR DE ALGUNA FORMA 
-                curr_imm = { {21{instruction[31]}}, instruction[30:25], instruction[11:8], instruction[7] }; 
-                curr_aluCtrl = `OPCODE_ALU_SUMA;
-                curr_imm_en = 1;
-                curr_lam_control = {`STORE_INST, instruction[14:12], instruction[24:20]};
-            end
           
             `U_LUI_Type: begin
                 curr_imm = {instruction[31:12], {12{1'b0}}}; 
@@ -147,9 +143,23 @@ module decoder(
             end
 
             `I_LOAD_Type: begin
+                lam_new = 1;
+                lam_rw = 0;
                 curr_imm = { {21{instruction[31]}}, instruction[30:20]};
-                curr_lam_new = 1;
-                curr_lam_control = {`LOAD_INST, instruction[14:12], instruction[11:7]};
+                lam_sel_out =  instruction[11:7];
+                lam_type = instruction[14:12];
+                curr_selA = instruction[19:15];
+                curr_imm_en = 1;
+                curr_aluCtrl = `OPCODE_ALU_SUMA;
+            end
+            
+            `S_Type: begin
+                lam_new = 1;
+                lam_rw = 1;
+                curr_selA = instruction[19:15];
+                lam_rs = instruction[24:20];
+                lam_type = instruction[14:12];
+                curr_imm = { {21{instruction[31]}}, instruction[30:25], instruction[11:7] }; 
                 curr_imm_en = 1;
                 curr_aluCtrl = `OPCODE_ALU_SUMA;
             end
@@ -177,7 +187,5 @@ module decoder(
     assign  aluCtrl= curr_aluCtrl;
     assign  jmp_type = curr_jmp_type;
     assign  new_jmp = curr_new_jmp;
-    assign  lam_control = curr_lam_control;
-    assign  lam_new = curr_lam_new;
 
 endmodule

@@ -25,7 +25,13 @@ module JMP(
     output reg ctrlFetch,       // Decide si agarra el PC de un salto condicional o de un JAL/R o ninguno
     output reg reset_branch,
     output reg reset_jal,
-    output reg halt
+    output reg halt,
+	 
+	 
+	 
+	 output wire [5:0] prev_rd1,
+	 output wire [5:0] prev_rd2
+	 
 );
 
 	reg reset_branch_en;        // Señal combinacional que se activa cuando hay que realizar algun salto
@@ -40,16 +46,21 @@ module JMP(
 
 // Nuevas direcciones de PC. Siempre estan apuntando a algo, no siempre es valido (depende de new_jmp y jmp_type)
 	// En caso de branch
-	wire [31:0] newHipAdd = imm + pc - 8;
+	//wire [31:0] newHipAdd = imm + pc - 8;
 	// En caso de JAL(R)
-	wire [31:0] nextPCJal = imm + busJ - 8;  // JAL rs = PC, JALR rs = rs1
+	//wire [31:0] nextPCJal = imm + busJ - 8;  // JAL rs = PC, JALR rs = rs1
     // TODO: Se podria unificar en uno si en el branch, el decoder setea jal_rs en PC
 
+	reg [31:0] newHipAdd;
+	reg [31:0] nextPCJal;
+	 
 	reg ctrlJAL;
 
 	reg [5:0] prev_rd[2];   // 2 registros de causalidad en caso de JAL(R)
 
-
+	assign prev_rd1 = prev_rd[0];
+	assign prev_rd2 = prev_rd[1];
+	
     always @(*) begin
         halt = 0;
         // HALT por branches pendientes de evaluar
@@ -57,11 +68,11 @@ module JMP(
             halt = 1;
         end
         // HALT por causalidad en rs (solo JALR)
-        if (jal_rs != 0 && (jal_rs == prev_rd[0] || jal_rs == prev_rd[1])) begin
+        if (ctrlJAL && jal_rs != 0 && (jal_rs == prev_rd[0] || jal_rs == prev_rd[1])) begin
 			halt = 1;
 		end
     end
-/*
+
     always @(*)begin
         // branch
         if (new_jmp == 1 && (jmp_type != `JAL_BITS && jmp_type != `JALR_BITS)) begin
@@ -71,16 +82,17 @@ module JMP(
             newHipAdd = 0;
         end
     end
-*/
+
     always @(*)begin
         // JAL/R
-        ctrlJAL = 0;
-        reset_jal_en = 0;
+			ctrlJAL = 0;
+			reset_jal_en = 0;
+			nextPCJal = 0;
 		  // nextPC aca para que sea combinacional
-		  //nextPCJal = $signed(imm) + busJ;  // JAL rs = PC, JALR rs = rs1
-        if (new_jmp == 1 && (jmp_type == `JAL_BITS || jmp_type == `JALR_BITS)) begin
+		  if (new_jmp == 1 && (jmp_type == `JAL_BITS || jmp_type == `JALR_BITS)) begin
             ctrlJAL = 1;
             reset_jal_en = 1;
+				nextPCJal = $signed(imm) + busJ;  // JAL rs = PC, JALR rs = rs1
         end
     end
 
@@ -117,7 +129,7 @@ module JMP(
             jmp_type2 <= jmp_type1;
             pc1 <= newHipAdd;
             pc2 <= pc1;
-            new_jmp1 <= new_jmp;
+            new_jmp1 <= halt ? 0 : new_jmp;		// En caso de halt, debo indicar que no hay saltos
             new_jmp2 <= new_jmp1;
 				
 				// jumps
@@ -127,8 +139,13 @@ module JMP(
     end
 
     always @(negedge clock)begin
-        reset_branch <= reset_branch_en;
+		if (!halt) begin
         reset_jal <= reset_jal_en;
+		end
+		else begin
+			reset_jal <= 0;
+		end
+		reset_branch <= reset_branch_en;
     end
 
     always @(*) begin
