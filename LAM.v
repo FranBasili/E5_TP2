@@ -10,13 +10,15 @@
 
 
 module LAM(
-	input wire clk,    
-	input wire reset,
+	input wire clk,
+	input wire reset_in,
 	input wire lam_new,             // Si es una instruccion de Load o Store = 1 o nada = 0
 	input wire read_write,          // 0 si es lectura, 1 si es escritura
 	input wire [5:0] sel_out,       // Bits de seleccion de bus de salida, para instruccion de LOAD
 	input wire [5:0] rs2,           // Para Store, es de donde se saca la data
-	input wire [2:0] lam_type,      // Para distinguir entre los distintos Load y Store 
+	input wire [2:0] lam_type,      // Para distinguir entre los distintos Load y Store
+	input wire [4:0] deco_rs1,		// Señales de rs para detectar dependencias con LOAD
+	input wire [4:0] deco_rs2,
 
 	input wire [31:0] data_from_BR,
 	input wire [31:0] data_from_MD,
@@ -26,7 +28,8 @@ module LAM(
 	output reg [5:0] rs2_lam,
 	output reg [31:0] data_2_BR,
 	output reg [31:0] data_2_MD,
-	output reg clk_latch_address
+	output reg clk_latch_address,
+	output reg halt
 );
 
 	reg shifter_lam_new[2];
@@ -61,7 +64,7 @@ module LAM(
 
 	// Latcheo el SR
 	always @(posedge clk)begin
-		if(reset == 1)begin
+		if(reset_in == 1)begin
 			shifter_lam_new[0] <= 0;
 			shifter_read_write[0] <= 0;
 			shifter_sel_out[0] <= 0;
@@ -155,17 +158,34 @@ module LAM(
 			rs2_lam = shifter_rs2[1];
 			case(shifter_lam_type[1])
 			`SB:begin
-				data_2_MD = { 24'b0, data_from_MD[7:0]};
+				data_2_MD = { 24'b0, data_from_BR[7:0]};
 			end
 			`SH:begin
-				data_2_MD = { 16'b0, data_from_MD[15:0]};
+				data_2_MD = { 16'b0, data_from_BR[15:0]};
 			end
 			`SW:begin
-				data_2_MD = data_from_MD;
+				data_2_MD = data_from_BR;
 			end
 			default: begin
 			end
 			endcase
+		end
+	end
+
+	// HALT
+
+	always @(*) begin
+	// HALT por instrucciones que llegan del decoder y tienen como source a alguna de las instrucciones encoladas en LAM
+		if ((deco_rs1 != 0 && (deco_rs1 == shifter_sel_out[0] || deco_rs1 == shifter_sel_out[1])) ||
+			(deco_rs2 != 0 && (deco_rs2 == shifter_sel_out[0] || deco_rs2 == shifter_sel_out[1]))) begin
+			halt = 1;
+		end
+	// HALT por dos instrucciones encoladas
+		else if (lam_new == 1 && (shifter_lam_new[1] == lam_new || shifter_lam_new[0] == lam_new)) begin
+			halt = 1;
+		end
+		else begin
+			halt= 0;
 		end
 	end
 

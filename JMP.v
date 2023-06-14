@@ -19,7 +19,9 @@ module JMP(
     input wire zero,            // Bit de zero de la ALU
     input wire [31:0] imm,      // Valor inmediato para calcular la nueva direccion
     input wire [31:0] pc,       // Valor de PC 
-    input wire reset,           // Para restear los shift register de los saltos condicionales
+	 input wire [4:0] prev_rd1,	// Registros con memoria de los rd, necesario para detectar halt
+    input wire [4:0] prev_rd2,
+	 input wire reset,           // Para restear los shift register de los saltos condicionales
     
     output reg [31:0] newPC,   // Nueva direccion del PC, si se realiza el salto
     output reg ctrlFetch,       // Decide si agarra el PC de un salto condicional o de un JAL/R o ninguno
@@ -51,7 +53,9 @@ module JMP(
 	 
 	reg ctrlJAL;
 
-	reg [5:0] prev_rd[2];   // 2 registros de causalidad en caso de JAL(R)
+	wire [5:0] prev_rd[2];   // 2 registros de causalidad en caso de JAL(R)
+	assign prev_rd[0] = prev_rd1;
+	assign prev_rd[1] = prev_rd2;
 	
     always @(*) begin
         halt = 0;
@@ -112,8 +116,8 @@ module JMP(
             new_jmp2 <= 0;
 				
 				// jumps
-				prev_rd[1] <= 0;
-				prev_rd[0] <= 0;
+				//prev_rd[1] <= 0;
+				//prev_rd[0] <= 0;
 				
         end
         else begin
@@ -125,8 +129,8 @@ module JMP(
             new_jmp2 <= new_jmp1;
 				
 				// jumps
-				prev_rd[1] <= prev_rd[0];
-				prev_rd[0] <= halt ? 6'b0 : rd;    // Es necesario resetear, por si rs=rd. Solo el mas nuevo. Puede haber espera de dos ciclos
+				//prev_rd[1] <= prev_rd[0];
+				//prev_rd[0] <= halt ? 6'b0 : rd;    // Es necesario resetear, por si rs=rd. Solo el mas nuevo. Puede haber espera de dos ciclos
         end
     end
 
