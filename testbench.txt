@@ -1,0 +1,24 @@
+F6000093	R1 = -160
+00300113	R2 = 3
+4020D0B3	R1 = R1 >>A R2	(= -20)								// Dependencia con R2
+03C00193	R3 = 60
+401180B3	R1 = R3 - R1 (= 80)									// Dependencia con R3
+0AF0A503	R10 = RAM(R1+175) (= RAM(0xFF) = 0xABCDEF12)		// Operacion de memoria (LOAD)
+																// Dependencia con R1
+																
+00110113	R2 = R2 + 1 (= 4)									// En paralelo con la busqueda en memoria
+002515B3	R11 = R10 << R2 (= 0xBCDEF120)						// Dependencia con operacion de memoria
+0AB0A7A3	RAM(R1+175) = R11									// Operacion de memoria (STORE)
+																// Dependencia con R11
+0005A233	SLT. R4 = R11 < R0 ? 1 : 0 (= 1)
+00407463	Branch 8 if R0 >= R4	(No)						// Salto condicional
+																// Dependencia con R4
+FE9FF66F	JAL -24, R12 = PC+4									// Salto absoluto
+00C64633	R12 = R12 ^ R12 (= 0)								// Dependencia con R12
+00060667	JALR R12, R12 = PC+4
+00000013	NOP
+
+
+00000000	F6000093	00300113	4020D0B3	03C00193	401180B3	0AF0A503	00110113
+002515B3	0AB0A7A3	0005A233	00407463	FE9FF66F	00C64633	00060667	00000013
+00000013	00000013	00000013	00000013	00000013	00000013	00000013	00000013

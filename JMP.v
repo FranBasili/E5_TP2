@@ -14,7 +14,6 @@ module JMP(
     input wire [2:0] jmp_type,  // jmp_type, codifican todos los tipos de saltos posibles (JAL/R y condicionales)
     input wire [5:0] jal_rs,   // source en caso de JALR
     input wire [31:0] busJ,     // bus para acceder al banco de registros
-    input wire [4:0] rd,        // rd para los JAL(R)
     input wire bit_bus_C,       // Para evaluar si se salta o no
     input wire zero,            // Bit de zero de la ALU
     input wire [31:0] imm,      // Valor inmediato para calcular la nueva direccion
@@ -115,10 +114,6 @@ module JMP(
             new_jmp1 <= 0;
             new_jmp2 <= 0;
 				
-				// jumps
-				//prev_rd[1] <= 0;
-				//prev_rd[0] <= 0;
-				
         end
         else begin
             jmp_type1 <= jmp_type;
@@ -128,9 +123,6 @@ module JMP(
             new_jmp1 <= halt ? 1'b0 : new_jmp;		// En caso de halt, debo indicar que no hay saltos
             new_jmp2 <= new_jmp1;
 				
-				// jumps
-				//prev_rd[1] <= prev_rd[0];
-				//prev_rd[0] <= halt ? 6'b0 : rd;    // Es necesario resetear, por si rs=rd. Solo el mas nuevo. Puede haber espera de dos ciclos
         end
     end
 

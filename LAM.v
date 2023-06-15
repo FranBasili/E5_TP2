@@ -64,13 +64,6 @@ module LAM(
 
 	// Latcheo el SR
 	always @(posedge clk)begin
-		if(reset_in == 1)begin
-			shifter_lam_new[0] <= 0;
-			shifter_read_write[0] <= 0;
-			shifter_sel_out[0] <= 0;
-			shifter_rs2[0] <= 0;
-			shifter_lam_type[0] <= 0;
-		end
 		if(clk_in_en_shift == 1)begin
 			shifter_lam_new[0] <= lam_new;
 			shifter_read_write[0] <= read_write;
@@ -83,6 +76,15 @@ module LAM(
 			shifter_sel_out[1] <= shifter_sel_out[0];
 			shifter_rs2[1] <= shifter_rs2[0];
 			shifter_lam_type[1] <= shifter_lam_type[0];
+		end
+		
+		// TODO: Chequear que este bien que este afuera del enable
+		if(reset_in == 1)begin
+			shifter_lam_new[0] <= 0;
+			shifter_read_write[0] <= 0;
+			shifter_sel_out[0] <= 0;
+			shifter_rs2[0] <= 0;
+			shifter_lam_type[0] <= 0;
 		end
 	end
 
@@ -185,7 +187,7 @@ module LAM(
 			halt = 1;
 		end
 		else begin
-			halt= 0;
+			halt = 0;
 		end
 	end
 
