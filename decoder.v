@@ -87,8 +87,8 @@ module decoder(
             `B_Type: begin
                 curr_selA = instruction[19:15]; curr_selB = instruction[24:20];
                 curr_selOut = 0; // escribo en rd0
-                curr_imm[31:12] = {20{instruction[31]}};
-                curr_imm[11:0] = { instruction[7], instruction[30:25], instruction [11:8], 1'b0};
+                jmp_imm[31:12] = {20{instruction[31]}};
+                jmp_imm[11:0] = { instruction[7], instruction[30:25], instruction [11:8], 1'b0};
                 // Para BEQ y BNE restamos y vemos flag Z
 					 if (instruction[14:12] == `BEQ || instruction[14:12] == `BNE)
                     curr_aluCtrl = `OPCODE_ALU_RESTA;

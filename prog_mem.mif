@@ -1,4 +1,4 @@
--- Copyright (C) 2023  Intel Corporation. All rights reserved.
+-- Copyright (C) 2022  Intel Corporation. All rights reserved.
 -- Your use of Intel Corporation's design tools, logic functions 
 -- and other software and tools, and any partner logic 
 -- functions, and any output files from any of the foregoing 
@@ -23,22 +23,18 @@ DATA_RADIX=HEX;
 
 CONTENT BEGIN
 	000  :   00000000;
-	001  :   F6000093;
-	002  :   00300113;
-	003  :   4020D0B3;
-	004  :   03C00193;
-	005  :   401180B3;
-	006  :   0AF0A503;
-	007  :   00110113;
-	008  :   002515B3;
-	009  :   0AB0A7A3;
-	00A  :   0005A233;
-	00B  :   00407463;
-	00C  :   FE9FF66F;
-	00D  :   00C64633;
-	00E  :   00060667;
-	[00F..017]  :   00000013;
-	[018..0FE]  :   00000000;
+	001  :   001002B7;
+	002  :   00000313;
+	003  :   00100393;
+	004  :   01400E93;
+	005  :   0062A023;
+	006  :   00428293;
+	007  :   00730E33;
+	008  :   00700333;
+	009  :   01C003B3;
+	00A  :   FFFE8E93;
+	00B  :   FE0E94E3;
+	[00C..0FE]  :   00000000;
 	0FF  :   ABCDEF12;
 	[100..3FF]  :   00000000;
 END;

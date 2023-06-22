@@ -4,7 +4,7 @@ editor if you plan to continue editing the block that represents it in
 the Block Editor! File corruption is VERY likely to occur.
 */
 /*
-Copyright (C) 2023  Intel Corporation. All rights reserved.
+Copyright (C) 2022  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and any partner logic 
 functions, and any output files from any of the foregoing 
@@ -22,47 +22,47 @@ https://fpgasoftware.intel.com/eula.
 (header "symbol" (version "1.2"))
 (symbol
 	(rect 0 0 216 160)
-	(text "Prog_mem" (rect 69 0 162 19)(font "Arial" (font_size 10)))
-	(text "inst" (rect 8 141 31 156)(font "Arial" ))
+	(text "Prog_mem" (rect 45 0 198 32)(font "Arial" (font_size 10)))
+	(text "inst" (rect 8 134 42 156)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
-		(text "address[9..0]" (rect 0 0 89 16)(font "Arial" (font_size 8)))
-		(text "address[9..0]" (rect 4 16 78 31)(font "Arial" (font_size 8)))
+		(text "address[9..0]" (rect 0 0 145 24)(font "Arial" (font_size 8)))
+		(text "address[9..0]" (rect 4 8 125 31)(font "Arial" (font_size 8)))
 		(line (pt 0 32)(pt 88 32)(line_width 3))
 	)
 	(port
 		(pt 0 112)
 		(input)
-		(text "inclock" (rect 0 0 48 16)(font "Arial" (font_size 8)))
-		(text "inclock" (rect 4 96 43 111)(font "Arial" (font_size 8)))
+		(text "inclock" (rect 0 0 75 24)(font "Arial" (font_size 8)))
+		(text "inclock" (rect 4 88 67 111)(font "Arial" (font_size 8)))
 		(line (pt 0 112)(pt 80 112))
 	)
 	(port
 		(pt 0 128)
 		(input)
-		(text "outclock" (rect 0 0 57 16)(font "Arial" (font_size 8)))
-		(text "outclock" (rect 4 112 51 127)(font "Arial" (font_size 8)))
+		(text "outclock" (rect 0 0 90 24)(font "Arial" (font_size 8)))
+		(text "outclock" (rect 4 104 80 127)(font "Arial" (font_size 8)))
 		(line (pt 0 128)(pt 144 128))
 	)
 	(port
 		(pt 0 144)
 		(input)
-		(text "outclocken" (rect 0 0 74 16)(font "Arial" (font_size 8)))
-		(text "outclocken" (rect 4 128 65 143)(font "Arial" (font_size 8)))
+		(text "outclocken" (rect 0 0 118 24)(font "Arial" (font_size 8)))
+		(text "outclocken" (rect 4 120 102 143)(font "Arial" (font_size 8)))
 		(line (pt 0 144)(pt 16 144))
 	)
 	(port
 		(pt 216 32)
 		(output)
-		(text "q[31..0]" (rect 0 0 51 16)(font "Arial" (font_size 8)))
-		(text "q[31..0]" (rect 169 16 211 31)(font "Arial" (font_size 8)))
+		(text "q[31..0]" (rect 0 0 83 24)(font "Arial" (font_size 8)))
+		(text "q[31..0]" (rect 142 8 211 31)(font "Arial" (font_size 8)))
 		(line (pt 216 32)(pt 160 32)(line_width 3))
 	)
 	(drawing
-		(text "32 bits" (rect 106 29 198 170)(font "Arial" )(vertical))
-		(text "1024 words" (rect 120 15 226 198)(font "Arial" )(vertical))
-		(text "Block type: AUTO" (rect 48 143 186 300)(font "Arial" ))
+		(text "32 bits" (rect 99 43 208 197)(font "Arial" )(vertical))
+		(text "1024 words" (rect 120 23 251 241)(font "Arial" )(vertical))
+		(text "Block type: AUTO" (rect 48 136 244 293)(font "Arial" ))
 		(line (pt 104 24)(pt 136 24))
 		(line (pt 136 24)(pt 136 96))
 		(line (pt 136 96)(pt 104 96))
@@ -87,9 +87,9 @@ https://fpgasoftware.intel.com/eula.
 		(line (pt 96 32)(pt 104 32)(line_width 3))
 		(line (pt 80 112)(pt 80 36))
 		(line (pt 144 128)(pt 144 36))
-		(line (pt 0 0)(pt 217 0))
-		(line (pt 217 0)(pt 217 162))
-		(line (pt 0 162)(pt 217 162))
+		(line (pt 0 0)(pt 221 0))
+		(line (pt 221 0)(pt 221 162))
+		(line (pt 0 162)(pt 221 162))
 		(line (pt 0 0)(pt 0 162))
 		(line (pt 0 0)(pt 0 0))
 		(line (pt 0 0)(pt 0 0))

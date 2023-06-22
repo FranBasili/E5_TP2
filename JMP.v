@@ -10,6 +10,7 @@
 
 module JMP(
     input wire clock,
+	 input wire halt_in,
     input wire new_jmp,         // Indica que hay algun salto (branch o JAL(R)) 
     input wire [2:0] jmp_type,  // jmp_type, codifican todos los tipos de saltos posibles (JAL/R y condicionales)
     input wire [5:0] jal_rs,   // source en caso de JALR
@@ -120,9 +121,8 @@ module JMP(
             jmp_type2 <= jmp_type1;
             pc1 <= newHipAdd;
             pc2 <= pc1;
-            new_jmp1 <= halt ? 1'b0 : new_jmp;		// En caso de halt, debo indicar que no hay saltos
+            new_jmp1 <= halt_in ? 1'b0 : new_jmp;		// En caso de halt, debo indicar que no hay saltos
             new_jmp2 <= new_jmp1;
-				
         end
     end
 
